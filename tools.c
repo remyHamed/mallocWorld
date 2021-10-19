@@ -1,21 +1,4 @@
-#include <stdio.h>;
-#include <stdlib.h>;
-#include <string.h>;
-
-typedef struct Tools Tools;
-struct  Tools
-{
-    char* name;
-    int durability;
-
-    Tools* next;
-};
-
-typedef struct ListeTools ListeTools;
-struct ListeTools
-{
-    ListeTools* first;
-};
+#include "tools.h"
 
 ListeTools* initTools()
 {
@@ -87,12 +70,4 @@ void printListeTools(ListeTools* ListeTools)
         actual = actual->next;
     }
     printf("NULL\n");
-}
-
-int main(int argc, const char* argv[])
-{
-
-    ListeTools* listeT = initTools();
-    printListeTools(listeT);
-    return 0;
 }

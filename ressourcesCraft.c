@@ -1,21 +1,4 @@
-#include <stdio.h>;
-#include <stdlib.h>;
-#include <string.h>;
-
-typedef struct RessourcesCraft RessourcesCraft;
-struct  RessourcesCraft
-{
-    char* name;
-    int holdLimit;
-
-    RessourcesCraft* next;
-};
-
-typedef struct ListeRessourcesCraft ListeRessourcesCraft;
-struct ListeRessourcesCraft
-{
-    RessourcesCraft* first;
-};
+#include "ressourcesCraft.h"
 
 ListeRessourcesCraft* initRessourcesCraft()
 {
@@ -87,12 +70,4 @@ void printListeRessourcesCraft(ListeRessourcesCraft* ListeRessourcesCraft)
         actual = actual->next;
     }
     printf("NULL\n");
-}
-
-int main(int argc, const char* argv[])
-{
-
-    ListeRessourcesCraft* listeW = initRessourcesCraft();
-    printListeRessourcesCraft(listeW);
-    return 0;
 }

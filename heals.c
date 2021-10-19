@@ -1,21 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-typedef struct Heals Heals;
-struct  Heals
-{
-    char* name;
-    int heal;
-
-    Heals* next;
-};
-
-typedef struct ListeHeals ListeHeals;
-struct ListeHeals
-{
-    ListeHeals* first;
-};
+#include "heals.h"
 
 ListeHeals* initHeals()
 {
@@ -57,12 +40,4 @@ void printListeHeals(ListeHeals* ListeHeals)
         actual = actual->next;
     }
     printf("NULL\n");
-}
-
-int main(int argc, const char* argv[])
-{
-
-    ListeHeals* listeT = initHeals();
-    printListeHeals(listeT);
-    return 0;
 }

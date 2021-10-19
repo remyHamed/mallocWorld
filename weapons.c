@@ -1,22 +1,4 @@
-#include <stdio.h>;
-#include <stdlib.h>;
-#include <string.h>;
-
-typedef struct Weapons Weapons;
-struct  Weapons
-{
-    char* name;
-    int damage;
-    int durability;
-
-    Weapons* next;
-};
-
-typedef struct ListeWeapons ListeWeapons;
-struct ListeWeapons
-{
-    Weapons* first;
-};
+#include "weapons.h"
 
 ListeWeapons* initWeapons()
 {
@@ -103,12 +85,4 @@ void printListeWeapons(ListeWeapons* listeWeapons)
         actual = actual->next;
     }
     printf("NULL\n");
-}
-
-int main(int argc, const char* argv[])
-{
-
-    ListeWeapons* listeW = initWeapons();
-    printListeWeapons(listeW);
-    return 0;
 }
