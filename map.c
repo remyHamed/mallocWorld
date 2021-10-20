@@ -69,11 +69,37 @@ void mapFreeGrid(map* map) {
 map * magicDiamondSquare(map* map) {
     int chunkSize = map->size - 1;
     int roughness = 2;
-    int * half = malloc(sizeof(int)); // ne pas oublier de free la variable
+    int half ;
     while (chunkSize > 1) {
-        *half = chunkSize / 2;
-        roughness/=2
+        half = chunkSize / 2;
+        roughness/=2;
     }
     
     return map;
+}
+
+void squareStep(int half, int chunk_square, map * map, int randMax, int randMin) {
+    int result = 0;
+   for(int y = 0; y < map->size; y += chunk_square ) {
+        printf("i = %d\n", i);
+        for (int x = 0; j < map->size; j++) {
+            result = map->gird[y][ x ] +
+            map->gird[y][ x + chunk_square] +
+            map->gird[y + chunk_square][ x ] +
+            map->gird[y + chunk_square][ x + chunk_square];
+            result /= 4;
+            result += randMaxOrRandMin(randMin, randMax);
+            ; // map->gird[y + half][ x + half] correspond au point central du carre
+        }
+    } 
+}
+
+int randMaxOrRandMin(int min, int max){
+    srand(time(NULL));
+    int res;
+    res = rand() % (100 - 1 + 1) + 1; 
+    if(res % 2 == 0) {
+        return max;
+    }
+    return min;
 }
