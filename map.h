@@ -7,15 +7,18 @@
 #include <string.h>
 
 struct  map {
-    int height;
-    int width;
+    int size;
     int levelLImit;
     int** gird;         // il sera peut être nécéssaire de faire deux grid
+    
 };                      // la grid du présent et la grid du futur
 typedef struct map map;
 
+
+int twoPowerRandomPlusonGenerator();
 void displayMap(map* map);
-void mapGridGenerator(map* map);
+map *  mapGridGenerator(map * map, int zone);
+map * setConersMap(map * map, int zone);
 void mapFreeGrid(map* map);
 #endif
 
