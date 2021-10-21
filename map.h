@@ -6,20 +6,21 @@
 #include <time.h>
 #include <string.h>
 
-struct  map {
-    int size;
-    int levelLImit;
+struct  Map {
+    int* size;
+    int* levelLImit;
     int** gird;         // il sera peut être nécéssaire de faire deux grid
     
 };                      // la grid du présent et la grid du futur
-typedef struct map map;
+typedef struct Map Map;
 
 
 int twoPowerRandomPlusonGenerator();
-void displayMap(map* map);
-map *  mapGridGenerator(map * map, int zone);
-map * setConersMap(map * map, int zone);
-void mapFreeGrid(map* map);
+void displayMap(Map* wolrd);
+int genMapSize();
+Map * mapGridGenerator(int zone);
+Map * setConersMap(Map* m, int zone);
+void mapFreeGrid(Map* wolrd);
 #endif
 
 

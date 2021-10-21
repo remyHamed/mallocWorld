@@ -1,17 +1,37 @@
 #include "map.h"
 
+/*
+ *   param : no
+ *   return : int between 7 and 11
+*/
 int twoPowerRandomPlusonGenerator() {
     srand(time(NULL));
     int min = 7;
     int max = 11;
-    int mapSize = rand() % (max - min + 1) + min; 
-    return mapSize;
+    int powerOftwo = rand() % (max - min + 1) + min; 
+    printf("twoPowerRandomPlusonGenerator() =  %d\n", powerOftwo); 
+    return powerOftwo;
+}
+/*
+ *   param :  no
+ *   return : int between 2^7 + 1 and 2^11 + 1
+*/
+int genMapSize() {
+    int powerOfTwo = twoPowerRandomPlusonGenerator();
+    int result = pow(2,powerOfTwo);
+    printf("genMapSize() = %d\n",result);
+    return result + 1;
 }
 
-map * setConersMap(map * map, int zone) {
+/*
+ *   param : struct Map, int equal to 1,2,3
+ *   return : map
+*/
+Map * setConersMap(Map* m, int zone) {
     srand(time(NULL));
         int min;
         int max;
+        int s;
     if (zone == 1) {
         min = 3;
         max = 100;
@@ -24,50 +44,71 @@ map * setConersMap(map * map, int zone) {
         min = 6;
         max = 100;  
     }
-    map->gird[0][0] =  rand() % (max - min + 1) + min;
-    map->gird[map->size - 1][0] =  rand() % (max - min + 1) + min;
-    map->gird[0][map->size - 1] =  rand() % (max - min + 1) + min;
-    map->gird[map->size - 1][map->size - 1] =  rand() % (max - min + 1) + min;
-    return map;
+    s = m->size; 
+    m->gird[0][0] =  rand() % (max - min + 1) + min;
+    m->gird[s - 1][0] =  rand() % (max - min + 1) + min;
+    m->gird[0][s - 1] =  rand() % (max - min + 1) + min;
+    m->gird[s - 1][s - 1] =  rand() % (max - min + 1) + min;
+    return m;
 }
-
-void displayMap(map * map) {
+/*
+ *   param : struct map
+ *   return : nothing
+*/
+void displayMap(Map * m) {
     printf("displayMap\n"); 
-    for(int i = 0; i < map->size; i++) {
-        for (int j = 0; j < map->size; j++) {
-            printf("%d", map->gird[i][j]);
+    for(int i = 0; i < m->size; i++) {
+        for (int j = 0; j < m->size; j++) {
+            printf("%d", m->gird[i][j]);
         }
         printf("\n"); 
     }
 }
-
-map *  mapGridGenerator(map * map, int zone) {
-    printf("mapGridGenerator\n");  
-    map->size = twoPowerRandomPlusonGenerator(); // gen a number whos (2^N) + 1
-    map->gird = malloc(sizeof(int*) * map->size);
-    for(int i = 0; i <     map->size; i++) {
-       map->gird[i] = malloc(sizeof(int) * map->size); 
+/*
+ *   param : 
+ *   return : 
+*/
+Map *  mapGridGenerator(int zone) {
+    int s;
+    Map * m = malloc(sizeof(Map));
+    m->size = malloc(sizeof(int));
+    m->levelLImit = NULL; 
+    m->size = genMapSize(); // gen a number whos (2^N) + 1
+    s = m->size;
+    printf("taill de la carte = %d", m->size);
+    m->gird = malloc(sizeof(int*) * s);
+    for(int i = 0; i < m->size; i++) {
+       m->gird[i] = malloc(sizeof(int) * s); 
     }
-    for(int i = 0; i < map->size; i++) {
+    for(int i = 0; i < m->size; i++) {
         printf("i = %d\n", i);
-        for (int j = 0; j < map->size; j++) {
-            map->gird[i][j] = 0;
+        for (int j = 0; j < m->size; j++) {
+            m->gird[i][j] = 0;
         }
     }
-    map = setConersMap(map,zone);
-    return map;
+    m = setConersMap(m,zone);
+    return m;
 }
 
-void mapFreeGrid(map* map) {
+/*
+ *   param : 
+ *   return : 
+*/
+void mapFreeGrid(Map* wolrd) {
     printf("mapFreeGrid\n");   
-    for(int i = 0; i <  map->size; i++) {
-            free(map->gird[i]);
+    for(int i = 0; i <  wolrd->size; i++) {
+            free(wolrd->gird[i]);
     } 
-    free(map->gird);
+    free(wolrd->gird);
 }
 
-map * magicDiamondSquare(map* map) {
-    int chunkSize = map->size - 1;
+/*
+ *   param : 
+ *   return : 
+*/
+
+Map * magicDiamondSquare(Map* m) {
+    int chunkSize = m->size - 1;
     int roughness = 2;
     int half ;
     while (chunkSize > 1) {
@@ -75,24 +116,25 @@ map * magicDiamondSquare(map* map) {
         roughness/=2;
     }
     
-    return map;
+    return m;
 }
 
-void squareStep(int half, int chunk_square, map * map, int randMax, int randMin) {
+
+/*
+void squareStep(int half, int chunk_square, Map* m, int randMax, int randMin) {
     int result = 0;
-   for(int y = 0; y < map->size; y += chunk_square ) {
-        printf("i = %d\n", i);
-        for (int x = 0; j < map->size; j++) {
-            result = map->gird[y][ x ] +
-            map->gird[y][ x + chunk_square] +
-            map->gird[y + chunk_square][ x ] +
-            map->gird[y + chunk_square][ x + chunk_square];
+    for(int y = 0; y < m->size; y += chunk_square ) {
+        printf("i = %d\n", y);
+        for (int x = 0; x < m->size; x++) {
+            result = m->gird[y][ x ] +
+            m->gird[y][ x + chunk_square] +
+            m->gird[y + chunk_square][ x ] +
+            m->gird[y + chunk_square][ x + chunk_square];
             result /= 4;
-            result += randMaxOrRandMin(randMin, randMax);
-            ; // map->gird[y + half][ x + half] correspond au point central du carre
+            result += randMaxOrRandMin(randMin, randMax); // map->gird[y + half][ x + half] correspond au point central du carre
         }
     } 
-}
+}*/
 
 int randMaxOrRandMin(int min, int max){
     srand(time(NULL));
