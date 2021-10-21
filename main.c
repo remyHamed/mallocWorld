@@ -7,8 +7,6 @@
 #include "player.h"
 
 int main(int argc, char ** argv) {
-    Map* wolrd; 
-    wolrd = mapGridGenerator(1);
-   // mapFreeGrid(wolrd);
+    Map * world = genMapForTest();
     return 0;
 }

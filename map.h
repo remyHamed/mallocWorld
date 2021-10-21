@@ -14,7 +14,7 @@ struct  Map {
 };                      // la grid du présent et la grid du futur
 typedef struct Map Map;
 
-
+Map *  genMapForTest();
 int twoPowerRandomPlusonGenerator();
 void displayMap(Map* wolrd);
 int genMapSize();

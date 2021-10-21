@@ -65,8 +65,8 @@ void displayMap(Map * m) {
     }
 }
 /*
- *   param : 
- *   return : 
+ *   param : integer zone
+ *   return : a map
 */
 Map *  mapGridGenerator(int zone) {
     int s;
@@ -87,6 +87,32 @@ Map *  mapGridGenerator(int zone) {
         }
     }
     m = setConersMap(m,zone);
+    return m;
+}
+/*
+ *   param : nothing 
+ *   return : map
+ * fonction a n'utiliser que pour les testes
+*/
+Map *  genMapForTest() {
+    int s;
+    Map * m = malloc(sizeof(Map));
+    m->size = malloc(sizeof(int));
+    m->levelLImit = NULL; 
+    m->size = 100; // gen a number whos (2^N) + 1
+    s = m->size;
+    printf("taill de la carte = %d", m->size);
+    m->gird = malloc(sizeof(int*) * s);
+    for(int i = 0; i < m->size; i++) {
+       m->gird[i] = malloc(sizeof(int) * s); 
+    }
+    for(int i = 0; i < m->size; i++) {
+        printf("i = %d", i);
+        for (int j = 0; j < m->size; j++) {
+            m->gird[i][j] = 0;
+        }
+        printf("\n"); 
+    }
     return m;
 }
 

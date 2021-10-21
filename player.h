@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 #include <string.h>
-struct player {
+struct Player {
     int currentHp;
     int maxHp;
     int x_position;
@@ -16,6 +16,6 @@ struct player {
     // soit on fait un tableau qui peut contenir les objets
     //
 };
-typedef struct player player;  
+typedef struct Player Player;  
 #endif
 
