@@ -5,6 +5,8 @@
 #include <math.h>
 #include <time.h>
 #include <string.h>
+#include "map.h"
+
 struct Player {
     int currentHp;
     int maxHp;
@@ -16,6 +18,11 @@ struct Player {
     // soit on fait un tableau qui peut contenir les objets
     //
 };
-typedef struct Player Player;  
+typedef struct Player Player;
+
+int playerStayInBounds(Player * p, Map * m);
+int colisionChecker(Player* p, Map* m);
+void movePlayer(Player* p, Map * m);
+void diplayMenuForMov();  
 #endif
 

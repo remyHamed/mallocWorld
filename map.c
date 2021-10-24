@@ -55,11 +55,18 @@ Map * setConersMap(Map* m, int zone) {
  *   param : struct map
  *   return : nothing
 */
-void displayMap(Map * m) {
-    printf("displayMap\n"); 
-    for(int i = 0; i < m->size; i++) {
-        for (int j = 0; j < m->size; j++) {
-            printf("%d", m->gird[i][j]);
+void displayMap(Map * m, Player* p) {
+    printf("displayMap\n");
+    int mapSize = m->size;
+    int xPlayer = p->x_position;
+    int yPlayer = p->y_position;
+    for(int i = 0; i < mapSize; i++) {
+        for (int j = 0; j < mapSize; j++) {
+            if( xPlayer == i && yPlayer == j) {
+                printf("X");
+            } else {
+                printf("%d", m->gird[i][j]);
+            }
         }
         printf("\n"); 
     }
@@ -90,7 +97,7 @@ Map *  mapGridGenerator(int zone) {
     return m;
 }
 /*
- *   param : nothing 
+ *  param : nothing 
  *   return : map
  * fonction a n'utiliser que pour les testes
 */
@@ -107,14 +114,28 @@ Map *  genMapForTest() {
        m->gird[i] = malloc(sizeof(int) * s); 
     }
     for(int i = 0; i < m->size; i++) {
-        printf("i = %d", i);
         for (int j = 0; j < m->size; j++) {
             m->gird[i][j] = 0;
         }
-        printf("\n"); 
     }
     return m;
 }
+
+/*
+ *  param : map  
+ *  return : nothing
+ *  
+*/
+void freeMap(Map* m) {
+    int s = m->size;
+    free(m->size);
+    for(int i = 0; i < s; i++) {
+        free(m->gird[i]); 
+    }
+    free(m->gird);
+    free(m);
+}
+
 
 /*
  *   param : 
@@ -171,3 +192,8 @@ int randMaxOrRandMin(int min, int max){
     }
     return min;
 }
+
+/*void displayPlayerOnMap() {
+
+
+}*/
