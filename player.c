@@ -14,7 +14,7 @@ void diplayMenuForMov(){
     printf("q = gauche\t\td = droite\n");
     printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
 }
-void movePlayer(Player* p, Map * m) {
+void movePlayer(Player* p, Map* m) {
    //ANCHOR la fonction doit être dans un do while 
     char c;
     int oldPosition[2] = {p->x_position,p->y_position};
@@ -46,7 +46,7 @@ void movePlayer(Player* p, Map * m) {
     }
 }
 
-int playerStayInBounds(Player * p, Map * m) {
+int playerStayInBounds(Player * p, Map* m) {
     if(p->x_position > m->size) {
         return 0;
     }

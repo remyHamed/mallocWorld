@@ -1,8 +1,11 @@
 #include "map.h"
 
-/*
+/*   function Diamond square
  *   param : no
  *   return : int between 7 and 11
+ * 
+ *  cette fonction retourne 2^n + 1 pour la génétationde la carte
+ *  la cart doit être dans ces dimension pour l'algorithme
 */
 int twoPowerRandomPlusonGenerator() {
     srand(time(NULL));
@@ -12,20 +15,23 @@ int twoPowerRandomPlusonGenerator() {
     printf("twoPowerRandomPlusonGenerator() =  %d\n", powerOftwo); 
     return powerOftwo;
 }
-/*
+/*  function Diamond square
  *   param :  no
  *   return : int between 2^7 + 1 and 2^11 + 1
+ * 
+ *  la fonction fait le calcul de la taille
 */
 int genMapSize() {
     int powerOfTwo = twoPowerRandomPlusonGenerator();
     int result = pow(2,powerOfTwo);
-    printf("genMapSize() = %d\n",result);
     return result + 1;
 }
 
-/*
+/*   function Diamond square
  *   param : struct Map, int equal to 1,2,3
  *   return : map
+ *   
+ *   on set les 5_4 coinbs de la carte a un chiffre pour débuter le calcult des moyennes
 */
 Map * setConersMap(Map* m, int zone) {
     srand(time(NULL));
@@ -51,111 +57,33 @@ Map * setConersMap(Map* m, int zone) {
     m->gird[s - 1][s - 1] =  rand() % (max - min + 1) + min;
     return m;
 }
-/*
- *   param : struct map
- *   return : nothing
-*/
-void displayMap(Map * m, Player* p) {
-    printf("displayMap\n");
-    int mapSize = m->size;
-    int xPlayer = p->x_position;
-    int yPlayer = p->y_position;
-    for(int i = 0; i < mapSize; i++) {
-        for (int j = 0; j < mapSize; j++) {
-            if( xPlayer == i && yPlayer == j) {
-                printf("X");
-            } else {
-                printf("%d", m->gird[i][j]);
-            }
-        }
-        printf("\n"); 
-    }
-}
-/*
- *   param : integer zone
- *   return : a map
-*/
-Map *  mapGridGenerator(int zone) {
-    int s;
-    Map * m = malloc(sizeof(Map));
-    m->size = malloc(sizeof(int));
-    m->levelLImit = NULL; 
-    m->size = genMapSize(); // gen a number whos (2^N) + 1
-    s = m->size;
-    printf("taill de la carte = %d", m->size);
-    m->gird = malloc(sizeof(int*) * s);
-    for(int i = 0; i < m->size; i++) {
-       m->gird[i] = malloc(sizeof(int) * s); 
-    }
-    for(int i = 0; i < m->size; i++) {
-        printf("i = %d\n", i);
-        for (int j = 0; j < m->size; j++) {
-            m->gird[i][j] = 0;
-        }
-    }
-    m = setConersMap(m,zone);
-    return m;
-}
-/*
- *  param : nothing 
- *   return : map
- * fonction a n'utiliser que pour les testes
-*/
-Map *  genMapForTest() {
-    int s;
-    Map * m = malloc(sizeof(Map));
-    m->size = malloc(sizeof(int));
-    m->levelLImit = NULL; 
-    m->size = 100; // gen a number whos (2^N) + 1
-    s = m->size;
-    printf("taill de la carte = %d", m->size);
-    m->gird = malloc(sizeof(int*) * s);
-    for(int i = 0; i < m->size; i++) {
-       m->gird[i] = malloc(sizeof(int) * s); 
-    }
-    for(int i = 0; i < m->size; i++) {
-        for (int j = 0; j < m->size; j++) {
-            m->gird[i][j] = 0;
-        }
-    }
-    return m;
-}
 
 /*
- *  param : map  
- *  return : nothing
- *  
+    param: int min, int max
+    return : int
+
+    la fonction retourn un chiffre
+    on mes les limites dans la fourchetes des 
+    valeurs disponible
+    3 à 5 pour le permier monde etc.
 */
-void freeMap(Map* m) {
-    int s = m->size;
-    free(m->size);
-    for(int i = 0; i < s; i++) {
-        free(m->gird[i]); 
+int randMaxOrRandMin(int min, int max){
+    srand(time(NULL));
+    int res;
+    res = rand() % (100 - 1 + 1) + 1; 
+    if(res % 2 == 0) {
+        return max;
     }
-    free(m->gird);
-    free(m);
+    return min;
 }
 
-
-/*
- *   param : 
- *   return : 
-*/
-void mapFreeGrid(Map* wolrd) {
-    printf("mapFreeGrid\n");   
-    for(int i = 0; i <  wolrd->size; i++) {
-            free(wolrd->gird[i]);
-    } 
-    free(wolrd->gird);
-}
-
-/*
+/* function Diamond square
  *   param : 
  *   return : 
 */
 
-Map * magicDiamondSquare(Map* m) {
-    int chunkSize = m->size - 1;
+/*Map * magicDiamondSquare(Map* m) {
+    int chunkSize = m->size - 1;            ANCHOR cette fonction n'est pas fini
     int roughness = 2;
     int half ;
     while (chunkSize > 1) {
@@ -164,12 +92,11 @@ Map * magicDiamondSquare(Map* m) {
     }
     
     return m;
-}
+}*/
 
 
 /*
-void squareStep(int half, int chunk_square, Map* m, int randMax, int randMin) {
-    int result = 0;
+void squareStep(int half, int chunk_square, Map* m, int randMax, int randMin) ANCHOR cette fonction n'est pas fini   int result = 0;
     for(int y = 0; y < m->size; y += chunk_square ) {
         printf("i = %d\n", y);
         for (int x = 0; x < m->size; x++) {
@@ -183,17 +110,3 @@ void squareStep(int half, int chunk_square, Map* m, int randMax, int randMin) {
     } 
 }*/
 
-int randMaxOrRandMin(int min, int max){
-    srand(time(NULL));
-    int res;
-    res = rand() % (100 - 1 + 1) + 1; 
-    if(res % 2 == 0) {
-        return max;
-    }
-    return min;
-}
-
-/*void displayPlayerOnMap() {
-
-
-}*/

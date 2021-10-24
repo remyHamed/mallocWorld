@@ -20,9 +20,9 @@ struct Player {
 };
 typedef struct Player Player;
 
-int playerStayInBounds(Player * p, Map * m);
+int playerStayInBounds(Player * p, Map* m);
 int colisionChecker(Player* p, Map* m);
-void movePlayer(Player* p, Map * m);
+void movePlayer(Player* p, Map* m);
 void diplayMenuForMov();  
 #endif
 
