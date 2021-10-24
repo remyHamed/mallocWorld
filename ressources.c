@@ -1,4 +1,4 @@
-#include "ressourcesCraft.h"
+#include "ressources.h"
 
 ListeRessourcesCraft* initRessourcesCraft()
 {

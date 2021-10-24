@@ -10,17 +10,17 @@ struct Armor
     char* name;
     int resDamage;
     
-    Armor* next;
+    struct Armor* next;
 };
 
 typedef struct ListeArmor ListeArmor;
 struct ListeArmor
 {
-    ListeArmor* first;
+    struct Armor* first;
 };
 
 
 ListeArmor* initArmor();
 void printListeArmor (ListeArmor* ListeArmor);
 
-#endif armor_h
+#endif

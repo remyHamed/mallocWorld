@@ -1,22 +1,20 @@
-CFLAGS=-Wall -Wextra -Werror
-LDFLAGS=
-SRC=$(wildcard *.c) 
-OBJ=$(SRC:.c=.o)
+CC = gcc
+RM = rm -f
+NAME = mallocworld
+SRCS = $(wildcard *.c)
+OBJS = $(SRCS:.c=.o)
 
-CC ?= gcc
-RM ?= rm -rf
+all:	$(NAME)
 
-all: mallocworld
-.PHONY: all
-
-mallocworld: $(OBJ)
-  $(CC) -o $@ $^ $(LDFLAGS)
-.PHONY: mallocworld
-
+$(NAME):	$(OBJS)
+	$(CC) $(OBJS) -o $(NAME) -Werror
+	$(RM) $(OBJS)
 clean:
-  $(RM) $(OBJ)
-.PHONY: clean
+	$(RM) $(OBJS)
 
-mrproper: clean
-  $(RM) mallocworld
-.PHONY: mrproper
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

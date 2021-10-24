@@ -20,4 +20,7 @@ struct ListeWeapons
     Weapons* first;
 };
 
-#endif weapons_h
+ListeWeapons* initWeapons();
+void printListeWeapons(ListeWeapons* listeWeapons);
+
+#endif

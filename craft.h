@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct Craft Craft;
 struct  Craft
 {
     char* name;
@@ -14,16 +15,14 @@ struct  Craft
 
     Craft* next;
 };
-typedef struct Craft Craft;
 
+typedef struct ListeCraft ListeCraft;
 struct ListeCraft
 {
     Craft *first;
 };
-typedef struct ListeCraft ListeCraft;
-
 
 ListeCraft* initCraft();
 void printListeCraft(ListeCraft* listeCraft);
 
-#endif craft_h
+#endif

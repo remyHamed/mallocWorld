@@ -16,10 +16,10 @@ struct  Tools
 typedef struct ListeTools ListeTools;
 struct ListeTools
 {
-    ListeTools* first;
+    Tools* first;
 };
 
 ListeTools* initTools();
 void printListeTools(ListeTools* ListeTools);
 
-#endif tools_h
+#endif

@@ -9,15 +9,18 @@ struct  RessourcesCraft
     char* name;
     int holdLimit;
 
-    RessourcesCraft* next;
+    struct RessourcesCraft* next;
 };
 typedef struct RessourcesCraft RessourcesCraft;
 
 
 struct ListeRessourcesCraft
 {
-    RessourcesCraft* first;
+    struct RessourcesCraft* first;
 };
 typedef struct ListeRessourcesCraft ListeRessourcesCraft;
 
-#endif ressourcesCraft_h
+ListeRessourcesCraft* initRessourcesCraft();
+void printListeRessourcesCraft(ListeRessourcesCraft* ListeRessourcesCraft);
+
+#endif

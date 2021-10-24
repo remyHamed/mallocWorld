@@ -9,17 +9,17 @@ struct  Heals
     char* name;
     int heal;
 
-    Heals* next;
+    struct Heals* next;
 };
 typedef struct Heals Heals;
 
 struct ListeHeals
 {
-    ListeHeals* first;
+    struct Heals* first;
 };
 typedef struct ListeHeals ListeHeals;
 
 ListeHeals* initHeals();
 void printListeHeals(ListeHeals* ListeHeals);
 
-#endif heals_h
+#endif
