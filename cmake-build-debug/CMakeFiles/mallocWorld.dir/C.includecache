@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.c
+Battle.h
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.h
+
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.h
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+Monster.h
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.h
+
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.h
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+malloc.h
+-
+
