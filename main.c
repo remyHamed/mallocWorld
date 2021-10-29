@@ -2,6 +2,6 @@
 #include "Battle.h"
 
 int main() {
-    Battle(52,120,43,100);
+    Battle(22,120);
     return 0;
 }
