@@ -2,6 +2,8 @@
 // Created by Vettese on 13/10/2021.
 //
 #include "Battle.h"
+#include "Leveling.h"
+
 void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
     if (*choice == 1) {
         printf("pv2: %d to ",*pv2);
@@ -72,9 +74,12 @@ void Battle(int damage1, Player *player) {
         }
     }
     if (monster->hp <= 0) {
-        printf("\nPlayer 1 is the winner");
+        printf("\nPlayer is the winner");
         player->exp += monster->exp;
-        printf("\nplayer gain %d and have %d \n\n ",monster->exp,player->exp);
+        printf("\nplayer gain %d and have %d \n",monster->exp,player->exp);
+        printf("current hp : %d\n",player->currentHp);
+        Leveling(player);
+        printf("lvl : %d\nhp max : %d current hp : %d\n\n",player->level,player->currentHp,player->maxHp);
     }
     if (player->currentHp <= 0) {
         printf("\n%s is the winner",monster->name);

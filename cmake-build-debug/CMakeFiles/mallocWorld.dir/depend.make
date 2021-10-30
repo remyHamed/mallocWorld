@@ -4,7 +4,12 @@
 CMakeFiles/mallocWorld.dir/Battle.c.obj: \
  ../Battle.c \
  ../Battle.h \
+ ../Leveling.h \
  ../Monster.h \
+ ../Player.h
+CMakeFiles/mallocWorld.dir/Leveling.c.obj: \
+ ../Leveling.c \
+ ../Leveling.h \
  ../Player.h
 CMakeFiles/mallocWorld.dir/Monster.c.obj: \
  ../Monster.c \

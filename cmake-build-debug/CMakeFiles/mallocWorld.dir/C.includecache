@@ -9,6 +9,8 @@
 C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.c
 Battle.h
 C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.h
+Leveling.h
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Leveling.h
 
 C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.h
 stdio.h
@@ -19,6 +21,10 @@ time.h
 -
 Monster.h
 C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.h
+Player.h
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Player.h
+
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Leveling.h
 Player.h
 C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Player.h
 
@@ -37,10 +43,4 @@ stdio.h
 -
 malloc.h
 -
-
-C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/main.c
-stdio.h
--
-Battle.h
-C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.h
 

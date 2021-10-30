@@ -152,6 +152,30 @@ Battle.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Battle.c.s
 .PHONY : Battle.c.s
 
+Leveling.obj: Leveling.c.obj
+.PHONY : Leveling.obj
+
+# target to build an object file
+Leveling.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Leveling.c.obj
+.PHONY : Leveling.c.obj
+
+Leveling.i: Leveling.c.i
+.PHONY : Leveling.i
+
+# target to preprocess a source file
+Leveling.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Leveling.c.i
+.PHONY : Leveling.c.i
+
+Leveling.s: Leveling.c.s
+.PHONY : Leveling.s
+
+# target to generate assembly for a file
+Leveling.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Leveling.c.s
+.PHONY : Leveling.c.s
+
 Monster.obj: Monster.c.obj
 .PHONY : Monster.obj
 
@@ -236,6 +260,9 @@ help:
 	@echo ... Battle.obj
 	@echo ... Battle.i
 	@echo ... Battle.s
+	@echo ... Leveling.obj
+	@echo ... Leveling.i
+	@echo ... Leveling.s
 	@echo ... Monster.obj
 	@echo ... Monster.i
 	@echo ... Monster.s

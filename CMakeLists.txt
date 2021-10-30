@@ -3,4 +3,4 @@ project(mallocWorld C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(mallocWorld main.c Battle.c Battle.h Monster.c Monster.h Player.c Player.h)
+add_executable(mallocWorld main.c Battle.c Battle.h Monster.c Monster.h Player.c Player.h Leveling.c Leveling.h)

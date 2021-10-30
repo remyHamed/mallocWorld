@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/mallocWorld.dir/Battle.c.obj"
+  "CMakeFiles/mallocWorld.dir/Leveling.c.obj"
   "CMakeFiles/mallocWorld.dir/Monster.c.obj"
   "CMakeFiles/mallocWorld.dir/Player.c.obj"
   "CMakeFiles/mallocWorld.dir/main.c.obj"

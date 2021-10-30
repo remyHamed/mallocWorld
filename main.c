@@ -3,7 +3,7 @@
 
 int main() {
     Player * player = initPlayer();
-    Battle(52,player);
-    Battle(52,player);
+    Battle(100,player);
+    Battle(100,player);
     return 0;
 }

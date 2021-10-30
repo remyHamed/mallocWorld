@@ -86,6 +86,12 @@
 		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.h">
 			<Option target="mallocWorld"/>
 		</Unit>
+		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Leveling.c">
+			<Option target="mallocWorld"/>
+		</Unit>
+		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Leveling.h">
+			<Option target="mallocWorld"/>
+		</Unit>
 		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.c">
 			<Option target="mallocWorld"/>
 		</Unit>

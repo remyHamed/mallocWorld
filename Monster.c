@@ -23,18 +23,18 @@ void choiceMonster (int index, Monster* monster) {
         monster->name = "Wolf";
         monster->hp = 100;
         monster->damage = 10;
-        monster->exp = 5;
+        monster->exp = 50;
     }
     if (index >=41 && index < 70) {
         monster->name = "tiger";
         monster->hp = 120;
         monster->damage = 15;
-        monster->exp = 10;
+        monster->exp = 50;
     }
     if (index >=71 && index < 98) {
         monster->name = "Bear";
         monster->hp = 140;
         monster->damage = 20;
-        monster->exp = 15;
+        monster->exp = 50;
     }
 }
