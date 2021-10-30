@@ -12,7 +12,7 @@
 
 int main(int argc, char ** argv) 
 {
-    ListeCraft* listeC = initCraft();
+    ListeCraft* listeC = initCraft(); // marche
     printListeCraft(listeC);
 
     // ListeTools* listeT = initTools(); // marche
