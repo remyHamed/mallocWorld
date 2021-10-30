@@ -55,3 +55,24 @@ void diplsayArr2d(int** a, int size) {
         printf("\n");
     }
 }
+
+/*
+    PARAM:
+    int* it give the array address
+    int size give sive of array
+    
+    RETURN:
+    nothing
+*/
+
+void freeArr2d(int ** arr, int size) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            free(arr[i][j]); 
+        }
+    }
+    for (int i = 0; i < size; i++) {
+        free(arr[i]); 
+    }
+    free(arr);
+}

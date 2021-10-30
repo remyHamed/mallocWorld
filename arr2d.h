@@ -5,4 +5,5 @@
 int ** genArr2d(int size);
 void setArr2d(int**a, int size);
 void diplsayArr2d(int** a, int size);
+void freeArr2d(int ** arr, int size);
 #endif

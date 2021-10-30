@@ -2,6 +2,8 @@
 
 Map * initMap() {
     Map * m = malloc(sizeof(Map));
-    m->arr = genArr2d(100); // ici integrer generation aléatoire de la taille de la carte
+    int s = genrandomSizeMap();
+    m->arr = genArr2d(s); // ici integrer generation aléatoire de la taille de la carte
+    m->size = s;
     return m;
 }
