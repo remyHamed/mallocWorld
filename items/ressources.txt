@@ -1,0 +1,8 @@
+Sapin|20
+Hêtre|20
+Chêne|20
+Pierre|20
+Fer|20
+Diamant|20
+Herbe|20
+Chanvre|20

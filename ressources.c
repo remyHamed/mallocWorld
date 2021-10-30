@@ -1,67 +1,51 @@
 #include "ressources.h"
 
-ListeRessourcesCraft* initRessourcesCraft()
+ListeRessources* initRessources()
 {
-    ListeRessourcesCraft* listeRessourcesCraft = malloc(sizeof(*listeRessourcesCraft));
+    ListeRessources* ListeRessources = malloc(sizeof(*ListeRessources));
+    char const* const fileName = "items/ressources.txt";
+    FILE* file = fopen(fileName, "r"); /* should check the result */
+    if (file == NULL)
+    {
+        printf("Fichier non ouvert");
+    }
+    char line[256];
+    const char * separator = "|";
+    int count = 0;
 
-    RessourcesCraft* sapin = malloc(sizeof(*sapin));
-    sapin->name = "Sapin";
-    sapin->holdLimit = 20;
-    listeRessourcesCraft->first = sapin;
-
-    RessourcesCraft* hetre = malloc(sizeof(*hetre));
-    hetre->name = "Hêtre";
-    hetre->holdLimit = 20;
-
-    RessourcesCraft* chene = malloc(sizeof(*chene));
-    chene->name = "Chêne";
-    chene->holdLimit = 20;
-
-    RessourcesCraft* pierre = malloc(sizeof(*pierre));
-    pierre->name = "Pierre";
-    pierre->holdLimit = 20;
-    
-    RessourcesCraft* fer = malloc(sizeof(*fer));
-    fer->name = "Fer";
-    fer->holdLimit = 20;
-
-    RessourcesCraft* diamant = malloc(sizeof(*diamant));
-    diamant->name = "Diamant";
-    diamant->holdLimit = 20;
-
-    RessourcesCraft* herbe = malloc(sizeof(*herbe));
-    herbe->name = "Herbe";
-    herbe->holdLimit = 20;
-
-    RessourcesCraft* lavande = malloc(sizeof(*lavande));
-    lavande->name = "Lavande";
-    lavande->holdLimit = 20;
-
-    RessourcesCraft* chanvre = malloc(sizeof(*chanvre));
-    chanvre->name = "Chanvre";
-    chanvre->holdLimit = 20;
-
-    sapin->next = hetre;
-    hetre->next = chene;
-    chene->next = pierre;
-    pierre->next = fer;
-    fer->next = diamant;
-    diamant->next = herbe;
-    herbe->next = lavande;
-    lavande->next = chanvre;
-    chanvre->next = NULL;
-
-    return listeRessourcesCraft;
+    while (fgets(line, sizeof(line), file)) {
+        char* token = strtok (line, separator);
+        Ressources* ressource = malloc(sizeof(*ressource));
+        while(token != NULL) {
+            if(count == 0)
+            {
+                ressource->name = malloc(sizeof(char) * strlen(token)+ 1);
+                strcpy(ressource->name, token);
+                count += 1;
+            }
+            else 
+            {
+                ressource->holdLimit = malloc(sizeof(int));
+                ressource->holdLimit = atoi(token);
+                ressource->next = ListeRessources->first;
+                ListeRessources->first = ressource;
+                count = 0;
+            }
+            token = strtok (NULL, separator);
+        }
+    }
+    fclose(file);
+    return ListeRessources;
 }
 
-void printListeRessourcesCraft(ListeRessourcesCraft* ListeRessourcesCraft)
+void printListeRessources(ListeRessources* ListeRessources)
 {
-    if (ListeRessourcesCraft == NULL)
+    if (ListeRessources == NULL)
     {
         exit(EXIT_FAILURE);
     }
 
-    RessourcesCraft* actual = ListeRessourcesCraft->first;
+    Ressources* actual = ListeRessources->first;
 
     while (actual != NULL)
     {

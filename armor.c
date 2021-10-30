@@ -3,24 +3,36 @@
 ListeArmor* initArmor()
 {
     ListeArmor* ListeArmor = malloc(sizeof(*ListeArmor));
+    char const* const fileName = "items/armor.txt";
+    FILE* file = fopen(fileName, "r"); /* should check the result */
+    if (file == NULL)
+    {
+        printf("Fichier non ouvert");
+    }
+    char line[256];
+    const char * separator = "|";
+    int count = 0;
 
-    Armor* plastronPierre = malloc(sizeof(*plastronPierre));
-    plastronPierre->name = "Plastron en pierre";
-    plastronPierre->resDamage = 10;
-    ListeArmor->first = plastronPierre;
-
-    Armor* plastronFer = malloc(sizeof(*plastronFer));
-    plastronFer->name = "Plastron en fer";
-    plastronFer->resDamage = 20;
-
-    Armor* plastronDiamant = malloc(sizeof(*plastronDiamant));
-    plastronDiamant->name = "Plastron en diamant";
-    plastronDiamant->resDamage = 40;
-
-    plastronPierre->next = plastronFer;
-    plastronFer->next = plastronDiamant;
-    plastronDiamant->next = NULL;
-
+    while (fgets(line, sizeof(line), file)) {
+        char* token = strtok (line, separator);
+        Armor* armor = malloc(sizeof(*armor));
+        while(token != NULL) {
+            if(count == 0){
+                armor->name = malloc(sizeof(char) * strlen(token)+ 1);
+                strcpy(armor->name, token);
+                count += 1;
+            }
+            else {
+                armor->resDamage = malloc(sizeof(int));
+                armor->resDamage = atoi(token);
+                armor->next = ListeArmor->first;
+                ListeArmor->first = armor;
+                count = 0;
+            }
+            token = strtok (NULL, separator);
+        }
+    }
+    fclose(file);
     return ListeArmor;
 }
 
@@ -36,7 +48,7 @@ void printListeArmor(ListeArmor* ListeArmor)
     while (actual != NULL)
     {
         printf("Nom : %s\n", actual->name);
-        printf("Pourcentge de resistance au dommages : %d\n\n", actual->resDamage);
+        printf("Résistance au dommages : %d\n\n", actual->resDamage);
         actual = actual->next;
     }
     printf("NULL\n");

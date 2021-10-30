@@ -8,10 +8,10 @@ typedef struct Craft Craft;
 struct  Craft
 {
     char* name;
-    char* composant1;
     int nbComposant1;
-    char* composant2;
+    char* composant1;
     int nbComposant2;
+    char* composant2;
 
     Craft* next;
 };

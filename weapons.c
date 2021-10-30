@@ -2,70 +2,46 @@
 
 ListeWeapons* initWeapons()
 {
-    ListeWeapons* listeWeapons = malloc(sizeof(*listeWeapons));
+    ListeWeapons* ListeWeapons = malloc(sizeof(*ListeWeapons));
+    char const* const fileName = "items/weapons.txt";
+    FILE* file = fopen(fileName, "r"); /* should check the result */
+    if (file == NULL)
+    {
+        printf("Fichier non ouvert");
+    }
+    char line[256];
+    const char * separator = "|";
+    int count = 0;
 
-    Weapons* epeeBois = malloc(sizeof(*epeeBois));
-    epeeBois->name = "Épée en bois";
-    epeeBois->damage = 1;
-    epeeBois->durability = 10;
-    listeWeapons->first = epeeBois;
-    
-    Weapons* epeePierre = malloc(sizeof(*epeePierre));
-    epeePierre->name = "Épée en pierre";
-    epeePierre->damage = 2;
-    epeePierre->durability = 10;
-
-    Weapons* epeeFer = malloc(sizeof(*epeeFer));
-    epeeFer->name = "Épée en fer";
-    epeeFer->damage = 5;
-    epeeFer->durability = 10;
-
-    Weapons* epeeDiamant = malloc(sizeof(*epeeDiamant));
-    epeeDiamant->name = "Épée en diamant";
-    epeeDiamant->damage = 10;
-    epeeDiamant->durability = 10;
-
-    Weapons* lanceEnPierre = malloc(sizeof(*lanceEnPierre));
-    lanceEnPierre->name = "Lance en pierre";
-    lanceEnPierre->damage = 3;
-    lanceEnPierre->durability = 8;
-
-    Weapons* lanceFer = malloc(sizeof(*lanceFer));
-    lanceFer->name = "Lance en fer";
-    lanceFer->damage = 7;
-    lanceFer->durability = 8;
-
-    Weapons* lanceDiamant = malloc(sizeof(*lanceDiamant));
-    lanceDiamant->name = "Lance en diamant";
-    lanceDiamant->damage = 15;
-    lanceDiamant->durability = 8;
-
-    Weapons* marteauPierre = malloc(sizeof(*marteauPierre));
-    marteauPierre->name = "Marteau en pierre";
-    marteauPierre->damage = 4;
-    marteauPierre->durability = 5;
-
-    Weapons* marteauFer = malloc(sizeof(*marteauFer));
-    marteauFer->name = "Marteau en fer";
-    marteauFer->damage = 10;
-    marteauFer->durability = 5;
-
-    Weapons* marteauDiamant = malloc(sizeof(*marteauDiamant));
-    marteauDiamant->name = "Marteau en pierre";
-    marteauDiamant->damage = 20;
-    marteauDiamant->durability = 5;
-
-    epeeBois->next = epeePierre;
-    epeePierre->next = epeeFer;
-    epeeFer->next = epeeDiamant;
-    epeeDiamant->next = lanceEnPierre;
-    lanceEnPierre->next = lanceFer;
-    lanceFer->next = lanceDiamant;
-    lanceDiamant->next = marteauPierre;
-    marteauPierre->next = marteauFer;
-    marteauFer->next = marteauDiamant;
-
-    return listeWeapons;
+    while (fgets(line, sizeof(line), file)) {
+        char* token = strtok (line, separator);
+        Weapons* weapon = malloc(sizeof(*weapon));
+        while(token != NULL) {
+            if(count == 0)
+            {
+                weapon->name = malloc(sizeof(char) * strlen(token)+ 1);
+                strcpy(weapon->name, token);
+                count += 1;
+            }
+            else if(count == 1)
+            {
+                weapon->damage = malloc(sizeof(int));
+                weapon->damage = atoi(token);
+                count += 1;
+            }
+            else
+            {
+                weapon->durability = malloc(sizeof(int));
+                weapon->durability = atoi(token);
+                weapon->next = ListeWeapons->first;
+                ListeWeapons->first = weapon;
+                count = 0;
+            }
+            token = strtok (NULL, separator);
+        }
+    }
+    fclose(file);
+    return ListeWeapons;
 }
 
 void printListeWeapons(ListeWeapons* listeWeapons)

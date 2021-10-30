@@ -3,54 +3,38 @@
 ListeTools* initTools()
 {
     ListeTools* ListeTools = malloc(sizeof(*ListeTools));
+    char const* const fileName = "items/tools.txt";
+    FILE* file = fopen(fileName, "r"); /* should check the result */
+    if (file == NULL)
+    {
+        printf("Fichier non ouvert");
+    }
+    char line[256];
+    const char * separator = "|";
+    int count = 0;
 
-    Tools* piocheBois = malloc(sizeof(*piocheBois));
-    piocheBois->name = "Pioche en bois";
-    piocheBois->durability = 10;
-    ListeTools->first = piocheBois;
-
-    Tools* piochePierre = malloc(sizeof(*piochePierre));
-    piochePierre->name = "Pioche en pierre";
-    piochePierre->durability = 10;
-
-    Tools* piocheFer = malloc(sizeof(*piocheFer));
-    piocheFer->name = "Pioche en fer";
-    piocheFer->durability = 10;
-
-    Tools* serpeBois = malloc(sizeof(*serpeBois));
-    serpeBois->name = "Serpe en bois";
-    serpeBois->durability = 10;
-
-    Tools* serpePierre = malloc(sizeof(*serpePierre));
-    serpePierre->name = "Serpe en pierre";
-    serpePierre->durability = 10;
-
-    Tools* serpeFer = malloc(sizeof(*serpeFer));
-    serpeFer->name = "Serpe en fer";
-    serpeFer->durability = 10;
-
-    Tools* hacheBois = malloc(sizeof(*hacheBois));
-    hacheBois->name = "Hache en bois";
-    hacheBois->durability = 10;
-
-    Tools* hachePierre = malloc(sizeof(*hachePierre));
-    hachePierre->name = "Hache en pierre";
-    hachePierre->durability = 10;
-
-    Tools* hacheFer = malloc(sizeof(*hacheFer));
-    hacheFer->name = "Hache en fer";
-    hacheFer->durability = 10;
-
-    piocheBois->next = piochePierre;
-    piochePierre->next = piocheFer;
-    piocheFer->next = hacheBois;
-    hacheBois->next = hachePierre;
-    hachePierre->next = hacheFer;
-    hacheFer->next = serpeBois;
-    serpeBois->next = serpePierre;
-    serpePierre->next = serpeFer;
-    serpeFer->next = NULL;
-
+    while (fgets(line, sizeof(line), file)) {
+        char* token = strtok (line, separator);
+        Tools* tool = malloc(sizeof(*tool));
+        while(token != NULL) {
+            if(count == 0)
+            {
+                tool->name = malloc(sizeof(char) * strlen(token)+ 1);
+                strcpy(tool->name, token);
+                count += 1;
+            }
+            else 
+            {
+                tool->durability = malloc(sizeof(int));
+                tool->durability = atoi(token);
+                tool->next = ListeTools->first;
+                ListeTools->first = tool;
+                count = 0;
+            }
+            token = strtok (NULL, separator);
+        }
+    }
+    fclose(file);
     return ListeTools;
 }
 

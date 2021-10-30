@@ -1,26 +1,26 @@
-#ifndef ressourcesCraft_h
-#define ressourcesCraft_h
+#ifndef ressources_h
+#define ressources_h
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-struct  RessourcesCraft
+struct  Ressources
 {
     char* name;
     int holdLimit;
 
-    struct RessourcesCraft* next;
+    struct Ressources* next;
 };
-typedef struct RessourcesCraft RessourcesCraft;
+typedef struct Ressources Ressources;
 
 
-struct ListeRessourcesCraft
+struct ListeRessources
 {
-    struct RessourcesCraft* first;
+    struct Ressources* first;
 };
-typedef struct ListeRessourcesCraft ListeRessourcesCraft;
+typedef struct ListeRessources ListeRessources;
 
-ListeRessourcesCraft* initRessourcesCraft();
-void printListeRessourcesCraft(ListeRessourcesCraft* ListeRessourcesCraft);
+ListeRessources* initRessources();
+void printListeRessources(ListeRessources* ListeRessources);
 
 #endif
