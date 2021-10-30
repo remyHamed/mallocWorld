@@ -1,4 +1,4 @@
-#include "weapons.h"
+#include "headers/weapons.h"
 
 ListeWeapons* initWeapons()
 {

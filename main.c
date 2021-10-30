@@ -3,31 +3,31 @@
 #include <math.h>
 #include <time.h>
 #include <string.h>
-#include "craft.h"
-#include "tools.h"
-#include "weapons.h"
-#include "ressources.h"
-#include "heals.h"
-#include "armor.h"
+#include "headers/craft.h"
+#include "headers/tools.h"
+#include "headers/weapons.h"
+#include "headers/ressources.h"
+#include "headers/heals.h"
+#include "headers/armor.h"
 
 int main(int argc, char ** argv) 
 {
-    ListeCraft* listeC = initCraft(); // marche
-    printListeCraft(listeC);
+    // ListeCraft* listeC = initCraft(); 
+    // printListeCraft(listeC);
 
-    // ListeTools* listeT = initTools(); // marche
-    // printListeTools(listeT);
+    ListeTools* listeT = initTools();
+    printListeTools(listeT);
 
-    // ListeHeals* listeH = initHeals(); // marche
+    // ListeHeals* listeH = initHeals();
     // printListeHeals(listeH);
 
-    // ListeWeapons* listeW = initWeapons(); // marche
+    // ListeWeapons* listeW = initWeapons();
     // printListeWeapons(listeW);
 
-    // ListeRessources* listeRC = initRessources(); // marche
+    // ListeRessources* listeRC = initRessources(); 
     // printListeRessources(listeRC);
 
-    // ListeArmor* listeA = initArmor(); // marche
+    // ListeArmor* listeA = initArmor();
     // printListeArmor(listeA);
     
     return 0;

@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "heals.h": "c",
+        "craft.h": "c",
+        "string.h": "c",
+        "tools.h": "c",
+        "ressources.h": "c",
+        "weapons.h": "c"
+    }
+}

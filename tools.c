@@ -1,4 +1,4 @@
-#include "tools.h"
+#include "headers/tools.h"
 
 ListeTools* initTools()
 {
@@ -53,5 +53,4 @@ void printListeTools(ListeTools* ListeTools)
         printf("Durability : %d\n\n", actual->durability);
         actual = actual->next;
     }
-    printf("NULL\n");
 }

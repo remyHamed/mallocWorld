@@ -1,4 +1,4 @@
-#include "heals.h"
+#include "headers/heals.h"
 
 ListeHeals* initHeals()
 {
@@ -53,5 +53,4 @@ void printListeHeals(ListeHeals* ListeHeals)
         printf("heal : %d\n\n", actual->heal);
         actual = actual->next;
     }
-    printf("NULL\n");
 }
