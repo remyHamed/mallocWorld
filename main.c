@@ -2,17 +2,15 @@
 #include <stdlib.h>
 #include "fmap.h"
 #include "arr2d.h"
+#include "player.h"
+#include "fplayer.h"
 
 
 int main(int argc, char ** argv) {
-    Map* first = initMap();
-    first->levelLimit = 50;
-    //first->size = 20;
-    printf("size = %d\n", first->size);
-    printf("limit = %d\n", first->levelLimit);
-    //setArr2d(first->arr, first->size);
-    diplsayArr2d(first->arr,first->size); 
-    freeArr2d(first->arr,first->size);
-    free(first);    
+    Player * p1;
+    p1 = genPlayer();
+    printf("%d\n", p1->x);
+    printf("%d\n", p1->y);
+    free(p1);
     return 0;
 }

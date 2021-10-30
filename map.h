@@ -1,6 +1,6 @@
 #ifndef map_h
 #define map_h
-#endif
+
 
 
 struct Map 
@@ -10,3 +10,4 @@ struct Map
     int ** arr;
 };
 typedef struct  Map Map;
+#endif
