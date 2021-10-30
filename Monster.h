@@ -16,7 +16,7 @@ typedef struct Monster {
     int exp;
 }Monster;
 
-Monster * init ();
+Monster * initMonster ();
 void choiceMonster (int, Monster*);
 
 #endif //MALLOCWORLD_MONSTER_H

@@ -176,6 +176,30 @@ Monster.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Monster.c.s
 .PHONY : Monster.c.s
 
+Player.obj: Player.c.obj
+.PHONY : Player.obj
+
+# target to build an object file
+Player.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Player.c.obj
+.PHONY : Player.c.obj
+
+Player.i: Player.c.i
+.PHONY : Player.i
+
+# target to preprocess a source file
+Player.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Player.c.i
+.PHONY : Player.c.i
+
+Player.s: Player.c.s
+.PHONY : Player.s
+
+# target to generate assembly for a file
+Player.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\mallocWorld.dir\build.make CMakeFiles/mallocWorld.dir/Player.c.s
+.PHONY : Player.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -215,6 +239,9 @@ help:
 	@echo ... Monster.obj
 	@echo ... Monster.i
 	@echo ... Monster.s
+	@echo ... Player.obj
+	@echo ... Player.i
+	@echo ... Player.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

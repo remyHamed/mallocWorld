@@ -92,6 +92,12 @@
 		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.h">
 			<Option target="mallocWorld"/>
 		</Unit>
+		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Player.c">
+			<Option target="mallocWorld"/>
+		</Unit>
+		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Player.h">
+			<Option target="mallocWorld"/>
+		</Unit>
 		<Unit filename="C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/main.c">
 			<Option target="mallocWorld"/>
 		</Unit>

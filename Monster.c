@@ -3,7 +3,7 @@
 //
 #include "Monster.h"
 
-Monster * init () {
+Monster * initMonster () {
     srand(time(NULL));
     Monster * monster = malloc(sizeof(Monster));
     monster->index = rand() % 98;

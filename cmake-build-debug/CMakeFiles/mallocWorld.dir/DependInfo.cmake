@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Battle.c" "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/cmake-build-debug/CMakeFiles/mallocWorld.dir/Battle.c.obj"
   "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.c" "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/cmake-build-debug/CMakeFiles/mallocWorld.dir/Monster.c.obj"
+  "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Player.c" "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/cmake-build-debug/CMakeFiles/mallocWorld.dir/Player.c.obj"
   "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/main.c" "C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/cmake-build-debug/CMakeFiles/mallocWorld.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

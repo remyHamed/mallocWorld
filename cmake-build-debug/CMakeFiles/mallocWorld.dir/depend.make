@@ -4,11 +4,16 @@
 CMakeFiles/mallocWorld.dir/Battle.c.obj: \
  ../Battle.c \
  ../Battle.h \
- ../Monster.h
+ ../Monster.h \
+ ../Player.h
 CMakeFiles/mallocWorld.dir/Monster.c.obj: \
  ../Monster.c \
  ../Monster.h
+CMakeFiles/mallocWorld.dir/Player.c.obj: \
+ ../Player.c \
+ ../Player.h
 CMakeFiles/mallocWorld.dir/main.c.obj: \
  ../Battle.h \
  ../Monster.h \
+ ../Player.h \
  ../main.c

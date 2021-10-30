@@ -19,10 +19,8 @@ time.h
 -
 Monster.h
 C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.h
-
-C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.c
-Monster.h
-C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.h
+Player.h
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Player.h
 
 C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Monster.h
 stdio.h
@@ -30,6 +28,12 @@ stdio.h
 stdlib.h
 -
 time.h
+-
+malloc.h
+-
+
+C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/Player.h
+stdio.h
 -
 malloc.h
 -
