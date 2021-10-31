@@ -1,9 +1,9 @@
 #include "interfasse.h"
 
-void screenGame(Map** l, Player* gamer) {
-    int levelIndex = 0;
+void screenGame(Map** l, Player* gamer, int indexM) {
+
     for (int i = gamer->x - 20 ; i < gamer->x + 20; i+= 1) {
-        if(i < 0 || i > i > l[levelIndex]->size) {
+        if(i < 0 || i > l[indexM]->size) {
             printf("\n");
             continue;
         }
@@ -12,12 +12,52 @@ void screenGame(Map** l, Player* gamer) {
                 printf("X");
                 continue;
             }
-            if(j < 0 || j > l[levelIndex]->size) {
+            if(j < 0 || j > l[indexM]->size) {
                 printf(" ");
                 continue;
             }
-            printf("%d",l[levelIndex]->arr[i][j]);
+            printf("%d",l[indexM]->arr[i][j]);
         }
         printf("\n");
     }
 }
+
+void displayMoveMenu(){
+    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+    printf("\t               z\n");
+    printf("\t  q            s           d\n");
+    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+
+
+}
+
+void move(Map* l, Player* p, int* continuing) {
+    displayMoveMenu();
+    int input =  fgetc(stdin);
+    switch (input) {
+    case 's':
+        if(p->x + 1 < l->size) {
+            p->x += 1;
+        }
+        break;
+    case 'q':
+        if(p->y - 1 >= 0) {
+            p->y = p->y - 1;
+        } 
+        break;
+    case 'z':
+        if (p->x - 1 >= 0) {
+            p->x = p->x - 1;
+        } 
+        break;
+    case 'd':
+        if(p->y + 1 < l->size) {
+            p->y += 1;
+        }
+        break;
+    case 'n':
+        *continuing = 0;
+        break;
+    }
+}
+
