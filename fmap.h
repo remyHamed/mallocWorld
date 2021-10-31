@@ -5,4 +5,6 @@
 #include "arr2d.h"
 #include "rng.h"
 Map * initMap();
+Map ** initListOfMaps();
+Map ** genAllLevels();
 #endif
