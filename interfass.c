@@ -2,19 +2,17 @@
 
 void screenGame(Map** l, Player* gamer) {
     int levelIndex = 0;
-    int i = gamer->x - 20;
-    int j = gamer->y - 20;
-    int limite = i + 40;
-    int triggerI = 0;
-    int triggerj = 0;
-
-    for (; i < limite; i++) {
-        for (int j = 0; j <limite; j++) {
+    for (int i = gamer->x - 20 ; i < gamer->x + 20; i+= 1) {
+        if(i < 0 || i > i > l[levelIndex]->size) {
+            printf("\n");
+            continue;
+        }
+        for (int j = gamer->y - 20; j < gamer->y + 20; j+= 1) {
             if(i == gamer->x && j == gamer->y) {
                 printf("X");
                 continue;
             }
-            if(i < 0 || j < 0) {
+            if(j < 0 || j > l[levelIndex]->size) {
                 printf(" ");
                 continue;
             }
