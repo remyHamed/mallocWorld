@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "fmap.h"
-#include "arr2d.h"
-#include "player.h"
-#include "fplayer.h"
-#include "interfasse.h"
+#include "headers/fmap.h"
+#include "headers/arr2d.h"
+#include "headers/player.h"
+#include "headers/fplayer.h"
+#include "headers/interfasse.h"
 
 
 int main(int argc, char ** argv) {

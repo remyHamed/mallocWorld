@@ -1,4 +1,4 @@
-#include "rng.h"
+#include "headers/rng.h"
 
 int twoPowerRandomPlusonGenerator() {
     struct timespec tv;

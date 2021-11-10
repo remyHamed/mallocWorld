@@ -1,4 +1,4 @@
-#include "interfasse.h"
+#include "headers/interfasse.h"
 
 void screenGame(Map** l, Player* gamer, int indexM) {
 

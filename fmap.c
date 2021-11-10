@@ -1,4 +1,4 @@
-#include "fmap.h"
+#include "headers/fmap.h"
 
 Map * initMap() {
     Map * m = malloc(sizeof(Map));
