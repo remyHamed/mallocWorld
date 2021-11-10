@@ -5,6 +5,9 @@ Player * genPlayer() {
     p = malloc(sizeof(Player));
     p->x = 0;
     p->y = 0;
+    p->beforePosition[0] = 0;
+    p->beforePosition[0] = 0;
+    p->orientation = right;
     return p;
 }
 

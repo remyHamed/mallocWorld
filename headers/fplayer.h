@@ -5,4 +5,5 @@
 #include "fmap.h"
 #include "map.h"
 Player * genPlayer();
+void diplayPlayerPosition(Map* level, Player* character);
 #endif

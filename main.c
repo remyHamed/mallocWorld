@@ -19,6 +19,7 @@ int main(int argc, char ** argv) {
     while (*gameContinue)  {
         screenGame(list, p1, indexMap);
         move(list[indexMap], p1, gameContinue);
+        
     }
     free(p1);
     return 0;
