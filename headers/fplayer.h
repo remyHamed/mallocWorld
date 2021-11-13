@@ -5,4 +5,5 @@
 #include "fmap.h"
 #include "map.h"
 Player * genPlayer();
+void checkAroundPlayer(Map* m, Player* p);
 #endif

@@ -22,13 +22,11 @@ void screenGame(Map** l, Player* gamer, int indexM) {
     }
 }
 
-void displayMoveMenu(){
+void displayMoveMenu() {
     printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
     printf("\n\t               z\n");
     printf("\t  q            s           d\n");
     printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
-
-
 }
 
 void move(Map* l, Player* p, int* continuing) {
@@ -38,21 +36,25 @@ void move(Map* l, Player* p, int* continuing) {
     case 's':
         if(p->x + 1 < l->size) {
             p->x += 1;
+            p->orientation = 4;
         }
         break;
     case 'q':
         if(p->y - 1 >= 0) {
             p->y = p->y - 1;
+            p->orientation = 2;
         } 
         break;
     case 'z':
         if (p->x - 1 >= 0) {
             p->x = p->x - 1;
+            p->orientation = 1;
         } 
         break;
     case 'd':
         if(p->y + 1 < l->size) {
             p->y += 1;
+            p->orientation = 3;
         }
         break;
     case 'n':
