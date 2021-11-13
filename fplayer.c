@@ -12,12 +12,11 @@ void diplayPlayerPosition(Map* level, Player* character) {
     for (int i = 0; i < level->size; i++) {
         for (int j = 0; j < level->size; j++) {
             if (i == character->x && j == character->y) {
-                printf("X");
+                printf(" X");
             } else {
-                printf("%d",level->arr[i][j]);
+                printf(" %d",level->arr[i][j]);
             }
         }
         printf("\n");
     }
-    
 }

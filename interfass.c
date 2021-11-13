@@ -9,24 +9,24 @@ void screenGame(Map** l, Player* gamer, int indexM) {
         }
         for (int j = gamer->y - 20; j < gamer->y + 20; j+= 1) {
             if(i == gamer->x && j == gamer->y) {
-                printf("X");
+                printf(" X");
                 continue;
             }
             if(j < 0 || j > l[indexM]->size) {
                 printf(" ");
                 continue;
             }
-            printf("%d",l[indexM]->arr[i][j]);
+            printf(" %d",l[indexM]->arr[i][j]);
         }
         printf("\n");
     }
 }
 
 void displayMoveMenu(){
-    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
-    printf("\t               z\n");
+    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
+    printf("\n\t               z\n");
     printf("\t  q            s           d\n");
-    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
 
 
 }
