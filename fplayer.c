@@ -22,7 +22,7 @@ void diplayPlayerPosition(Map* level, Player* character) {
     }
 }
 
-void checkAroundPlayer(Map* m, Player* p, ) {
+void checkAroundPlayer(Map* m, Player* p) {
     int poseTochekc[2] = {0};
     switch (p->orientation) {
         case 1:
