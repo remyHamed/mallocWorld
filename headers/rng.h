@@ -6,4 +6,5 @@
 #include <math.h>
 int twoPowerRandomPlusonGenerator();
 int genrandomSizeMap();
+int * genrandomPosition(int mapSize);
 #endif

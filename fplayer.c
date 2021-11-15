@@ -26,22 +26,22 @@ void checkAroundPlayer(Map* m, Player* p) {
     int poseTochekc[2] = {0};
     switch (p->orientation) {
         case 1:
-            printf("l'orientation est en haut\n");
+            printf("\tl'orientation est en haut\n");
             poseTochekc[0] = p->x - 1;
             poseTochekc[1] = p->y;
             break;
         case 2:
-            printf("l'orientation est a gauche\n");
+            printf("\tl'orientation est a gauche\n");
             poseTochekc[0] = p->x;
             poseTochekc[1] = p->y - 1;
             break;
         case 3:
-            printf("l'orientation est a droite\n");
+            printf("\tl'orientation est a droite\n");
             poseTochekc[0] = p->x;
             poseTochekc[1] = p->y + 1;
             break;
         case 4:
-            printf("l'orientation est en bas\n");
+            printf("\tl'orientation est en bas\n");
             poseTochekc[0] = p->x + 1;
             poseTochekc[1] = p->y;
             break;

@@ -5,6 +5,8 @@
 #include "headers/player.h"
 #include "headers/fplayer.h"
 #include "headers/interfasse.h"
+#include "headers/map.h"
+#include "headers/gate.h"
 
 
 int main(int argc, char ** argv) {
@@ -18,8 +20,8 @@ int main(int argc, char ** argv) {
     p1 = genPlayer();
     while (*gameContinue)  {
         screenGame(list, p1, indexMap);
-        move(list[indexMap], p1, gameContinue);
         checkAroundPlayer(list[indexMap], p1);
+        move(list[indexMap], p1, gameContinue);
     }
     free(p1);
     return 0;
