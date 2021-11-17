@@ -11,16 +11,13 @@ struct  Weapons
     int damage;
     int durability;
 
-    Weapons* next;
+    struct Weapons* next;
 };
 
 typedef struct ListeWeapons ListeWeapons;
-struct ListeWeapons
-{
-    Weapons* first;
-};
 
-ListeWeapons* initWeapons();
-void printListeWeapons(ListeWeapons* listeWeapons);
+Weapons** initWeapons();
+void printWeapons(Weapons** listeWeapons);
+Weapons* lineToStructWeapons(char*);
 
 #endif

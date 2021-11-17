@@ -13,13 +13,8 @@ struct  Heals
 };
 typedef struct Heals Heals;
 
-struct ListeHeals
-{
-    struct Heals* first;
-};
-typedef struct ListeHeals ListeHeals;
-
-ListeHeals* initHeals();
-void printListeHeals(ListeHeals* ListeHeals);
+Heals** initHeals();
+Heals* lineToStructHeals(char*);
+void printHeals(Heals**);
 
 #endif

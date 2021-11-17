@@ -15,20 +15,17 @@ int main(int argc, char ** argv)
     // ListeCraft* listeC = initCraft(); 
     // printListeCraft(listeC);
 
-    ListeTools* listeT = initTools();
-    printListeTools(listeT);
+    // Heals** tab_H = initHeals(); // marche
+    // printHeals(tab_H);
 
-    // ListeHeals* listeH = initHeals();
-    // printListeHeals(listeH);
+    Weapons** tab_W = initWeapons();
+    printWeapons(tab_W);
 
-    // ListeWeapons* listeW = initWeapons();
-    // printListeWeapons(listeW);
-
-    // ListeRessources* listeRC = initRessources(); 
-    // printListeRessources(listeRC);
+    // Ressources** tab_RC = initRessources(); // marche
+    // printRessources(tab_RC);
 
     // ListeArmor* listeA = initArmor();
     // printListeArmor(listeA);
-    
+
     return 0;
 }

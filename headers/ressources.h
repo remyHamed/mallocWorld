@@ -13,14 +13,8 @@ struct  Ressources
 };
 typedef struct Ressources Ressources;
 
-
-struct ListeRessources
-{
-    struct Ressources* first;
-};
-typedef struct ListeRessources ListeRessources;
-
-ListeRessources* initRessources();
-void printListeRessources(ListeRessources* ListeRessources);
+Ressources** initRessources();
+void printRessources(Ressources**);
+Ressources* lineToStructRessources(char*);
 
 #endif

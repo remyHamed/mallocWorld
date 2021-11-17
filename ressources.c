@@ -1,57 +1,60 @@
 #include "headers/ressources.h"
 
-ListeRessources* initRessources()
+Ressources** initRessources()
 {
-    ListeRessources* ListeRessources = malloc(sizeof(*ListeRessources));
+    Ressources** tabRessources;
+    tabRessources = malloc(sizeof(Ressources*)*10);
     char const* const fileName = "items/ressources.txt";
-    FILE* file = fopen(fileName, "r"); /* should check the result */
+    FILE* file = fopen(fileName, "r");
     if (file == NULL)
     {
         printf("Fichier non ouvert");
     }
-    char line[256];
-    const char * separator = "|";
-    int count = 0;
-
-    while (fgets(line, sizeof(line), file)) {
-        char* token = strtok (line, separator);
-        Ressources* ressource = malloc(sizeof(*ressource));
-        while(token != NULL) {
-            if(count == 0)
-            {
-                ressource->name = malloc(sizeof(char) * strlen(token)+ 1);
-                strcpy(ressource->name, token);
-                count += 1;
-            }
-            else 
-            {
-                ressource->holdLimit = malloc(sizeof(int));
-                ressource->holdLimit = atoi(token);
-                ressource->next = ListeRessources->first;
-                ListeRessources->first = ressource;
-                count = 0;
-            }
-            token = strtok (NULL, separator);
-        }
+    char* line;
+    line = malloc(sizeof(char)* 256);
+    int index = 0;
+    
+    while(fgets(line, 256, file)) {
+        tabRessources[index] = lineToStructRessources(line);
+        index++;
     }
     fclose(file);
-    return ListeRessources;
+    return tabRessources;
 }
 
-void printListeRessources(ListeRessources* ListeRessources)
+Ressources* lineToStructRessources(char* line)
 {
-    if (ListeRessources == NULL)
-    {
-        exit(EXIT_FAILURE);
+    const char * separator = "|";
+    int countElement = 0;
+    char* token = strtok (line, separator);
+    //char * temp = malloc(sizeof(char)*256);
+    //strcpy(temp, token);
+    Ressources* ressource = malloc(sizeof(ressource));
+    while(token != NULL) {
+        if(countElement == 0)
+        {
+            ressource->name = malloc(sizeof(char) * 256);
+            strcpy(ressource->name, token);
+            countElement += 1;
+        }
+        else
+        {
+            //heal->heal = malloc(sizeof(int));
+            ressource->holdLimit = atoi(token);
+            countElement = 0;
+        }
+        token = strtok (NULL, separator);
     }
+    return ressource;
+}
 
-    Ressources* actual = ListeRessources->first;
-
-    while (actual != NULL)
+void printRessources(Ressources** tabRessources)
+{
+    int size_tab = (sizeof(tabRessources)/2) -1;
+    printf("%d\n",size_tab);
+    for (int i = 0; i < 8 ; i++)
     {
-        printf("Nom : %s\n", actual->name);
-        printf("Limit : %d\n\n", actual->holdLimit);
-        actual = actual->next;
-    }
-    printf("NULL\n");
+        printf("Nom : %s\n", tabRessources[i]->name);
+        printf("Hold limit : %d\n\n", tabRessources[i]->holdLimit);
+    }     
 }
