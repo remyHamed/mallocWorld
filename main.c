@@ -21,6 +21,9 @@ int main(int argc, char ** argv) {
     while (*gameContinue)  {
         screenGame(list, p1, indexMap);
         checkAroundPlayer(list[indexMap], p1);
+        printf("\n x = %d\n", p1->x);
+        printf(" y = %d\n", p1->y);
+        printf("size map = %d\n", list[indexMap]->size);
         move(list[indexMap], p1, gameContinue);
     }
     free(p1);

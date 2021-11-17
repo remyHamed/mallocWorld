@@ -2,8 +2,8 @@
 
 void screenGame(Map** l, Player* gamer, int indexM) {
 
-    for (int i = gamer->x - 20 ; i < gamer->x + 20; i+= 1) {
-        if(i < 0 || i > l[indexM]->size) {
+    /*for (int i = gamer->x - 20 ; i < gamer->x + 20; i+= 1) {
+        if(i < 0 || i >= l[indexM]->size) {
             printf("\n");
             continue;
         }
@@ -12,14 +12,32 @@ void screenGame(Map** l, Player* gamer, int indexM) {
                 printf(" X");
                 continue;
             }
-            if(j < 0 || j > l[indexM]->size) {
+            if(j < 0 || j >= l[indexM]->size) {
                 printf(" ");
                 continue;
             }
             printf(" %d",l[indexM]->arr[i][j]);
         }
         printf("\n");
+    }*/
+    printf("\n ");
+    for(int i  = 0; i < l[indexM]->size; i++) {
+        printf("__");
     }
+    printf("\n");
+    for(int i  = 0; i < l[indexM]->size; i++) {
+        for(int j  = 0; j < l[indexM]->size; j++) {
+            if(j == 0) {
+                printf("|");
+            }
+            printf(" %d",l[indexM]->arr[i][j]);
+        }
+        printf("|\n");
+    }
+    for(int i  = 0; i < l[indexM]->size; i++) {
+        printf("--");
+    }
+    printf("\n");
 }
 
 void displayMoveMenu() {
@@ -35,26 +53,34 @@ void move(Map* l, Player* p, int* continuing) {
     switch (input) {
     case 's':
         if(p->x + 1 < l->size) {
+            l->arr[p->x][p->y] = 0;
             p->x += 1;
             p->orientation = 4;
+            l->arr[p->x][p->y] = 1;
         }
         break;
     case 'q':
         if(p->y - 1 >= 0) {
+            l->arr[p->x][p->y] = 0;
             p->y = p->y - 1;
             p->orientation = 2;
+            l->arr[p->x][p->y] = 1;
         } 
         break;
     case 'z':
         if (p->x - 1 >= 0) {
+            l->arr[p->x][p->y] = 0;
             p->x = p->x - 1;
             p->orientation = 1;
+            l->arr[p->x][p->y] = 1;
         } 
         break;
     case 'd':
         if(p->y + 1 < l->size) {
+            l->arr[p->x][p->y] = 0;
             p->y += 1;
             p->orientation = 3;
+            l->arr[p->x][p->y] = 1;
         }
         break;
     case 'n':

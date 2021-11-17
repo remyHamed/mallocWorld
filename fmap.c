@@ -2,9 +2,11 @@
 
 Map * initMap() {
     Map * m = malloc(sizeof(Map));
-    int s = genrandomSizeMap();
+    int s = 50;//genrandomSizeMap();
     m->arr = genArr2d(s); // ici integrer generation aléatoire de la taille de la carte
-    m->size = s;
+    m->size = malloc(sizeof(int));
+    m->size = 50;
+    printf("\n initMap  m->size = %d\n", m->size);
     m->g = NULL;
     return m;
 }
