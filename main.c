@@ -1,9 +1,6 @@
-#include <stdio.h>
-#include "Battle.h"
-
+#include "Monster.h"
 int main() {
-    Player * player = initPlayer();
-    Battle(100,player);
-    Battle(100,player);
+    Monster ** tabmonster = initMonster();
+    printMonster(tabmonster);
     return 0;
 }

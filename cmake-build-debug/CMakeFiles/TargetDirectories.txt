@@ -1,3 +1,0 @@
-C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/cmake-build-debug/CMakeFiles/mallocWorld.dir
-C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/vette/OneDrive/Bureau/langage c/mallocWorld/cmake-build-debug/CMakeFiles/rebuild_cache.dir

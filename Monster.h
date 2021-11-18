@@ -6,17 +6,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include <malloc.h>
 
 typedef struct Monster {
-    int index;
+    int id;
+    int zone;
     char* name;
     int hp;
     int damage;
     int exp;
 }Monster;
 
-Monster * initMonster ();
-void choiceMonster (int, Monster*);
+Monster ** initMonster ();
+Monster* lineToStructMonster(char*);
+void printMonster(Monster**);
 
 #endif //MALLOCWORLD_MONSTER_H

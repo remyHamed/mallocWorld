@@ -33,8 +33,8 @@ void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
 }
 
 void Battle(int damage1, Player *player) {
-    Monster * monster = initMonster();
-    printf("monster index : %d \n",monster->index);
+    Monster ** monster = initMonster();
+    printf("monster index : %d \n",monster->id);
     char currentPlayer='1';
     int choice = 0;
     srand( time( NULL ) );

@@ -3,38 +3,78 @@
 //
 #include "Monster.h"
 
-Monster * initMonster () {
-    srand(time(NULL));
-    Monster * monster = malloc(sizeof(Monster));
-    monster->index = rand() % 98;
-    if (monster->index < 12) {
-        while (monster->index < 12) {
-            monster->index = rand() % 98;
-        }
+Monster ** initMonster () {
+    Monster** tabMonster;
+    tabMonster = malloc(sizeof(Monster*)*21);
+    char const* const fileName = "Monster.txt";
+    FILE* file = fopen(fileName, "r");
+    if (file == NULL)
+    {
+        printf("Fichier non ouvert");
     }
-    if (monster->index >= 12) {
-        choiceMonster(monster->index, monster);
+    char* line;
+    line = malloc(sizeof(char)* 256);
+    int index = 0;
+
+    while(fgets(line, 256, file)) {
+        tabMonster[index] = lineToStructMonster(line);
+        index++;
+    }
+    fclose(file);
+    return tabMonster;
+}
+
+Monster* lineToStructMonster(char* line)
+{
+    const char * separator = "|";
+    int countElement = 0;
+    char* token = strtok (line, separator);
+    //char * temp = malloc(sizeof(char)*256);
+    //strcpy(temp, token);
+    Monster* monster = malloc(sizeof(monster));
+    while(token != NULL) {
+        switch (countElement) {
+            case 0 :
+                monster->id = atoi(token);
+                countElement++;
+                break;
+            case 1 :
+                monster->zone = atoi(token);
+                countElement++;
+                break;
+            case 2 :
+                monster->name = malloc(sizeof(char) * 256);
+                strcpy(monster->name, token);
+                countElement += 1;
+                break;
+            case 3 :
+                monster->hp = atoi(token);
+                countElement++;
+                break;
+            case 4 :
+                monster->damage = atoi(token);
+                countElement++;
+                break;
+            case 5 :
+                monster->exp = atoi(token);
+                countElement = 0;
+                break;
+        }
+        token = strtok (NULL, separator);
     }
     return monster;
 }
 
-void choiceMonster (int index, Monster* monster) {
-    if (index >=12 && index < 40) {
-        monster->name = "Wolf";
-        monster->hp = 100;
-        monster->damage = 10;
-        monster->exp = 50;
-    }
-    if (index >=41 && index < 70) {
-        monster->name = "tiger";
-        monster->hp = 120;
-        monster->damage = 15;
-        monster->exp = 50;
-    }
-    if (index >=71 && index < 98) {
-        monster->name = "Bear";
-        monster->hp = 140;
-        monster->damage = 20;
-        monster->exp = 50;
+void printMonster(Monster** tabMonster)
+{
+    for (int i = 0; i < 21; i++)
+    {
+        printf("id : %s\n", tabMonster[i]->id);
+        printf("zone : %d\n\n", tabMonster[i]->zone);
+        printf("name : %d\n\n", tabMonster[i]->name);
+        printf("hp : %d\n\n", tabMonster[i]->hp);
+        printf("damage : %d\n\n", tabMonster[i]->damage);
+        printf("exp : %d\n\n", tabMonster[i]->exp);
     }
 }
+
