@@ -3,6 +3,6 @@
 int main() {
     Monster ** tabmonster = initMonster();
     Player * player = initPlayer();
-    Battle(1,player,tabmonster);
+    Battle(player,tabmonster);
     return 0;
 }

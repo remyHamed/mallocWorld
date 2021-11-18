@@ -9,8 +9,9 @@
 #include <time.h>
 #include "Monster.h"
 #include "Player.h"
+#include "weapons.h"
 
 void choices (int*, int*, int*, int*, int*);
-void Battle(int, Player *, Monster **);
+void Battle(Player *, Monster **);
 
 #endif //MALLOCWORLD_BATTLE_H

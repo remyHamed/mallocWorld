@@ -1,4 +1,4 @@
-#include "headers/weapons.h"
+#include "weapons.h"
 
 Weapons** initWeapons()
 {
@@ -15,7 +15,7 @@ Weapons** initWeapons()
     int index = 0;
     
     while(fgets(line, 256, file)) {
-        printf("%s line\n", line);
+        // printf("%s line\n", line);
         tabWeapons[index] = lineToStructWeapons(line);
         index++;
     }
