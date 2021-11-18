@@ -6,7 +6,7 @@
 Monster ** initMonster () {
     Monster** tabMonster;
     tabMonster = malloc(sizeof(Monster*)*21);
-    char const* const fileName = "Monster.txt";
+    char const* const fileName = "items/Monster.txt";
     FILE* file = fopen(fileName, "r");
     if (file == NULL)
     {
@@ -69,9 +69,9 @@ void printMonster(Monster** tabMonster)
 {
     for (int i = 0; i < 21; i++)
     {
-        printf("id : %s\n", tabMonster[i]->id);
+        printf("id : %d\n", tabMonster[i]->id);
         printf("zone : %d\n\n", tabMonster[i]->zone);
-        printf("name : %d\n\n", tabMonster[i]->name);
+        printf("name : %s\n\n", tabMonster[i]->name);
         printf("hp : %d\n\n", tabMonster[i]->hp);
         printf("damage : %d\n\n", tabMonster[i]->damage);
         printf("exp : %d\n\n", tabMonster[i]->exp);
