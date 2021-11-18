@@ -15,14 +15,14 @@ int main(int argc, char ** argv)
     // ListeCraft* listeC = initCraft(); 
     // printListeCraft(listeC);
 
-    // Heals** tab_H = initHeals(); // marche
-    // printHeals(tab_H);
+    Heals** tab_H = initHeals(); // marche
+    printHeals(tab_H);
 
-    Weapons** tab_W = initWeapons();
+    Weapons** tab_W = initWeapons(); // marche
     printWeapons(tab_W);
 
-    // Ressources** tab_RC = initRessources(); // marche
-    // printRessources(tab_RC);
+    Ressources** tab_RC = initRessources(); // marche
+    printRessources(tab_RC);
 
     // ListeArmor* listeA = initArmor();
     // printListeArmor(listeA);
