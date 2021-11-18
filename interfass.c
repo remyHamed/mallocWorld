@@ -1,25 +1,6 @@
 #include "headers/interfasse.h"
 
 void screenGame(Map** l, Player* gamer, int indexM) {
-
-    /*for (int i = gamer->x - 20 ; i < gamer->x + 20; i+= 1) {
-        if(i < 0 || i >= l[indexM]->size) {
-            printf("\n");
-            continue;
-        }
-        for (int j = gamer->y - 20; j < gamer->y + 20; j+= 1) {
-            if(i == gamer->x && j == gamer->y) {
-                printf(" X");
-                continue;
-            }
-            if(j < 0 || j >= l[indexM]->size) {
-                printf(" ");
-                continue;
-            }
-            printf(" %d",l[indexM]->arr[i][j]);
-        }
-        printf("\n");
-    }*/
     printf("\n ");
     for(int i  = 0; i < l[indexM]->size; i++) {
         printf("__");
@@ -86,6 +67,29 @@ void move(Map* l, Player* p, int* continuing) {
     case 'n':
         *continuing = 0;
         break;
+    }
+}
+
+int meneGeneral(){
+    int live = 1;
+    char userInput[250];
+    while (live) {
+        printf("\n \t \t MENU \n\t1--- NEW GAME\n\t2--- CONTINUE\n\t3---  QUIT\n");
+        fgets( userInput, 250, stdin);
+        switch(userInput[0]) {
+            case '1':
+                return 1;
+                break;
+            case '2':
+                return 2;
+                break;
+            case '3':
+                return 3;
+                break;
+            default:
+                printf("\n selection la touche 1 , 2 ou 3\n");
+                break;
+        }
     }
 }
 
