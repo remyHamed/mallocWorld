@@ -21,5 +21,6 @@ typedef struct Monster {
 Monster ** initMonster ();
 Monster* lineToStructMonster(char*);
 void printMonster(Monster**);
+Monster * RandomMonster (Monster **);
 
 #endif //MALLOCWORLD_MONSTER_H

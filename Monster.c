@@ -12,6 +12,7 @@ Monster ** initMonster () {
     {
         printf("Fichier non ouvert");
     }
+    
     char* line;
     line = malloc(sizeof(char)* 256);
     int index = 0;
@@ -31,7 +32,7 @@ Monster* lineToStructMonster(char* line)
     char* token = strtok (line, separator);
     //char * temp = malloc(sizeof(char)*256);
     //strcpy(temp, token);
-    Monster* monster = malloc(sizeof(monster));
+    Monster* monster = malloc(sizeof(Monster));
     while(token != NULL) {
         switch (countElement) {
             case 0 :
@@ -70,11 +71,21 @@ void printMonster(Monster** tabMonster)
     for (int i = 0; i < 21; i++)
     {
         printf("id : %d\n", tabMonster[i]->id);
-        printf("zone : %d\n\n", tabMonster[i]->zone);
-        printf("name : %s\n\n", tabMonster[i]->name);
-        printf("hp : %d\n\n", tabMonster[i]->hp);
-        printf("damage : %d\n\n", tabMonster[i]->damage);
+        printf("zone : %d\n", tabMonster[i]->zone);
+        printf("name : %s\n", tabMonster[i]->name);
+        printf("hp : %d\n", tabMonster[i]->hp);
+        printf("damage : %d\n", tabMonster[i]->damage);
         printf("exp : %d\n\n", tabMonster[i]->exp);
     }
 }
 
+Monster * RandomMonster (Monster ** tabMonster) {
+ srand( time( NULL ) );
+ int cpt =0;
+
+ int id = rand() % 20;
+
+ 
+ return tabMonster[id];
+
+}
