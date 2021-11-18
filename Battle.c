@@ -1,19 +1,19 @@
 //
 // Created by Vettese on 13/10/2021.
 //
-#include "Battle.h"
-#include "Leveling.h"
+#include "headers/Battle.h"
 
 void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
+    Heals ** heal = initHeals();
     if (*choice == 1) {
-        printf("pv2: %d to ",*pv2);
+        printf("monster pv: %d to ",*pv2);
         *pv2 -= *damage1;
         printf("%d \n",*pv2);
     }
     else if (*choice == 2) {
         if (*pv1+50 <= *pvMax) {
-            printf("pv1: %d to ",*pv1);
-            *pv1 += 50;
+            printf("player pv: %d to ",*pv1);
+            *pv1 += heal[0]->heal;
             printf("%d \n",*pv1);
         }else {
             if (*choice != 3) {

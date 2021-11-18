@@ -2,7 +2,7 @@
 // Created by vette on 29/10/2021.
 //
 
-#include "Player.h"
+#include "headers/Player.h"
 
 Player * initPlayer (){
     Player * player = malloc(sizeof(Player));

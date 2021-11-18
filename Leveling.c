@@ -2,7 +2,7 @@
 // Created by vette on 30/10/2021.
 //
 
-#include "Leveling.h"
+#include "headers/Leveling.h"
 
 void Leveling (Player * player) {
     if (player->exp >= 25 && player->level == 1) {
