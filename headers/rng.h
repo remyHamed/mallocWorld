@@ -7,4 +7,5 @@
 int twoPowerRandomPlusonGenerator();
 int genrandomSizeMap();
 int * genrandomPosition(int mapSize);
+int genrandomNumber(int min, int max);
 #endif

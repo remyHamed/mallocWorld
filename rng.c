@@ -37,3 +37,13 @@ int * genrandomPosition(int mapSize) {
     arr[1] = y;
     return arr;
 }
+
+int genrandomNumber(int min, int max){
+	int x = 0;
+    struct timespec tv;
+    clock_gettime(CLOCK_REALTIME, &tv);
+    int t =tv.tv_nsec; 
+    srand(t);
+    x = rand() % (max - min + 1) + min; 
+    return x; 
+}

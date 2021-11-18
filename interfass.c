@@ -1,7 +1,6 @@
 #include "headers/interfasse.h"
 
 void screenGame(Map** l, Player* gamer, int indexM) {
-    printf("\n ");
     for(int i  = 0; i < l[indexM]->size; i++) {
         printf("__");
     }

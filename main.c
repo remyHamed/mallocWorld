@@ -22,12 +22,14 @@ int main(int argc, char ** argv) {
     *gameContinue = 1;
     int selector = 0;
     do{
+        fflush(stdin);
+        fflush(stdout);
         selector = meneGeneral();
         if(selector == NEW_GAME) {
             list = genAllLevels();
             p1 = genPlayer();
+            list[indexMap]->arr[0][0] = 1;
         }
-
         if(selector == LOAD_SAVED_GAME) {
             printf("chargement parti sauver");
             //ANCHOR SET LES ÉLÉMENTNT
@@ -44,9 +46,9 @@ int main(int argc, char ** argv) {
         while (*gameContinue)  {
             screenGame(list, p1, indexMap);
             checkAroundPlayer(list[indexMap], p1);
-            printf("\n x = %d\n", p1->x);
-            printf(" y = %d\n", p1->y);
-            printf("size map = %d\n", list[indexMap]->size);
+            //printf("\n x = %d\n", p1->x);
+            //printf(" y = %d\n", p1->y);
+            //printf("size map = %d\n", list[indexMap]->size);
             move(list[indexMap], p1, gameContinue);
         }
     } while(live);

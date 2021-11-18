@@ -31,4 +31,4 @@ Map ** genAllLevels() {
     list[1] = second;
     list[2] = third;
     return list;
-}
+}    

@@ -6,6 +6,7 @@ Player * genPlayer() {
     p->x = 0;
     p->y = 0;
     p->orientation = 3;
+    p->value = 1;
     return p;
 }
 
