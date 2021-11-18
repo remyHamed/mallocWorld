@@ -2,7 +2,7 @@
 13|1|Green Slime|6|1|6
 14|1|Bigeyes|6|2|8
 15|1|Skeleton|3|8|12
-16|1|Crawler|12|2|16 
+16|1|Crawler|12|2|16
 17|1|Wolf|10|6|18
 18|1|Goblin guard|12|8|22
 19|2|Black Widow|8|10|26
