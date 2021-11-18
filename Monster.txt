@@ -1,2 +1,21 @@
-name|hp|dmg|xp
-name||dmg|xp
+12|1|Goblin|3|1|4
+13|1|Green Slime|6|1|6
+14|1|Bigeyes|6|2|8
+15|1|Skeleton|3|8|12
+16|1|Crawler|12|2|16 
+17|1|Wolf|10|6|18
+18|1|Goblin guard|12|8|22
+19|2|Black Widow|8|10|26
+20|2|Gigas Worm|10|8|26
+21|2|Zombie|20|5|30
+22|2|Ghoul|18|8|34
+23|2|Cobra|12|15|46
+24|2|Lizard|15|18|60
+25|2|Ogre|40|20|80
+26|3|Pirate|20|10|60
+27|3|Sahagin|18|10|50
+28|3|Buccanner|30|14|70
+29|3|Ghast|30|20|120
+30|3|Scorpion|20|22|80
+31|3|Shadow|50|10|100
+32|3|Shark|80|22|160
