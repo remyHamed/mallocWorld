@@ -8,16 +8,30 @@ void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
     if (*choice == 1) {
         printf("monster pv: %d to ",*pv2);
         *pv2 -= *damage1;
-        printf("%d \n",*pv2);
+        printf("%d \n\n",*pv2);
     }
     else if (*choice == 2) {
-        if (*pv1+50 <= *pvMax) {
-            printf("player pv: %d to ",*pv1);
-            *pv1 += heal[0]->heal;
-            printf("%d \n",*pv1);
+        int id = 0;
+        if (*pv1 != *pvMax) {
+            printf("1) potion 1 : 30pv\n2) potion 2 : 80pv\n3) potion 3 : 200pv\n");
+            scanf("%d", &id);
+            id--;
+            if (id <= 3 && id >= 0) {
+                printf("player pv: %d to ",*pv1);
+                if (*pv1+heal[id]->heal > *pvMax) {
+                    int restepv = *pvMax - *pv1;
+                    *pv1 += restepv;
+                }else {
+                    *pv1 += heal[id]->heal;
+                }
+                printf("%d \n\n",*pv1);
+            }else {
+                printf("wrong choice\nretry:\n");
+                choices(pv1, pv2, pvMax, choice, damage1);
+            }
         }else {
             if (*choice != 3) {
-                printf("You can't use it\nre-choose :\n");
+                printf("You can't use it\nchoose another action :\n");
                 scanf("%d", choice);
                 choices(pv1, pv2, pvMax, choice, damage1);
             }
@@ -64,9 +78,9 @@ void Battle(Player *player, Monster ** tabmonster) {
         }
         if (currentPlayer == '2') {
             printf("%s turn \n",monster->name);
-            printf("pv1 : %d to ",player->currentHp);
+            printf("Player pv : %d to ",player->currentHp);
             player->currentHp -= monster->damage;
-            printf("%d \n",player->currentHp);
+            printf("%d \n\n",player->currentHp);
             if (player->currentHp <= 0) {
                 break;
             } else{
@@ -80,9 +94,9 @@ void Battle(Player *player, Monster ** tabmonster) {
         printf("\nplayer gain %d and have %d \n",monster->exp,player->exp);
         printf("current hp : %d\n",player->currentHp);
         Leveling(player);
-        printf("lvl : %d\nhp max : %d current hp : %d\n\n",player->level,player->currentHp,player->maxHp);
+        printf("lvl : %d\nhp max : %d current hp : %d\n\n",player->level,player->maxHp,player->currentHp);
     }
     if (player->currentHp <= 0) {
-        printf("\n%s is the winner",monster->name);
+        printf("\n%s is the winner\n",monster->name);
     }
 }
