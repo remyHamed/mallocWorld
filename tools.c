@@ -1,56 +1,57 @@
 #include "headers/tools.h"
 
-ListeTools* initTools()
+Tools** initTools()
 {
-    ListeTools* ListeTools = malloc(sizeof(*ListeTools));
+    Tools** tabTools;
+    tabTools = malloc(sizeof(Tools*)*10);
     char const* const fileName = "items/tools.txt";
-    FILE* file = fopen(fileName, "r"); /* should check the result */
+    FILE* file = fopen(fileName, "r");
     if (file == NULL)
     {
         printf("Fichier non ouvert");
     }
-    char line[256];
-    const char * separator = "|";
-    int count = 0;
-
-    while (fgets(line, sizeof(line), file)) {
-        char* token = strtok (line, separator);
-        Tools* tool = malloc(sizeof(*tool));
-        while(token != NULL) {
-            if(count == 0)
-            {
-                tool->name = malloc(sizeof(char) * strlen(token)+ 1);
-                strcpy(tool->name, token);
-                count += 1;
-            }
-            else 
-            {
-                tool->durability = malloc(sizeof(int));
-                tool->durability = atoi(token);
-                tool->next = ListeTools->first;
-                ListeTools->first = tool;
-                count = 0;
-            }
-            token = strtok (NULL, separator);
-        }
+    char* line;
+    line = malloc(sizeof(char)* 256);
+    int index = 0;
+    
+    while(fgets(line, 256, file)) {
+        tabTools[index] = lineToStructTools(line);
+        index++;
     }
     fclose(file);
-    return ListeTools;
+    return tabTools;
 }
 
-void printListeTools(ListeTools* ListeTools)
+Tools* lineToStructTools(char* line)
 {
-    if (ListeTools == NULL)
-    {
-        exit(EXIT_FAILURE);
+    const char * separator = "|";
+    int countElement = 0;
+    char* token = strtok (line, separator);
+    Tools* tool = malloc(sizeof(tool));
+    while(token != NULL) {
+        if(countElement == 0)
+        {
+            tool->name = malloc(sizeof(char) * 256);
+            strcpy(tool->name, token);
+            countElement += 1;
+        }
+        else
+        {
+            tool->durability = atoi(token);
+            countElement = 0;
+        }
+        token = strtok (NULL, separator);
     }
+    return tool;
+}
 
-    Tools* actual = ListeTools->first;
-
-    while (actual != NULL)
+void printTools(Tools** tabTools)
+{
+    // int size_tab = (sizeof(tabTools)/2) -1;
+    // printf("%d\n",size_tab);
+    for (int i = 0; i < 6; i++)
     {
-        printf("Nom : %s\n", actual->name);
-        printf("Durability : %d\n\n", actual->durability);
-        actual = actual->next;
-    }
+        printf("Nom : %s\n", tabTools[i]->name);
+        printf("Durability : %d\n\n", tabTools[i]->durability);
+    }     
 }

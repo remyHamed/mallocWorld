@@ -10,11 +10,7 @@ struct  Weapons
     char* name;
     int damage;
     int durability;
-
-    struct Weapons* next;
 };
-
-typedef struct ListeWeapons ListeWeapons;
 
 Weapons** initWeapons();
 void printWeapons(Weapons** listeWeapons);

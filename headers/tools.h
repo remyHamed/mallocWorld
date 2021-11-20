@@ -9,17 +9,10 @@ struct  Tools
 {
     char* name;
     int durability;
-
-    Tools* next;
 };
 
-typedef struct ListeTools ListeTools;
-struct ListeTools
-{
-    Tools* first;
-};
-
-ListeTools* initTools();
-void printListeTools(ListeTools* ListeTools);
+Tools** initTools();
+Tools* lineToStructTools(char*);
+void printTools(Tools** ListeTools);
 
 #endif

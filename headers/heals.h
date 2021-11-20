@@ -4,14 +4,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct Heals Heals;
 struct  Heals
 {
     char* name;
     int heal;
-
-    struct Heals* next;
 };
-typedef struct Heals Heals;
 
 Heals** initHeals();
 Heals* lineToStructHeals(char*);

@@ -9,17 +9,9 @@ struct  Bag
 {
     char* name;
     int quantity;
-
-    Bag* next;
 };
 
-typedef struct ListeBag ListeBag;
-struct ListeBag
-{
-    Bag* first;
-};
-
-ListeBag* initBag();
-void printBag(ListeBag* listeBag);
+ListeBag** initBag();
+void printBag(ListeBag**);
 
 #endif

@@ -15,7 +15,6 @@ Weapons** initWeapons()
     int index = 0;
     
     while(fgets(line, 256, file)) {
-        printf("%s line\n", line);
         tabWeapons[index] = lineToStructWeapons(line);
         index++;
     }
@@ -28,29 +27,23 @@ Weapons* lineToStructWeapons(char* line)
     const char * separator = "|";
     int countElement = 0;
     char* token = strtok (line, separator);
-    //char * temp = malloc(sizeof(char)*256);
-    //strcpy(temp, token);
     
     Weapons* weapon = malloc(sizeof(weapon));
     while(token != NULL) {
         
         if(countElement == 0)
         {
-            // printf("%s token1\n", token);
             weapon->name = malloc(sizeof(char) * 256);
             strcpy(weapon->name, token);
             countElement += 1;
         }
         else if (countElement == 1)
         {
-            // printf("%s token2\n", token);
-            //weapon->weapon = malloc(sizeof(int));
             weapon->damage = atoi(token);
             countElement += 1;
         }
         else
         {
-            // printf("%s token3\n", token);
             weapon->durability = atoi(token);
             countElement = 0;
         }
@@ -61,7 +54,7 @@ Weapons* lineToStructWeapons(char* line)
 
 void printWeapons(Weapons** tabWeapons)
 {
-    int size_tab = (sizeof(tabWeapons)/2) -1;
+    // int size_tab = (sizeof(tabWeapons)/2) -1;
     // printf("%d\n",size_tab);
     for (int i = 0; i < 10; i++)
     {

@@ -12,8 +12,6 @@
 
 int main(int argc, char ** argv) 
 {
-    // ListeCraft* listeC = initCraft(); 
-    // printListeCraft(listeC);
 
     Heals** tab_H = initHeals(); // marche
     printHeals(tab_H);
@@ -24,8 +22,14 @@ int main(int argc, char ** argv)
     Ressources** tab_RC = initRessources(); // marche
     printRessources(tab_RC);
 
-    // ListeArmor* listeA = initArmor();
-    // printListeArmor(listeA);
+    Armors** tab_A = initArmors(); // marche
+    printArmors(tab_A);
+
+    Tools** tab_T = initTools(); 
+    printTools(tab_T);
+
+    Crafts** tab_C = initCrafts(); 
+    printCrafts(tab_C);
 
     return 0;
 }

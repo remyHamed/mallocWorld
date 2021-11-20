@@ -1,55 +1,57 @@
 #include "headers/armor.h"
 
-ListeArmor* initArmor()
+Armors** initArmors()
 {
-    ListeArmor* ListeArmor = malloc(sizeof(*ListeArmor));
+    Armors** tabArmor;
+    tabArmor = malloc(sizeof(Armors*)*10);
     char const* const fileName = "items/armor.txt";
-    FILE* file = fopen(fileName, "r"); /* should check the result */
+    FILE* file = fopen(fileName, "r");
     if (file == NULL)
     {
         printf("Fichier non ouvert");
     }
-    char line[256];
-    const char * separator = "|";
-    int count = 0;
-
-    while (fgets(line, sizeof(line), file)) {
-        char* token = strtok (line, separator);
-        Armor* armor = malloc(sizeof(*armor));
-        while(token != NULL) {
-            if(count == 0){
-                armor->name = malloc(sizeof(char) * strlen(token)+ 1);
-                strcpy(armor->name, token);
-                count += 1;
-            }
-            else {
-                armor->resDamage = malloc(sizeof(int));
-                armor->resDamage = atoi(token);
-                armor->next = ListeArmor->first;
-                ListeArmor->first = armor;
-                count = 0;
-            }
-            token = strtok (NULL, separator);
-        }
+    char* line;
+    line = malloc(sizeof(char)* 256);
+    int index = 0;
+    
+    while(fgets(line, 256, file)) {
+        tabArmor[index] = lineToStructArmors(line);
+        index++;
     }
     fclose(file);
-    return ListeArmor;
+    return tabArmor;
 }
 
-void printListeArmor(ListeArmor* ListeArmor)
+Armors* lineToStructArmors(char* line)
 {
-    if (ListeArmor == NULL)
-    {
-        exit(EXIT_FAILURE);
+    const char * separator = "|";
+    int countElement = 0;
+    char* token = strtok (line, separator);
+    Armors* armor = malloc(sizeof(Armors));
+    while(token != NULL) {
+        if(countElement == 0)
+        {
+            armor->name = malloc(sizeof(char) * 256);
+            strcpy(armor->name, token);
+            countElement += 1;
+        }
+        else
+        {
+            armor->resDamage = atoi(token);
+            countElement = 0;
+        }
+        token = strtok (NULL, separator);
     }
+    return armor;
+}
 
-    Armor* actual = ListeArmor->first;
-
-    while (actual != NULL)
+void printArmors(Armors** tabArmor)
+{
+    // int size_tab = (sizeof(tabArmor)/2) -1;
+    // printf("%d\n",size_tab);
+    for (int i = 0; i < 3; i++)
     {
-        printf("Nom : %s\n", actual->name);
-        printf("Résistance au dommages : %d\n\n", actual->resDamage);
-        actual = actual->next;
-    }
-    printf("NULL\n");
+        printf("Nom : %s\n", tabArmor[i]->name);
+        printf("ResDamage : %d\n\n", tabArmor[i]->resDamage);
+    }     
 }

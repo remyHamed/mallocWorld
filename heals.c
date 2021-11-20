@@ -27,8 +27,6 @@ Heals* lineToStructHeals(char* line)
     const char * separator = "|";
     int countElement = 0;
     char* token = strtok (line, separator);
-    //char * temp = malloc(sizeof(char)*256);
-    //strcpy(temp, token);
     Heals* heal = malloc(sizeof(heal));
     while(token != NULL) {
         if(countElement == 0)
@@ -39,7 +37,6 @@ Heals* lineToStructHeals(char* line)
         }
         else
         {
-            //heal->heal = malloc(sizeof(int));
             heal->heal = atoi(token);
             countElement = 0;
         }
@@ -50,9 +47,9 @@ Heals* lineToStructHeals(char* line)
 
 void printHeals(Heals** tabHeals)
 {
-    int size_tab = (sizeof(tabHeals)/2) -1;
-    printf("%d\n",size_tab);
-    for (int i = 0; i < size_tab; i++)
+    // int size_tab = (sizeof(tabHeals)/2) -1;
+    // printf("%d\n",size_tab);
+    for (int i = 0; i < 3; i++)
     {
         printf("Nom : %s\n", tabHeals[i]->name);
         printf("heal : %d\n\n", tabHeals[i]->heal);

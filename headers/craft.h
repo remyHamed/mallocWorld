@@ -4,25 +4,18 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Craft Craft;
-struct  Craft
+typedef struct Crafts Crafts;
+struct  Crafts
 {
     char* name;
     int nbComposant1;
     char* composant1;
     int nbComposant2;
     char* composant2;
-
-    Craft* next;
 };
 
-typedef struct ListeCraft ListeCraft;
-struct ListeCraft
-{
-    Craft *first;
-};
-
-ListeCraft* initCraft();
-void printListeCraft(ListeCraft* listeCraft);
+Crafts** initCrafts();
+Crafts* lineToStructCrafts(char*);
+void printCrafts(Crafts**);
 
 #endif

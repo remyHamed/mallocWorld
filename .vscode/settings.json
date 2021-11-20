@@ -3,6 +3,8 @@
         "heals.h": "c",
         "stdio.h": "c",
         "typeinfo": "c",
-        "ressources.h": "c"
+        "ressources.h": "c",
+        "armor.h": "c",
+        "algorithm": "c"
     }
 }
