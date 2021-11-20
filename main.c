@@ -9,27 +9,31 @@
 #include "headers/ressources.h"
 #include "headers/heals.h"
 #include "headers/armor.h"
+#include "headers/bag.h"
+
 
 int main(int argc, char ** argv) 
 {
+    // Heals** tab_H = initHeals(); // marche
+    // printHeals(tab_H);
 
-    Heals** tab_H = initHeals(); // marche
-    printHeals(tab_H);
+    // Weapons** tab_W = initWeapons(); // marche
+    // printWeapons(tab_W);
 
-    Weapons** tab_W = initWeapons(); // marche
-    printWeapons(tab_W);
+    // Ressources** tab_RC = initRessources(); // marche
+    // printRessources(tab_RC);
 
-    Ressources** tab_RC = initRessources(); // marche
-    printRessources(tab_RC);
+    // Armors** tab_A = initArmors(); // marche
+    // printArmors(tab_A);
 
-    Armors** tab_A = initArmors(); // marche
-    printArmors(tab_A);
+    // Tools** tab_T = initTools(); 
+    // printTools(tab_T);
 
-    Tools** tab_T = initTools(); 
-    printTools(tab_T);
+    // Crafts** tab_C = initCrafts(); 
+    // printCrafts(tab_C);
 
-    Crafts** tab_C = initCrafts(); 
-    printCrafts(tab_C);
+    char** bag =  createStartBag();
+    printBag(bag);
 
     return 0;
 }

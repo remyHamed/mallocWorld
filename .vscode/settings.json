@@ -5,6 +5,7 @@
         "typeinfo": "c",
         "ressources.h": "c",
         "armor.h": "c",
-        "algorithm": "c"
+        "algorithm": "c",
+        "bag.h": "c"
     }
 }

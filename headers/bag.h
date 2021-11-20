@@ -4,14 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Bag Bag;
-struct  Bag
-{
-    char* name;
-    int quantity;
-};
-
-ListeBag** initBag();
-void printBag(ListeBag**);
+char** createStartBag();
+void printBag(char**);
 
 #endif
