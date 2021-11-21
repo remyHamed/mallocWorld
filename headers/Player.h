@@ -11,6 +11,7 @@ typedef struct Player {
     int currentHp;
     int maxHp;
     int exp;
+    int maxExp;
     int level;
 }Player;
 

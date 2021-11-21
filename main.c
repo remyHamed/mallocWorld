@@ -6,10 +6,10 @@ int main() {
     Armors ** tabarmor = initArmors();
     Player * player = initPlayer();
 
-    player = RecoverSave();
+    player = ResumePlayer();
     printf("%d\n",player->currentHp);
     Battle(player,tabmonster,tabweapon,tabarmor);
-    Save(player);
+    SavePlayer(player);
     
     free (tabweapon);
     free (tabmonster);

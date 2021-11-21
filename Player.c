@@ -9,6 +9,7 @@ Player * initPlayer (){
     player->currentHp = 100;
     player->maxHp = 100;
     player->exp = 0;
+    player->maxExp = 20;
     player->level = 1;
     return player;
 }

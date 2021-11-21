@@ -9,8 +9,8 @@
 #include <string.h>
 #include "Player.h"
 
-void Save (Player *);
-Player * RecoverSave ();
+void SavePlayer (Player *);
+Player * ResumePlayer ();
 
 
 #endif //MALLOCWORLD_SAVE_H
