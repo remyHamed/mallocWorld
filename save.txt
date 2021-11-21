@@ -1,0 +1,5 @@
+===== Player =====
+current Hp : 100
+max Hp : 100
+level : 1
+exp : 0
