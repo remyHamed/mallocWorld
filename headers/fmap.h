@@ -8,4 +8,5 @@
 Map * initMap();
 Map ** initListOfMaps();
 Map ** genAllLevels();
+void putGateOnMap(Map** list);
 #endif

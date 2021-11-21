@@ -59,6 +59,9 @@ void move(Map* l, Player* p, int* continuing) {
     int input =  fgetc(stdin);
     switch (input) {
     case 's':
+        if(!isMovable(l, p->x + 1, p->y)) {
+            break;
+        }
         if(p->x + 1 < l->size) {
             l->arr[p->x][p->y] = 0;
             p->x += 1;
@@ -67,6 +70,9 @@ void move(Map* l, Player* p, int* continuing) {
         }
         break;
     case 'q':
+        if(!isMovable(l, p->x, p->y - 1)) {
+            break;
+        }
         if(p->y - 1 >= 0) {
             l->arr[p->x][p->y] = 0;
             p->y = p->y - 1;
@@ -75,6 +81,9 @@ void move(Map* l, Player* p, int* continuing) {
         } 
         break;
     case 'z':
+        if(!isMovable(l, p->x - 1, p->y)) {
+            break;
+        }
         if (p->x - 1 >= 0) {
             l->arr[p->x][p->y] = 0;
             p->x = p->x - 1;
@@ -83,6 +92,9 @@ void move(Map* l, Player* p, int* continuing) {
         } 
         break;
     case 'd':
+        if(!isMovable(l, p->x, p->y + 1)) {
+            break;
+        }
         if(p->y + 1 < l->size) {
             l->arr[p->x][p->y] = 0;
             p->y += 1;
@@ -119,3 +131,9 @@ int meneGeneral(){
     }
 }
 
+int isMovable(Map* l, int x, int y) {
+    if(l->arr[x][y] == -3) {
+        return 0;
+    }
+    return 1;
+}

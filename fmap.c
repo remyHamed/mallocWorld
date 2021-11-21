@@ -34,5 +34,16 @@ Map ** genAllLevels() {
     list[0] = first;
     list[1] = second;
     list[2] = third;
+    putGateOnMap(list);
     return list;
-}    
+}
+
+
+void putGateOnMap(Map** list) {
+    //list[0]->arr[list[0]->g->x][list[0]->g->y] = -3;
+    //list[1]->arr[list[1]->g->x][list[1]->g->y] = -3;
+    //list[2]->arr[list[2]->g->x][list[2]->g->y] = -3;
+    list[0]->arr[1][1] = -3;
+    list[1]->arr[1][1] = -3;
+    list[2]->arr[1][1] = -3;
+}
