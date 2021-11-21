@@ -4,23 +4,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Armor Armor;
-struct Armor
+typedef struct Armors Armors;
+struct Armors
 {
     char* name;
     int resDamage;
-    
-    struct Armor* next;
 };
 
-typedef struct ListeArmor ListeArmor;
-struct ListeArmor
-{
-    struct Armor* first;
-};
-
-
-ListeArmor* initArmor();
-void printListeArmor (ListeArmor* ListeArmor);
+Armors** initArmors();
+void printArmors(Armors**);
+Armors* lineToStructArmors(char*);
 
 #endif

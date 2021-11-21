@@ -49,8 +49,10 @@ void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
 void Battle(Player *player, Monster ** tabmonster) {
     Monster * monster = RandomMonster(tabmonster);
     Weapons ** tabweapon = initWeapons();
+    Armors ** tabarmor = initArmors();
     printf("monster name : %s \n",monster->name);
     char currentPlayer='1';
+    int reducDamage = (tabarmor[2]->resDamage * monster->damage) /100;
     int choice = 0;
     srand( time( NULL ) );
     while (player->currentHp > 0 && monster->hp > 0) {
@@ -79,7 +81,7 @@ void Battle(Player *player, Monster ** tabmonster) {
         if (currentPlayer == '2') {
             printf("%s turn \n",monster->name);
             printf("Player pv : %d to ",player->currentHp);
-            player->currentHp -= monster->damage;
+            player->currentHp -= monster->damage - reducDamage;
             printf("%d \n\n",player->currentHp);
             if (player->currentHp <= 0) {
                 break;
