@@ -8,15 +8,10 @@
     int ** array
 */
 int ** genArr2d(int size) {
-    int ** arr = malloc(sizeof(int**) * size);
+    int ** arr = malloc(sizeof(int*) * size);
     for (int i = 0; i < size; i++) {
-        arr[i] = malloc(sizeof(int * )* size); 
+        arr[i] = malloc(sizeof(int) * size); 
     }
-    /*for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            arr[i][j] = malloc(sizeof(int)); 
-        }
-    }*/
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             arr[i][j] = 0; 
@@ -66,11 +61,6 @@ void diplsayArr2d(int** a, int size) {
 */
 
 void freeArr2d(int ** arr, int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            free(arr[i][j]); 
-        }
-    }
     for (int i = 0; i < size; i++) {
         free(arr[i]); 
     }

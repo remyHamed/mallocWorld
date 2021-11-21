@@ -7,5 +7,5 @@ struct NaturalEle {
     int name;
     int value ;
 };
-typedef struct NaturalEle;
+typedef struct  NaturalEle NaturalEle;
 #endif

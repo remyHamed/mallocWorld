@@ -1,6 +1,0 @@
-Pioche en pierre|10
-Pioche en fer|10
-Serpe en pierre|10
-Serpe en fer|10
-Hache en pierre|10
-Hache en fer|10

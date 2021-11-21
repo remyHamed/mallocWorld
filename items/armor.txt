@@ -1,3 +1,0 @@
-Plastron en pierre|10
-Plastron en fer|20
-Plastron en diamant|40

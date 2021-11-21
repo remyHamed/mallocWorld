@@ -1,23 +1,50 @@
 #include "headers/interfasse.h"
 
 void screenGame(Map** l, Player* gamer, int indexM) {
-    for(int i  = 0; i < l[indexM]->size; i++) {
-        printf("__");
+    int x_start_window = gamer->x - 20;
+    int y_start_window = gamer->y - 20;
+    int x_end_window = gamer->x + 20;
+    int y_end_window = gamer->y + 20;
+    if(x_start_window < 0) {
+        x_start_window = 0;
+    }
+    if(y_start_window < 0) {
+        y_start_window = 0;
+    }
+    if(x_start_window > l[indexM]->size) {
+        x_start_window = l[indexM]->size;
+    }
+    if(y_start_window > l[indexM]->size) {
+        y_start_window = l[indexM]->size;
+    }
+
+    if(x_end_window < 0) {
+        x_end_window = 0;
+    }
+    if(y_end_window < 0) {
+        y_end_window = 0;
+    }
+    if(x_end_window > l[indexM]->size) {
+        x_end_window = l[indexM]->size;
+    }
+    if(y_end_window > l[indexM]->size) {
+        y_end_window = l[indexM]->size;
     }
     printf("\n");
-    for(int i  = 0; i < l[indexM]->size; i++) {
-        for(int j  = 0; j < l[indexM]->size; j++) {
-            if(j == 0) {
-                printf("|");
+    for (int i = x_start_window; i < x_end_window; i+= 1) {
+        if(i < 0 || i > l[indexM]->size) {
+            printf("\n");
+            continue;
+        }
+        for (int j = y_start_window; j < y_end_window; j+= 1) {
+            if(j < 0 || j > l[indexM]->size) {
+                printf(" ");
+                continue;
             }
             printf(" %d",l[indexM]->arr[i][j]);
         }
-        printf("|\n");
+        printf("\n");
     }
-    for(int i  = 0; i < l[indexM]->size; i++) {
-        printf("--");
-    }
-    printf("\n");
 }
 
 void displayMoveMenu() {

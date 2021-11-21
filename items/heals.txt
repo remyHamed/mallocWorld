@@ -1,3 +1,0 @@
-Potion de vie I|30
-Potion de vie II|80
-Potion de vie III|200

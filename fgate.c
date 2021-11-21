@@ -1,6 +1,6 @@
 #include "headers/fgate.h"
 
-Gate* genGate(int xpos, int ypos, Map* nLevel, Map* laLevel, int levelYouMustHave) {
+Gate* genGate(int xpos, int ypos, int nLevel, int laLevel, int levelYouMustHave) {
     Gate * g = malloc(sizeof(Gate));
     g->x  = xpos;
     g->y = ypos;

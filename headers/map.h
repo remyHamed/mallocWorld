@@ -5,7 +5,7 @@ typedef struct  Map Map;
 struct Map 
 {
     int levelLimit;
-    int* size;
+    int size;
     int ** arr;
     Gate * g;
 };

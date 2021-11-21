@@ -10,7 +10,5 @@ struct Gate {
     int nextLevel;
     int lastLevel;
     int levelLimit;
-    Map* mapNext;
-    Map* Last;
 };
 #endif

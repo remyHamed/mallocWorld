@@ -38,7 +38,7 @@ int * genrandomPosition(int mapSize) {
     return arr;
 }
 
-int genrandomNumber(int min, int max){
+int genrandomNumber(int min, int max) {
 	int x = 0;
     struct timespec tv;
     clock_gettime(CLOCK_REALTIME, &tv);
