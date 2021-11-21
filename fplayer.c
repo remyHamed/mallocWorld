@@ -23,7 +23,7 @@ void diplayPlayerPosition(Map* level, Player* character) {
     }
 }
 
-void checkAroundPlayer(Map* m, Player* p) {
+void checkAroundPlayer(Map* m, Player* p, int * index) {
     int poseTochekc[2] = {0};
     switch (p->orientation) {
         case 1:
@@ -46,5 +46,12 @@ void checkAroundPlayer(Map* m, Player* p) {
             poseTochekc[0] = p->x + 1;
             poseTochekc[1] = p->y;
             break;
+    }
+    recognitionCaserecognition(m, p, index, &poseTochekc);
+}
+
+void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck){
+    if(m->arr[caseTocheck[0]][caseTocheck[1]] == -3) {
+        printf("changement map");
     }
 }
