@@ -15,6 +15,6 @@
 #include "Leveling.h"
 
 void choices (int*, int*, int*, int*, int*);
-void Battle(Player *, Monster **);
+void Battle(Player *, Monster **, Weapons **, Armors **);
 
 #endif //MALLOCWORLD_BATTLE_H

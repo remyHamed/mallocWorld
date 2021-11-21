@@ -46,13 +46,13 @@ void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
     }
 }
 
-void Battle(Player *player, Monster ** tabmonster) {
+void Battle(Player *player, Monster ** tabmonster, Weapons ** tabweapon, Armors ** tabarmor) {
     Monster * monster = RandomMonster(tabmonster);
-    Weapons ** tabweapon = initWeapons();
-    Armors ** tabarmor = initArmors();
+    Weapons * weapon = tabweapon[0];
+    Armors * armor = tabarmor[0];
     printf("monster name : %s \n",monster->name);
     char currentPlayer='1';
-    int reducDamage = (tabarmor[2]->resDamage * monster->damage) /100;
+    int reducDamage = (armor->resDamage * monster->damage) /100;
     int choice = 0;
     srand( time( NULL ) );
     while (player->currentHp > 0 && monster->hp > 0) {
@@ -60,7 +60,7 @@ void Battle(Player *player, Monster ** tabmonster) {
             printf("Player turn \n");
             printf("choose a action : \n 1) attack \n 2) potion \n 3) escape \n");
             scanf("%d", &choice);
-            choices(&player->currentHp, &monster->hp, &player->maxHp, &choice, &tabweapon[0]->damage);
+            choices(&player->currentHp, &monster->hp, &player->maxHp, &choice, &weapon->damage);
             if (choice == 3){
                 int chance = rand() % 100;
                 printf("%d \n",chance);
