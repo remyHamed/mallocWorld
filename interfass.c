@@ -54,51 +54,52 @@ void displayMoveMenu() {
     printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
 }
 
-void move(Map* l, Player* p, int* continuing) {
+void move(Map* l, Player* p, int* continuing, int * index) {
     displayMoveMenu();
     int input =  fgetc(stdin);
     switch (input) {
     case 's':
-        if(!isMovable(l, p->x + 1, p->y)) {
+        p->orientation = 4;
+        if(!isMovable(l, p, index, p->x + 1, p->y)) {
             break;
         }
         if(p->x + 1 < l->size) {
             l->arr[p->x][p->y] = 0;
             p->x += 1;
-            p->orientation = 4;
             l->arr[p->x][p->y] = 1;
         }
         break;
     case 'q':
-        if(!isMovable(l, p->x, p->y - 1)) {
+        p->orientation = 2;
+        if(!isMovable(l, p, index, p->x, p->y - 1)) {
             break;
         }
         if(p->y - 1 >= 0) {
             l->arr[p->x][p->y] = 0;
             p->y = p->y - 1;
-            p->orientation = 2;
             l->arr[p->x][p->y] = 1;
         } 
         break;
     case 'z':
-        if(!isMovable(l, p->x - 1, p->y)) {
+        p->orientation = 1;
+        if(!isMovable(l, p, index, p->x - 1, p->y)) {
             break;
         }
         if (p->x - 1 >= 0) {
             l->arr[p->x][p->y] = 0;
             p->x = p->x - 1;
-            p->orientation = 1;
             l->arr[p->x][p->y] = 1;
         } 
         break;
     case 'd':
-        if(!isMovable(l, p->x, p->y + 1)) {
+        p->orientation = 3;
+        if(!isMovable(l, p, index, p->x, p->y + 1)) {
             break;
         }
         if(p->y + 1 < l->size) {
             l->arr[p->x][p->y] = 0;
             p->y += 1;
-            p->orientation = 3;
+            
             l->arr[p->x][p->y] = 1;
         }
         break;
@@ -131,9 +132,96 @@ int meneGeneral(){
     }
 }
 
-int isMovable(Map* l, int x, int y) {
+int isMovable(Map* l,Player * p, int* index, int x, int y) {
     if(l->arr[x][y] == -3) {
         return 0;
     }
     return 1;
+}
+
+int gateMenu(Map* m, Player* p, int* index) {
+    printf("\nindex dans gate menu = %d\n", *index);
+    int loop = 1;
+    char userInput[250];
+    int a = 0;
+    if(*index == 0) {
+        if(m->levelLimit < p->level) {
+            while (loop) {
+                printf("\t Voulez vous allez au niveau superieur?\n\t 1 oui \n\t 2 non \n");
+                ///fflush(stdin);
+                setbuf(stdin, NULL);
+                fgets(userInput, 250, stdin);
+                //a =getc(stdin);
+                a = fgetc(stdin);
+                printf("\n user input -> %d\n",a);
+                switch(a) {
+                    case '1':
+                        *index += 1;
+                        printf("\nindex après incrémentation = %d\n", *index);
+                        loop = 0;
+                        break;
+                    case '2':
+                        break;
+                    default:
+                        printf("\n selection la touche 1 ou 2\n");
+                        break;
+                }
+                return *index;
+            }
+        } else {
+            printf("\n Niveau %d requi pour le protail\n ", m->levelLimit);
+            return *index;
+        }
+    }
+    if(*index == 1) {
+        if(m->levelLimit <= p->level) {
+            printf("\t Voulez vous changer de niveau?\n");
+            while (loop) {
+                printf("\t 1 niveau superieur \n\t 2 niveau inferieur \n \t 3 rester là\n");
+                fgets(userInput, 250, stdin);
+                switch(userInput[0]) {
+                    case '1':
+                        *index += 1;
+                        loop = 0;
+                        break;
+                    case '2':
+                        *index = *index - 1;
+                        loop = 0;
+                        break;
+                    case '3':
+                        loop = 0;
+                        break;
+                    default:
+                        printf("\n selection la touche 1, 2 ou 3\n");
+                        break;
+                }
+                return *index;
+            }
+        } else {
+            printf("\n Niveau %d requi pour aller au niveau supérieur\n ", m->levelLimit);
+            printf("\t Voulez vous allez au niveau inferieur ?\n\t 1 oui \n\t 2 non \n");
+        }
+        
+
+    } 
+    if(*index == 2) {
+            while (loop) {
+                printf("\t Voulez vous allez au niveau inferieur ?\n");
+                printf("\t 1 oui \n\t 2 non \n");
+                fgets(userInput, 250, stdin);
+                switch(userInput[0]) {
+                    case '1':
+                        *index = *index - 1;
+                        loop = 0;
+                        break;
+                    case '2':
+                        loop = 0;
+                        break;
+                    default:
+                        printf("\n selection la touche 1, 2 ou 3\n");
+                        break;
+                }
+                return *index;
+            }
+    }
 }
