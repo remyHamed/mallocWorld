@@ -1,10 +1,5 @@
 {
     "files.associations": {
-        "weapons.h": "c",
-        "battle.h": "c",
-        "leveling.h": "c",
-        "monster.h": "c",
-        "player.h": "c",
-        "armor.h": "c"
+        "battle.h": "c"
     }
 }

@@ -7,7 +7,7 @@ int main() {
     Player * player = initPlayer();
 
     player = ResumePlayer();
-    printf("%d\n",player->currentHp);
+    printf("%d\n",player->maxHp);
     Battle(player,tabmonster,tabweapon,tabarmor);
     SavePlayer(player);
     

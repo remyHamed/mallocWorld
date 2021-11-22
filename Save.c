@@ -49,26 +49,29 @@ Player * ResumePlayer () {
                 case 1 :
                     player->currentHp = atoi(token);
                     countElement++;
+                    // printf("token:%s\n",token);
+                    // printf("count:%d\n",countElement);
+                    break;
+                case 2 :
+                    player->maxHp = atoi(token);
+                    countElement++;
+                    // printf("token:%s\n",token);
                     break;
                 case 3 :
-                    player->maxHp = atoi(token);
                     countElement++;
                     break;
                 case 4 :
-                    countElement++;
-                    break;
-                case 5 :
                     player->level = atoi(token);
                     countElement++;
                     break;
-                case 6 :
+                case 5 :
                     countElement++;
                     break;
-                case 7 :
+                case 6 :
                     player->exp = atoi(token);
                     countElement++;
                     break;
-                case 9 :
+                case 7 :
                     player->maxExp = atoi(token);
                     countElement = 0;
                     break;

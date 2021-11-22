@@ -3,13 +3,14 @@
 //
 #include "headers/Battle.h"
 
-void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
-    Heals ** heal = initHeals();
-
+void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1, int* durability) {
+    Heals ** tabheal = initHeals();
+    
     if (*choice == 1) {
         printf("monster pv: %d to ",*pv2);
         *pv2 -= *damage1;
-        printf("%d \n\n",*pv2);
+        printf("%d \n",*pv2);
+        *durability-= 1;
     }
     else if (*choice == 2) {
         int id = 0;
@@ -19,22 +20,22 @@ void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
             id--;
             if (id <= 3 && id >= 0) {
                 printf("player pv: %d/%d to ",*pv1,*pvMax);
-                if (*pv1+heal[id]->heal > *pvMax) {
+                if (*pv1+tabheal[id]->heal > *pvMax) {
                     int restepv = *pvMax - *pv1;
                     *pv1 += restepv;
                 }else {
-                    *pv1 += heal[id]->heal;
+                    *pv1 += tabheal[id]->heal;
                 }
                 printf("%d/%d \n\n",*pv1,*pvMax);
             }else {
                 printf("wrong choice\nretry:\n");
-                choices(pv1, pv2, pvMax, choice, damage1);
+                choices(pv1, pv2, pvMax, choice, damage1, durability);
             }
         }else {
             if (*choice != 3) {
                 printf("You can't use it\nchoose another action :\n");
                 scanf("%d", choice);
-                choices(pv1, pv2, pvMax, choice, damage1);
+                choices(pv1, pv2, pvMax, choice, damage1, durability);
             }
         }
     }
@@ -42,7 +43,7 @@ void choices (int *pv1, int *pv2, int *pvMax, int *choice, int *damage1) {
         if (*choice != 3) {
             printf("wrong choice\nretry:\n");
             scanf("%d", choice);
-            choices(pv1, pv2, pvMax, choice, damage1);
+            choices(pv1, pv2, pvMax, choice, damage1, durability);
         }
     }
 }
@@ -59,9 +60,10 @@ void Battle(Player *player, Monster ** tabmonster, Weapons ** tabweapon, Armors 
     while (player->currentHp > 0 && monster->hp > 0) {
         if (currentPlayer == '1') {
             printf("Player turn \n");
+            printf("durability : %d\n",weapon->durability);
             printf("choose a action : \n 1) attack \n 2) potion \n 3) escape \n");
             scanf("%d", &choice);
-            choices(&player->currentHp, &monster->hp, &player->maxHp, &choice, &weapon->damage);
+            choices(&player->currentHp, &monster->hp, &player->maxHp, &choice, &weapon->damage, &weapon->durability);
             if (choice == 3){
                 int chance = rand() % 100;
                 printf("%d \n",chance);
