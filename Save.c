@@ -13,12 +13,18 @@ void Save (Player * player) {
         printf("Fichier non ouvert");
     }
 
+    fputs("===== Map =====\n",file);
+    fputs("--- zone 1 ---\n",file);
+    fputs("--- zone 2 ---\n",file);
+    fputs("--- zone 3 ---\n",file);
     fputs("===== Player =====\n",file);
     fprintf(file,"%d\n",player->level);
     fprintf(file,"%d/%d\n",player->exp,player->maxExp);
     fprintf(file,"%d/%d\n",player->currentHp,player->maxHp);
     // fprintf(file,"max Hp : %d\n",player->maxHp);
     // fprintf(file,"max exp : %d\n",player->maxExp);
+    fputs("--- Inventory ---\n",file);
+    fputs("--- Storage ---\n",file);
 
     fclose(file);
 }
@@ -61,6 +67,52 @@ void Resume (Player * player) {
                     countElement++;
                     break;
                 case 4 :
+                    player->maxHp = atoi(token);
+                    countElement = 0;
+                    break;
+                case 5 :
+                    player->level = atoi(token);
+                    countElement++;
+                    // printf("token:%s\n",token);
+                    // printf("count:%d\n",countElement);
+                    break;
+                case 6 :
+                    player->exp = atoi(token);
+                    countElement++;
+                    // printf("token:%s\n",token);
+                    break;
+                case 7 :
+                    player->maxExp = atoi(token);
+                    countElement++;
+                    break;
+                case 8 :
+                    player->currentHp = atoi(token);
+                    countElement++;
+                    break;
+                case 9 :
+                    player->maxHp = atoi(token);
+                    countElement = 0;
+                    break;
+                case 10 :
+                    player->level = atoi(token);
+                    countElement++;
+                    // printf("token:%s\n",token);
+                    // printf("count:%d\n",countElement);
+                    break;
+                case 11 :
+                    player->exp = atoi(token);
+                    countElement++;
+                    // printf("token:%s\n",token);
+                    break;
+                case 12 :
+                    player->maxExp = atoi(token);
+                    countElement++;
+                    break;
+                case 13 :
+                    player->currentHp = atoi(token);
+                    countElement++;
+                    break;
+                case 14 :
                     player->maxHp = atoi(token);
                     countElement = 0;
                     break;
