@@ -5,7 +5,7 @@
 
 Monster ** initMonster () {
     Monster** tabMonster;
-    tabMonster = malloc(sizeof(Monster*)*21);
+    tabMonster = malloc(sizeof(Monster*)*22);
     char const* const fileName = "items/Monster.txt";
     FILE* file = fopen(fileName, "r");
     if (file == NULL)
@@ -84,7 +84,6 @@ Monster * RandomMonster (Monster ** tabMonster) {
  int cpt =0;
 
  int id = rand() % 20;
-
  
  return tabMonster[id];
 

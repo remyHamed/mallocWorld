@@ -6,14 +6,14 @@ int main() {
     Armors ** tabarmor = initArmors();
     Player * player = initPlayer();
 
-    player = Resume();
-    printf("%d\n",player->currentHp);
-    printf("%d\n",player->maxHp);
+    Resume(player);
     printf("%d\n",player->level);
     printf("%d\n",player->exp);
     printf("%d\n",player->maxExp);
-    Battle(player,tabmonster,tabweapon,tabarmor);
-    Save(player);
+    printf("%d\n",player->currentHp);
+    printf("%d\n",player->maxHp);
+    // Battle(player,tabmonster,tabweapon,tabarmor);
+    // Save(player);
     
     free (tabweapon);
     free (tabmonster);

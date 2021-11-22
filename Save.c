@@ -23,9 +23,7 @@ void Save (Player * player) {
     fclose(file);
 }
 
-Player * Resume () {
-
-    Player * player = initPlayer();
+void Resume (Player * player) {
 
     FILE* file = fopen("save.txt", "r");
 
@@ -33,7 +31,7 @@ Player * Resume () {
         printf("Fichier non ouvert");
     }
 
-    char* line = malloc(sizeof(char)* 256);
+    char line[256];
     const char * separator = "/";
     int countElement = 0;
     fgets(line, 256, file);
@@ -70,7 +68,5 @@ Player * Resume () {
             token = strtok (NULL, separator);
         }
     }
-
     fclose(file);
-    return player;
 }

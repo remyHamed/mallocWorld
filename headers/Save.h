@@ -10,7 +10,7 @@
 #include "Player.h"
 
 void Save (Player *);
-Player * Resume ();
+void Resume (Player *);
 
 
 #endif //MALLOCWORLD_SAVE_H
