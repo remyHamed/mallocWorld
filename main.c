@@ -41,6 +41,11 @@ int main() {
         }
         if(selector == LOAD_SAVED_GAME) {
             Resume(player);
+            printf("%d\n",player->level);
+            printf("%d\n",player->exp);
+            printf("%d\n",player->maxExp);
+            printf("%d\n",player->currentHp);
+            printf("%d\n",player->maxHp);
             printf("chargement parti sauver");
             //ANCHOR SET LES ÉLÉMENTNT
             //LECTURE DES FICHIERS DE SAUVEGARDE ICI

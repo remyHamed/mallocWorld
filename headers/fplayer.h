@@ -4,6 +4,6 @@
 #include "player.h"
 #include "fmap.h"
 #include "map.h"
-Player * genPlayer();
+Player * initPlayer ();
 void checkAroundPlayer(Map* m, Player* p, int * index);
 #endif

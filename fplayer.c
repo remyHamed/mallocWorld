@@ -1,13 +1,17 @@
 #include "headers/fplayer.h"
 
-Player * genPlayer() {
-    Player * p;
-    p = malloc(sizeof(Player));
-    p->x = 0;
-    p->y = 0;
-    p->orientation = 3;
-    p->value = 1;
-    return p;
+Player * initPlayer () {
+    Player * player = malloc(sizeof(Player));
+    player->currentHp = 100;
+    player->maxHp = 100;
+    player->exp = 0;
+    player->maxExp = 20;
+    player->level = 1;
+    player->x = 0;
+    player->y = 0;
+    player->orientation = 3;
+    player->value = 1;
+    return player;
 }
 
 void diplayPlayerPosition(Map* level, Player* character) {
@@ -24,30 +28,30 @@ void diplayPlayerPosition(Map* level, Player* character) {
 }
 
 void checkAroundPlayer(Map* m, Player* p, int * index) {
-    int poseTochekc[2] = {0};
+    int poseTocheck[2] = {0};
     switch (p->orientation) {
         case 1:
             printf("\tl'orientation est en haut\n");
-            poseTochekc[0] = p->x - 1;
-            poseTochekc[1] = p->y;
+            poseTocheck[0] = p->x - 1;
+            poseTocheck[1] = p->y;
             break;
         case 2:
             printf("\tl'orientation est a gauche\n");
-            poseTochekc[0] = p->x;
-            poseTochekc[1] = p->y - 1;
+            poseTocheck[0] = p->x;
+            poseTocheck[1] = p->y - 1;
             break;
         case 3:
             printf("\tl'orientation est a droite\n");
-            poseTochekc[0] = p->x;
-            poseTochekc[1] = p->y + 1;
+            poseTocheck[0] = p->x;
+            poseTocheck[1] = p->y + 1;
             break;
         case 4:
             printf("\tl'orientation est en bas\n");
-            poseTochekc[0] = p->x + 1;
-            poseTochekc[1] = p->y;
+            poseTocheck[0] = p->x + 1;
+            poseTocheck[1] = p->y;
             break;
     }
-    recognitionCaserecognition(m, p, index, &poseTochekc);
+    recognitionCaserecognition(m, p, index, &poseTocheck);
 }
 
 void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck){

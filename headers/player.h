@@ -23,6 +23,5 @@ typedef struct Player {
                     // 4 bas
 }Player;
 
-Player * initPlayer ();
 
 #endif //MALLOCWORLD_PLAYER_H

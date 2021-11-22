@@ -7,7 +7,7 @@ OBJS = $(SRCS:.c=.o)
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(OBJS) -o $(NAME) -Werror
+	$(CC) $(OBJS) -lm -o $(NAME) -Werror
 	$(RM) $(OBJS)
 clean:
 	$(RM) $(OBJS)
