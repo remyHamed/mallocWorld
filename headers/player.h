@@ -2,6 +2,7 @@
 #define Player_h
 
 struct Player {
+    int level;
     int value;
     int x;
     int y;

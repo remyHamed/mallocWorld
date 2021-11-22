@@ -4,6 +4,8 @@
 #include "player.h"
 #include "fmap.h"
 #include "map.h"
+#include "interfasse.h"
 Player * genPlayer();
 void checkAroundPlayer(Map* m, Player* p, int * index);
+void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck);
 #endif

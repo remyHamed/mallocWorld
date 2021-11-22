@@ -7,6 +7,7 @@ Player * genPlayer() {
     p->y = 0;
     p->orientation = 3;
     p->value = 1;
+    p->level = 4;
     return p;
 }
 
@@ -47,11 +48,15 @@ void checkAroundPlayer(Map* m, Player* p, int * index) {
             poseTochekc[1] = p->y;
             break;
     }
-    recognitionCaserecognition(m, p, index, &poseTochekc);
+    printf("valeur du tableau de la case à controler %d %d\n", poseTochekc[0],poseTochekc[1]);
+    recognitionCaserecognition(m, p, index, poseTochekc);
 }
 
 void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck){
+    printf("\ndans recognitionCaserecognition \nvaleur du tableau de la case à controler %d %d\n", caseTocheck[0],caseTocheck[1]);
     if(m->arr[caseTocheck[0]][caseTocheck[1]] == -3) {
-        printf("changement map");
+        gateMenu(m, p, index);
     }
+    //TODO LOOP MONSTER
+    //TODO LOOP ressource
 }

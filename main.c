@@ -49,10 +49,10 @@ int main(int argc, char ** argv) {
             //printf("\n x = %d\n", p1->x);
             //printf(" y = %d\n", p1->y);
             //printf("size map = %d\n", list[indexMap]->size);
-            move(list[indexMap], p1, gameContinue);
+            move(list[indexMap], p1, gameContinue, &indexMap);
+            printf("\nindex = %d \n", indexMap);
         }
     } while(live);
-
     free(p1);
     return 0;
 }

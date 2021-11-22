@@ -20,7 +20,7 @@ Map ** genAllLevels() {
     Map* second = initMap();
     Map* third = initMap();
     int * arrRandPosition;
-    first->levelLimit = 0;
+    first->levelLimit = 3;
     second->levelLimit = 3;
     third->levelLimit = 7;
     arrRandPosition = genrandomPosition(first->size);
