@@ -64,7 +64,7 @@ int main() {
             //printf("\n x = %d\n", player->x);
             //printf(" y = %d\n", player->y);
             //printf("size map = %d\n", list[indexMap]->size);
-            move(list[indexMap], player, gameContinue);
+            move(list[indexMap], player, gameContinue, &indexMap);
         }
     } while(live);
 

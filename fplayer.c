@@ -51,8 +51,8 @@ void checkAroundPlayer(Map* m, Player* p, int * index) {
             poseTocheck[1] = p->y;
             break;
     }
-    printf("valeur du tableau de la case à controler %d %d\n", poseTochekc[0],poseTochekc[1]);
-    recognitionCaserecognition(m, p, index, poseTochekc);
+    printf("valeur du tableau de la case à controler %d %d\n", poseTocheck[0],poseTocheck[1]);
+    recognitionCaserecognition(m, p, index, poseTocheck);
 }
 
 void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck){
