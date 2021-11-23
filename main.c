@@ -32,7 +32,7 @@ int main() {
         if(selector == NEW_GAME) {
             list = genAllLevels();
             player = initPlayer();
-            list[indexMap]->arr[0][0] = 1;
+            list[indexMap]->arr[0][0] = 1;// cette ligne place le joueur
         }
         if(selector == LOAD_SAVED_GAME) {
             Resume(player,list);
