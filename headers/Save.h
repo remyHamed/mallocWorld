@@ -8,9 +8,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Player.h"
+#include "fmap.h"
 
-void Save (Player *);
-void Resume (Player *);
+void Save (Player *, Map **);
+void Resume (Player *, Map**);
 
 
 #endif //MALLOCWORLD_SAVE_H

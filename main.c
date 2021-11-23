@@ -16,14 +16,9 @@ int main() {
     Monster ** tabmonster = initMonster();
     Weapons ** tabweapon = initWeapons();
     Armors ** tabarmor = initArmors();
-
-    
-    // Battle(player,tabmonster,tabweapon,tabarmor);
-    // Save(player);
-    
-
     Map** list;
     Player * player;
+    // Battle(player,tabmonster,tabweapon,tabarmor);
     int indexMap = 0;
     int* gameContinue;
     int live = 1;
@@ -40,12 +35,15 @@ int main() {
             list[indexMap]->arr[0][0] = 1;
         }
         if(selector == LOAD_SAVED_GAME) {
-            Resume(player);
-            printf("%d\n",player->level);
-            printf("%d\n",player->exp);
-            printf("%d\n",player->maxExp);
-            printf("%d\n",player->currentHp);
-            printf("%d\n",player->maxHp);
+            list = genAllLevels();
+            player = initPlayer();
+            Resume(player,list);
+            printf(" tab : %d\n",list[0]->arr[0][4]);
+            // printf("%d\n",player->level);
+            // printf("%d\n",player->exp);
+            // printf("%d\n",player->maxExp);
+            // printf("%d\n",player->currentHp);
+            // printf("%d\n",player->maxHp);
             printf("chargement parti sauver");
             //ANCHOR SET LES ÉLÉMENTNT
             //LECTURE DES FICHIERS DE SAUVEGARDE ICI
@@ -66,6 +64,7 @@ int main() {
             //printf("size map = %d\n", list[indexMap]->size);
             move(list[indexMap], player, gameContinue, &indexMap);
         }
+        Save(player,list);
     } while(live);
 
     free (tabweapon);
