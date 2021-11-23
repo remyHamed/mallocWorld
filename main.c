@@ -35,10 +35,9 @@ int main() {
             list[indexMap]->arr[0][0] = 1;
         }
         if(selector == LOAD_SAVED_GAME) {
-            list = genAllLevels();
-            player = initPlayer();
             Resume(player,list);
-            printf(" tab : %d\n",list[0]->arr[0][4]);
+            *gameContinue = 1;
+            // printf(" tab : %d\n",list[0]->arr[0][4]);
             // printf("%d\n",player->level);
             // printf("%d\n",player->exp);
             // printf("%d\n",player->maxExp);
