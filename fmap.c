@@ -9,10 +9,31 @@ Map * initMap() {
     return m;
 }
 
+Map * initMapSaved(int size) {
+    Map * m = malloc(sizeof(Map));
+    m->size = size;
+    m->arr = genArr2d(m->size); 
+    printf("\n initMap  m->size = %d\n", m->size);
+    m->g = NULL;
+    return m;
+}
+
 Map ** initListOfMaps() {
     Map** list = malloc(sizeof(Map*) * 3);
     return list;
 }
+
+Map ** genAllLevelsSaved() {
+    int size;//ANCHOR Récupeer la taille des cartes
+    Map** list = initListOfMaps();
+    Map* first = initMapSaved();
+    Map* second = initMapSaved();
+    Map* third = initMapSaved();
+    first->levelLimit = 3;
+    second->levelLimit = 3;
+    third->levelLimit = 7;
+}
+
 
 Map ** genAllLevels() {
     Map** list = initListOfMaps(); 

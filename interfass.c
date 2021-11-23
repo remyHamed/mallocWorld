@@ -57,6 +57,11 @@ void displayMoveMenu() {
 void move(Map* l, Player* p, int* continuing, int * index) {
     displayMoveMenu();
     int input =  fgetc(stdin);
+    int temp = input;
+    if(input == '\n')
+        input = temp;
+    setbuf(stdin, NULL);
+    fflush(stdin);
     printf("input :%d\n",input);
     switch (input) {
         case 's':
