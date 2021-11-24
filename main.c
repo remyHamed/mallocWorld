@@ -14,8 +14,8 @@
 #define END_GAME  3
 int main() {
     Monster ** tabmonster = initMonster();
-    Weapons ** tabweapon = initWeapons();
-    Armors ** tabarmor = initArmors();
+    //Weapons ** tabweapon = initWeapons();
+    //Armors ** tabarmor = initArmors();
     Map** list;
     Player * player;
     // Battle(player,tabmonster,tabweapon,tabarmor);
@@ -36,18 +36,20 @@ int main() {
         fflush(stdout);
         selector = meneGeneral();
         if(selector == NEW_GAME) {
-            list = genAllLevels();
+            list = genAllLevels(tabmonster);
             player = initPlayer();
             list[indexMap]->arr[0][0] = 1;// cette ligne place le joueur
             *gameContinue = 1;
         }
 
         if(selector == LOAD_SAVED_GAME && CheckFile(filename) == 1) {
-            size = ResumeSize();
-            list = genAllLevelsSaved(size);
+            /*size = ResumeSize();
+            list = genAllLevelsSaved(size, tabmonster);
             player = initPlayer();
             Resume(player,list);
             *gameContinue = 1;
+                */
+
             // printf(" tab : %d\n",list[0]->arr[0][4]);
             // printf("%d\n",player->level);
             // printf("%d\n",player->exp);
@@ -81,9 +83,10 @@ int main() {
         SaveSize(list[0]->size,list[1]->size,list[2]->size);
     } while(live);
 
-    free (tabweapon);
+    //free (tabweapon);
+    //TODO free les structures de monstre
     free (tabmonster);
-    free (tabarmor);
+    //free (tabarmor);
     free (player);
     free (list);
     free (size);

@@ -60,6 +60,11 @@ void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck)
     if(m->arr[caseTocheck[0]][caseTocheck[1]] == -3) {
         gateMenu(m, p, index);
     }
+
+    //for (int i = 0; i < m->monstertab->size; i++) {
+    //    m->monstertab
+    //}
+    
     //TODO LOOP MONSTER
     //TODO LOOP ressource
 }
