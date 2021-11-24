@@ -23,7 +23,7 @@ Map ** initListOfMaps() {
     return list;
 }
 
-Map ** genAllLevelsSaved(int* size) {
+Map ** genAllLevelsSaved(int* size, Monster** monsterTab) {
     Map** list = initListOfMaps();
     Map* first = initMapSaved(size[0]);
     Map* second = initMapSaved(size[1]);
@@ -37,7 +37,7 @@ Map ** genAllLevelsSaved(int* size) {
     return list;
 }
 
-Map ** genAllLevels() {
+Map ** genAllLevels(Monster** monsterTab) {
     Map** list = initListOfMaps(); 
     Map* first = initMap();
     Map* second = initMap();
@@ -47,12 +47,16 @@ Map ** genAllLevels() {
     second->levelLimit = 3;
     third->levelLimit = 7;
     arrRandPosition = genrandomPosition(first->size);
+    first->monstertab = genMonsterarrLevel( 0, 12, 18, monsterTab, first);
     first->g = genGate(arrRandPosition[0], arrRandPosition[1], 0, 1,first->levelLimit, first);
     free(arrRandPosition);
     arrRandPosition = genrandomPosition(second->size);
+    printf("1++++++++++1\n");
+    second->monstertab = genMonsterarrLevel(1, 19, 25, monsterTab, second);
     second->g = genGate(arrRandPosition[0], arrRandPosition[1],1, 2,second->levelLimit, second);
     free(arrRandPosition);
     arrRandPosition = genrandomPosition(third->size);
+    third->monstertab = genMonsterarrLevel( 2, 26, 32, monsterTab, third);
     third->g = genGate(arrRandPosition[0], arrRandPosition[1],1, 2,third->levelLimit, third); 
     list[0] = first;
     list[1] = second;
