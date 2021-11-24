@@ -17,20 +17,20 @@ int main(int argc, char ** argv)
     Heals** tabHeals = initHeals();
     printHeals(tabHeals);
 
-    // Weapons** tabWeapons = initWeapons();
-    // printWeapons(tabWeapons);
+    Weapons** tabWeapons = initWeapons();
+    printWeapons(tabWeapons);
 
-    // Ressources** tabRessources = initRessources();
-    // printRessources(tabRessources);
+    Ressources** tabRessources = initRessources();
+    printRessources(tabRessources);
 
-    // Armors** tabArmors = initArmors();
-    // printArmors(tabArmors);
+    Armors** tabArmors = initArmors();
+    printArmors(tabArmors);
 
-    // Tools** tabTools = initTools(); 
-    // printTools(tabTools);
+    Tools** tabTools = initTools(); 
+    printTools(tabTools);
 
-    // Crafts** tabCrats = initCrafts(); 
-    // printCrafts(tabCrats);
+    Crafts** tabCrats = initCrafts(); 
+    printCrafts(tabCrats);
 
     // char** bag =  createStartBag();
     // printBag(bag);

@@ -40,14 +40,18 @@ Weapons* lineToStructWeapons(char* line)
     
     Weapons* weapon = malloc(sizeof(weapon));
     while(token != NULL) {
-        
         if(countElement == 0)
+        {
+            weapon->objectId = atoi(token);
+            countElement += 1;
+        }
+        else if(countElement == 1)
         {
             weapon->name = malloc(sizeof(char) * 256);
             strcpy(weapon->name, token);
             countElement += 1;
         }
-        else if (countElement == 1)
+        else if (countElement == 2)
         {
             weapon->damage = atoi(token);
             countElement += 1;

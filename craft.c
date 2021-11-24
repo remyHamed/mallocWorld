@@ -88,7 +88,7 @@ void printCrafts(Crafts** tabCraft)
         printf("NB1 : %d\n", tabCraft[i]->nbComposant1);
         printf("Composant 1 : %s\n", tabCraft[i]->composant1);
         printf("NB2 : %d\n", tabCraft[i]->nbComposant2);
-        printf("Composant 2 : %s\n\n", tabCraft[i]->composant2);
-        printf("Zone : %d\n", tabCraft[i]->zone);
+        printf("Composant 2 : %s\n", tabCraft[i]->composant2);
+        printf("Zone : %d\n\n", tabCraft[i]->zone);
     }     
 }
