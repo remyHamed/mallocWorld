@@ -10,8 +10,11 @@
 #include "Player.h"
 #include "fmap.h"
 
+int CheckFile (char *);
 void Save (Player *, Map **);
 void Resume (Player *, Map**);
+void SaveSize (int ,int ,int );
+int* ResumeSize ();
 
 
 #endif //MALLOCWORLD_SAVE_H

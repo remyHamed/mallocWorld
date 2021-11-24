@@ -48,70 +48,71 @@ void screenGame(Map** l, Player* gamer, int indexM) {
 }
 
 void displayMoveMenu() {
-    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ \n");
-    printf("\n\t               z\n");
+    printf("\t //////////////////////////// \n");
+    printf("\t               z\n");
     printf("\t  q            s           d\n");
-    printf("\t \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+    printf("\t //////////////////////////// \n");
 }
 
-void move(Map* l, Player* p, int* continuing, int * index) {
-    displayMoveMenu();
-    int input =  fgetc(stdin);
-    int temp = input;
-    if(input == '\n')
-        input = temp;
-    setbuf(stdin, NULL);
-    fflush(stdin);
-    printf("input :%d\n",input);
-    switch (input) {
-        case 's':
-            p->orientation = 4;
-            if(!isMovable(l, p, index, p->x + 1, p->y)) {
+void move(Map* l, Player* p, int* continuing, int * index, int* input, int* temp) {
+    if (*input != '\n')
+        displayMoveMenu();
+    *input =  fgetc(stdin);
+    if (*input != '\n') {
+        // *input = *temp;
+        switch (*input) {
+            case 's':
+                p->orientation = 4;
+                if(!isMovable(l, p, index, p->x + 1, p->y)) {
+                    break;
+                }
+                if(p->x + 1 < l->size) {
+                    l->arr[p->x][p->y] = 0;
+                    p->x += 1;
+                    l->arr[p->x][p->y] = 1;
+                }
                 break;
-            }
-            if(p->x + 1 < l->size) {
-                l->arr[p->x][p->y] = 0;
-                p->x += 1;
-                l->arr[p->x][p->y] = 1;
-            }
-            break;
-        case 'q':
-            p->orientation = 2;
-            if(!isMovable(l, p, index, p->x, p->y - 1)) {
+            case 'q':
+                p->orientation = 2;
+                if(!isMovable(l, p, index, p->x, p->y - 1)) {
+                    break;
+                }
+                if(p->y - 1 >= 0) {
+                    l->arr[p->x][p->y] = 0;
+                    p->y = p->y - 1;
+                    l->arr[p->x][p->y] = 1;
+                } 
                 break;
-            }
-            if(p->y - 1 >= 0) {
-                l->arr[p->x][p->y] = 0;
-                p->y = p->y - 1;
-                l->arr[p->x][p->y] = 1;
-            } 
-            break;
-        case 'z':
-            p->orientation = 1;
-            if(!isMovable(l, p, index, p->x - 1, p->y)) {
+            case 'z':
+                p->orientation = 1;
+                if(!isMovable(l, p, index, p->x - 1, p->y)) {
+                    break;
+                }
+                if (p->x - 1 >= 0) {
+                    l->arr[p->x][p->y] = 0;
+                    p->x = p->x - 1;
+                    l->arr[p->x][p->y] = 1;
+                } 
                 break;
-            }
-            if (p->x - 1 >= 0) {
-                l->arr[p->x][p->y] = 0;
-                p->x = p->x - 1;
-                l->arr[p->x][p->y] = 1;
-            } 
-            break;
-        case 'd':
-            p->orientation = 3;
-            if(!isMovable(l, p, index, p->x, p->y + 1)) {
+            case 'd':
+                p->orientation = 3;
+                if(!isMovable(l, p, index, p->x, p->y + 1)) {
+                    break;
+                }
+                if(p->y + 1 < l->size) {
+                    l->arr[p->x][p->y] = 0;
+                    p->y += 1;
+                    
+                    l->arr[p->x][p->y] = 1;
+                }
                 break;
-            }
-            if(p->y + 1 < l->size) {
-                l->arr[p->x][p->y] = 0;
-                p->y += 1;
-                
-                l->arr[p->x][p->y] = 1;
-            }
-            break;
-        case 'n':
-            *continuing = 0;
-            break;
+            case 'n':
+                *continuing = 0;
+                break;
+            default:
+                printf("mauvaise saisie recommencez\n");
+                break;
+        }
     }
 }
 

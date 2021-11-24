@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include "map.h"
 #include "player.h"
-void screenGame(Map** l, Player* gamer, int indexM);
+void screenGame(Map** , Player* , int );
 void displayMoveMenu();
-void move(Map* l, Player* p, int* continuing, int * index);
+void move(Map* , Player* , int* , int * , int *, int *);
 int meneGeneral();
-int isMovable(Map* l,Player * p, int* index, int x, int y);
-int gateMenu(Map* m, Player* p, int* index);
+int isMovable(Map* ,Player * , int* , int , int );
+int gateMenu(Map* , Player* , int* );
 #endif

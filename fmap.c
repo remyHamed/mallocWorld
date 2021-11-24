@@ -8,7 +8,7 @@ Map * initMap() {
     m->g = NULL;
     return m;
 }
-/*
+
 Map * initMapSaved(int size) {
     Map * m = malloc(sizeof(Map));
     m->size = size;
@@ -17,23 +17,25 @@ Map * initMapSaved(int size) {
     m->g = NULL;
     return m;
 }
-*/
+
 Map ** initListOfMaps() {
     Map** list = malloc(sizeof(Map*) * 3);
     return list;
 }
-/*
-Map ** genAllLevelsSaved() {
-    int size;//ANCHOR Récupeer la taille des cartes
+
+Map ** genAllLevelsSaved(int* size) {
     Map** list = initListOfMaps();
-    Map* first = initMapSaved();
-    Map* second = initMapSaved();
-    Map* third = initMapSaved();
+    Map* first = initMapSaved(size[0]);
+    Map* second = initMapSaved(size[1]);
+    Map* third = initMapSaved(size[2]);
     first->levelLimit = 3;
     second->levelLimit = 3;
     third->levelLimit = 7;
+    list[0] = first;
+    list[1] = second;
+    list[2] = third;
+    return list;
 }
-*/
 
 Map ** genAllLevels() {
     Map** list = initListOfMaps(); 
@@ -56,14 +58,4 @@ Map ** genAllLevels() {
     list[1] = second;
     list[2] = third;
     return list;
-}
-
-
-void putGateOnMap(Map** list) {
-    //list[0]->arr[list[0]->g->x][list[0]->g->y] = -3;
-    //list[1]->arr[list[1]->g->x][list[1]->g->y] = -3;
-    //list[2]->arr[list[2]->g->x][list[2]->g->y] = -3;
-    list[0]->arr[1][1] = -3;
-    list[1]->arr[1][1] = -3;
-    list[2]->arr[1][1] = -3;
 }

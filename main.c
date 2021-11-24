@@ -19,12 +19,18 @@ int main() {
     Map** list;
     Player * player;
     // Battle(player,tabmonster,tabweapon,tabarmor);
-    int indexMap = 0;
-    int* gameContinue;
+    int * input = malloc(sizeof(int));
+    int * gameContinue = malloc(sizeof(int));
+    int * size = malloc(sizeof(int)*3);
+    int * temp  = malloc(sizeof(int));
     int live = 1;
-    gameContinue = malloc(sizeof(int));
-    *gameContinue = 1;
+    char * filename = "save.txt";
+    int indexMap = 0;
     int selector = 0;
+    *temp = 1 ;
+    *input = 0 ;
+    *gameContinue = 1;
+        
     do{
         fflush(stdin);
         fflush(stdout);
@@ -33,8 +39,13 @@ int main() {
             list = genAllLevels();
             player = initPlayer();
             list[indexMap]->arr[0][0] = 1;// cette ligne place le joueur
+            *gameContinue = 1;
         }
-        if(selector == LOAD_SAVED_GAME) {
+
+        if(selector == LOAD_SAVED_GAME && CheckFile(filename) == 1) {
+            size = ResumeSize();
+            list = genAllLevelsSaved(size);
+            player = initPlayer();
             Resume(player,list);
             *gameContinue = 1;
             // printf(" tab : %d\n",list[0]->arr[0][4]);
@@ -43,7 +54,7 @@ int main() {
             // printf("%d\n",player->maxExp);
             // printf("%d\n",player->currentHp);
             // printf("%d\n",player->maxHp);
-            printf("chargement parti sauver");
+            printf("chargement parti sauver\n");
             //ANCHOR SET LES ÉLÉMENTNT
             //LECTURE DES FICHIERS DE SAUVEGARDE ICI
             //RESSOURCE
@@ -51,24 +62,30 @@ int main() {
             //MONSTRE
             //ICI
         }
+
         if(selector == END_GAME) {
             *gameContinue = 0;
             live = 0;
         }
         while (*gameContinue)  {
-            screenGame(list, player, indexMap);
-            checkAroundPlayer(list[indexMap], player, &indexMap);
-            //printf("\n x = %d\n", player->x);
-            //printf(" y = %d\n", player->y);
-            //printf("size map = %d\n", list[indexMap]->size);
-            move(list[indexMap], player, gameContinue, &indexMap);
+            if (*input != '\n') {
+                screenGame(list, player, indexMap);
+                checkAroundPlayer(list[indexMap], player, &indexMap);
+                //printf("\n x = %d\n", player->x);
+                //printf(" y = %d\n", player->y);
+                //printf("size map = %d\n", list[indexMap]->size);
+            }
+            move(list[indexMap], player, gameContinue, &indexMap, input, temp);
         }
         Save(player,list);
+        SaveSize(list[0]->size,list[1]->size,list[2]->size);
     } while(live);
 
     free (tabweapon);
     free (tabmonster);
     free (tabarmor);
     free (player);
+    free (list);
+    free (size);
     return 0;
 }

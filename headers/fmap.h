@@ -6,7 +6,8 @@
 #include "gate.h"
 #include "fgate.h"
 Map * initMap();
+Map * initMapSaved(int);
 Map ** initListOfMaps();
 Map ** genAllLevels();
-void putGateOnMap(Map** list);
+Map ** genAllLevelsSaved(int *);
 #endif
