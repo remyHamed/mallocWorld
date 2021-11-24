@@ -1,8 +1,9 @@
-Sapin|20
-Hêtre|20
-Chêne|20
-Pierre|20
-Fer|20
-Diamant|20
-Herbe|20
-Chanvre|20
+5|Sapin|20
+16|Hêtre|20
+27|Chêne|20
+6|Pierre|20
+17|Fer|20
+28|Diamant|20
+7|Herbe|20
+18|lavande|20
+29|Chanvre|20

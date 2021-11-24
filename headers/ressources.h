@@ -7,12 +7,14 @@
 typedef struct Ressources Ressources;
 struct  Ressources
 {
+    int objectId;
     char* name;
     int holdLimit;
 };
 
+int sizeTabRessources(Ressources** tabRessources);
 Ressources** initRessources();
-void printRessources(Ressources**);
-Ressources* lineToStructRessources(char*);
+void printRessources(Ressources** tabRessources);
+Ressources* lineToStructRessources(char* line);
 
 #endif

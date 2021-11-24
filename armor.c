@@ -1,5 +1,15 @@
 #include "headers/armor.h"
 
+int sizeTabArmors(Armors** tabArmor)
+{
+    int size = 0;
+    for(int i = 0; tabArmor[i] != NULL; i++)
+    {
+        size = i;
+    }
+    return size;
+}
+
 Armors** initArmors()
 {
     Armors** tabArmor;
@@ -31,6 +41,11 @@ Armors* lineToStructArmors(char* line)
     while(token != NULL) {
         if(countElement == 0)
         {
+            armor->objectId = atoi(token);
+            countElement += 1;
+        }
+        else if (countElement == 1)
+        {
             armor->name = malloc(sizeof(char) * 256);
             strcpy(armor->name, token);
             countElement += 1;
@@ -47,10 +62,10 @@ Armors* lineToStructArmors(char* line)
 
 void printArmors(Armors** tabArmor)
 {
-    // int size_tab = (sizeof(tabArmor)/2) -1;
-    // printf("%d\n",size_tab);
-    for (int i = 0; i < 3; i++)
+    int size_tab = sizeTabArmors(tabArmor);
+    for (int i = 0; i <= size_tab; i++)
     {
+        printf("Id : %d\n", tabArmor[i]->objectId);
         printf("Nom : %s\n", tabArmor[i]->name);
         printf("ResDamage : %d\n\n", tabArmor[i]->resDamage);
     }     

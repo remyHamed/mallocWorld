@@ -1,9 +1,19 @@
 #include "headers/ressources.h"
 
+int sizeTabRessources(Ressources** tabRessources)
+{
+    int size = 0;
+    for(int i = 0; tabRessources[i] != NULL; i++)
+    {
+        size = i;
+    }
+    return size;
+}
+
 Ressources** initRessources()
 {
     Ressources** tabRessources;
-    tabRessources = malloc(sizeof(Ressources*)*10);
+    tabRessources = malloc(sizeof(Ressources*)*12);
     char const* const fileName = "items/ressources.txt";
     FILE* file = fopen(fileName, "r");
     if (file == NULL)
@@ -31,6 +41,11 @@ Ressources* lineToStructRessources(char* line)
     while(token != NULL) {
         if(countElement == 0)
         {
+            ressource->objectId = atoi(token);
+            countElement += 1;
+        }
+        else if(countElement == 1)
+        {
             ressource->name = malloc(sizeof(char) * 256);
             strcpy(ressource->name, token);
             countElement += 1;
@@ -47,10 +62,10 @@ Ressources* lineToStructRessources(char* line)
 
 void printRessources(Ressources** tabRessources)
 {
-    // int size_tab = (sizeof(tabRessources)/2) -1;
-    // printf("%d\n",size_tab);
-    for (int i = 0; i < 8 ; i++)
+    int size_tab = sizeTabRessources(tabRessources);
+    for (int i = 0; i <= size_tab; i++)
     {
+        printf("Id : %d\n", tabRessources[i]->objectId);
         printf("Nom : %s\n", tabRessources[i]->name);
         printf("Hold limit : %d\n\n", tabRessources[i]->holdLimit);
     }     

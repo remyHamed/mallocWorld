@@ -1,4 +1,3 @@
-Potion de vie I|30
-Potion de vie II|80
-Potion de vie III|200
-toto|30
+15|Potion de vie I|30
+26|Potion de vie II|80
+34|Potion de vie III|200

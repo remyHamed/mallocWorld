@@ -7,12 +7,14 @@
 typedef struct Armors Armors;
 struct Armors
 {
+    int objectId;
     char* name;
     int resDamage;
 };
 
+int sizeTabArmors(Armors** tabArmors);
 Armors** initArmors();
-void printArmors(Armors**);
-Armors* lineToStructArmors(char*);
+void printArmors(Armors** tabArmors);
+Armors* lineToStructArmors(char* line);
 
 #endif

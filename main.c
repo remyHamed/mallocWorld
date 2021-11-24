@@ -14,26 +14,26 @@
 
 int main(int argc, char ** argv) 
 {
-    // Heals** tab_H = initHeals(); // marche
-    // printHeals(tab_H);
+    Heals** tabHeals = initHeals();
+    printHeals(tabHeals);
 
-    // Weapons** tab_W = initWeapons(); // marche
-    // printWeapons(tab_W);
+    // Weapons** tabWeapons = initWeapons();
+    // printWeapons(tabWeapons);
 
-    // Ressources** tab_RC = initRessources(); // marche
-    // printRessources(tab_RC);
+    // Ressources** tabRessources = initRessources();
+    // printRessources(tabRessources);
 
-    // Armors** tab_A = initArmors(); // marche
-    // printArmors(tab_A);
+    // Armors** tabArmors = initArmors();
+    // printArmors(tabArmors);
 
-    // Tools** tab_T = initTools(); 
-    // printTools(tab_T);
+    // Tools** tabTools = initTools(); 
+    // printTools(tabTools);
 
-    // Crafts** tab_C = initCrafts(); 
-    // printCrafts(tab_C);
+    // Crafts** tabCrats = initCrafts(); 
+    // printCrafts(tabCrats);
 
-    char** bag =  createStartBag();
-    printBag(bag);
+    // char** bag =  createStartBag();
+    // printBag(bag);
 
     return 0;
 }

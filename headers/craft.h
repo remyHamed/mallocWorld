@@ -7,15 +7,18 @@
 typedef struct Crafts Crafts;
 struct  Crafts
 {
+    int objectId;
     char* name;
     int nbComposant1;
     char* composant1;
     int nbComposant2;
     char* composant2;
+    int zone;
 };
 
 Crafts** initCrafts();
-Crafts* lineToStructCrafts(char*);
-void printCrafts(Crafts**);
+int sizeTabCrafts(Crafts** tabCrafts);
+Crafts* lineToStructCrafts(char* line);
+void printCrafts(Crafts** tabCrafts);
 
 #endif

@@ -1,5 +1,15 @@
 #include "headers/tools.h"
 
+int sizeTabTools(Tools** tabTools)
+{
+    int size = 0;
+    for(int i = 0; tabTools[i] != NULL; i++)
+    {
+        size = i;
+    }
+    return size;
+}
+
 Tools** initTools()
 {
     Tools** tabTools;
@@ -31,6 +41,11 @@ Tools* lineToStructTools(char* line)
     while(token != NULL) {
         if(countElement == 0)
         {
+            tool->objectId = atoi(token);
+            countElement += 1;
+        }
+        else if(countElement == 1)
+        {
             tool->name = malloc(sizeof(char) * 256);
             strcpy(tool->name, token);
             countElement += 1;
@@ -47,10 +62,10 @@ Tools* lineToStructTools(char* line)
 
 void printTools(Tools** tabTools)
 {
-    // int size_tab = (sizeof(tabTools)/2) -1;
-    // printf("%d\n",size_tab);
-    for (int i = 0; i < 6; i++)
+    int size_tab = sizeTabTools(tabTools);
+    for (int i = 0; i <= size_tab; i++)
     {
+        printf("Id : %d\n", tabTools[i]->objectId);
         printf("Nom : %s\n", tabTools[i]->name);
         printf("Durability : %d\n\n", tabTools[i]->durability);
     }     

@@ -1,5 +1,15 @@
 #include "headers/bag.h"
 
+int sizeBag(char** bag)
+{
+    int size = 0;
+    for(int i = 0; bag[i] != NULL; i++)
+    {
+        size = i;
+    }
+    return size;
+}
+
 char** createStartBag()
 {
     char** bag;
@@ -25,8 +35,8 @@ char** createStartBag()
                 break;
         }
     }
-    size_t n = sizeof(bag)/sizeof(bag[0]);
-    printf("taille du tableau : %d\n", n);
+    
+    // printf("taille du tableau : %d\n", );
     return bag;
 }
 

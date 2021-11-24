@@ -7,12 +7,14 @@
 typedef struct Tools Tools;
 struct  Tools
 {
+    int objectId;
     char* name;
     int durability;
 };
 
+int sizeTabTools(Tools** tabTools);
 Tools** initTools();
-Tools* lineToStructTools(char*);
-void printTools(Tools** ListeTools);
+Tools* lineToStructTools(char* line);
+void printTools(Tools** tabTools);
 
 #endif

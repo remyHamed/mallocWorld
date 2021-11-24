@@ -7,13 +7,15 @@
 typedef struct Weapons Weapons;
 struct  Weapons
 {
+    int objectId;
     char* name;
     int damage;
     int durability;
 };
 
+int sizeTabWeapons(Weapons** tabWeapons);
 Weapons** initWeapons();
-void printWeapons(Weapons** listeWeapons);
-Weapons* lineToStructWeapons(char*);
+void printWeapons(Weapons** tabWeapons);
+Weapons* lineToStructWeapons(char* line);
 
 #endif

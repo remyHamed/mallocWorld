@@ -7,12 +7,14 @@
 typedef struct Heals Heals;
 struct  Heals
 {
+    int objectId;
     char* name;
     int heal;
 };
 
 Heals** initHeals();
-Heals* lineToStructHeals(char*);
-void printHeals(Heals**);
+int sizeTabHeals(Heals** tabHeals);
+Heals* lineToStructHeals(char* line);
+void printHeals(Heals** tabHeals);
 
 #endif

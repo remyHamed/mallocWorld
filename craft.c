@@ -1,9 +1,19 @@
 #include "headers/craft.h"
 
+int sizeTabCrafts(Crafts** tabCraft)
+{
+    int size = 0;
+    for(int i = 0; tabCraft[i] != NULL; i++)
+    {
+        size = i;
+    }
+    return size;
+}
+
 Crafts** initCrafts()
 {
     Crafts** tabCraft;
-    tabCraft = malloc(sizeof(Crafts*)*25);
+    tabCraft = malloc(sizeof(Crafts*)*35);
     char const* const fileName = "items/craft.txt";
     FILE* file = fopen(fileName, "r");
     if (file == NULL)
@@ -56,6 +66,11 @@ Crafts* lineToStructCrafts(char* line)
             case 4:
                 craft->composant2 = malloc(sizeof(char) * 256);
                 strcpy(craft->composant2, token);
+                countElement += 1;
+                break;
+
+            case 5:
+                craft->zone = atoi(token);
                 countElement = 0;
                 break;
         }
@@ -66,14 +81,14 @@ Crafts* lineToStructCrafts(char* line)
 
 void printCrafts(Crafts** tabCraft)
 {
-    // int size_tab = (sizeof(tabCraft)/2) -1;
-    // printf("%d\n",size_tab);
-    for (int i = 0; i < 25; i++)
+    int size_tab = sizeTabCrafts(tabCraft);
+    for (int i = 0; i <= size_tab; i++)
     {
         printf("Nom : %s\n", tabCraft[i]->name);
         printf("NB1 : %d\n", tabCraft[i]->nbComposant1);
         printf("Composant 1 : %s\n", tabCraft[i]->composant1);
         printf("NB2 : %d\n", tabCraft[i]->nbComposant2);
         printf("Composant 2 : %s\n\n", tabCraft[i]->composant2);
+        printf("Zone : %d\n", tabCraft[i]->zone);
     }     
 }

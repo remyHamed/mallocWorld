@@ -1,9 +1,19 @@
 #include "headers/weapons.h"
 
+int sizeTabWeapons(Weapons** tabWeapons)
+{
+    int size = 0;
+    for(int i = 0; tabWeapons[i] != NULL; i++)
+    {
+        size = i;
+    }
+    return size;
+}
+
 Weapons** initWeapons()
 {
     Weapons** tabWeapons;
-    tabWeapons = malloc(sizeof(Weapons*)*10);
+    tabWeapons = malloc(sizeof(Weapons*)*15);
     char const* const fileName = "items/weapons.txt";
     FILE* file = fopen(fileName, "r");
     if (file == NULL)
@@ -54,10 +64,11 @@ Weapons* lineToStructWeapons(char* line)
 
 void printWeapons(Weapons** tabWeapons)
 {
-    // int size_tab = (sizeof(tabWeapons)/2) -1;
-    // printf("%d\n",size_tab);
-    for (int i = 0; i < 10; i++)
+    int size_tab = sizeTabWeapons(tabWeapons);
+    
+    for (int i = 0; i <= size_tab; i++)
     {
+        printf("Id : %d\n", tabWeapons[i]->objectId);
         printf("Nom : %s\n", tabWeapons[i]->name);
         printf("Damage : %d\n", tabWeapons[i]->damage);
         printf("Durability : %d\n\n", tabWeapons[i]->durability);
