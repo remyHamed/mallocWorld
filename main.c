@@ -90,9 +90,11 @@ int main() {
     for(int i = 0; i < 10; i++) {
         freeWeapon(tabweapon[i]);
     }
-    //free(tabarmor);
+    for(int i = 0; i < 3; i++) {
+        freeArmors(tabarmor[i]);
+    }
     free(player);
-    free(list);
+    free(list);//TODO fonction de liberation de la liste
     free(size);
     return 0;
 }
