@@ -13,11 +13,11 @@
 #define LOAD_SAVED_GAME  2
 #define END_GAME  3
 int main() {
-    Monster ** tabmonster = initMonster();
-    Weapons ** tabweapon = initWeapons();
-    Armors ** tabarmor = initArmors();
-    Map** list;
-    Player * player;
+    Monster** tabmonster = initMonster();
+    Weapons** tabweapon = initWeapons();
+    Armors** tabarmor = initArmors();
+    Map** list = NULL;
+    Player* player = NULL;
     // Battle(player,tabmonster,tabweapon,tabarmor);
     int * input = malloc(sizeof(int));
     int * gameContinue = malloc(sizeof(int));
@@ -30,7 +30,7 @@ int main() {
     *temp = 1 ;
     *input = 0 ;
     *gameContinue = 1;
-        
+      printf("1\n");   
     do{
         fflush(stdin);
         fflush(stdout);
@@ -78,14 +78,21 @@ int main() {
             move(list[indexMap], player, gameContinue, &indexMap, input, temp);
         }
         Save(player,list);
-        SaveSize(list[0]->size,list[1]->size,list[2]->size);
+        if(list != NULL) {
+            SaveSize(list[0]->size,list[1]->size,list[2]->size);
+        }
     } while(live);
-
-    free (tabweapon);
-    free (tabmonster);
-    free (tabarmor);
-    free (player);
-    free (list);
-    free (size);
+    printf("ok");
+    for(int i = 0; i < 22; i++) {
+        freeMonster(tabmonster[i]);
+    }
+     printf("hello\n");
+    for(int i = 0; i < 10; i++) {
+        freeWeapon(tabweapon[i]);
+    }
+    //free(tabarmor);
+    free(player);
+    free(list);
+    free(size);
     return 0;
 }

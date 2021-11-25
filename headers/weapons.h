@@ -5,8 +5,7 @@
 #include <string.h>
 
 typedef struct Weapons Weapons;
-struct  Weapons
-{
+struct  Weapons {
     char* name;
     int damage;
     int durability;
@@ -18,6 +17,6 @@ typedef struct ListeWeapons ListeWeapons;
 
 Weapons** initWeapons();
 void printWeapons(Weapons** listeWeapons);
-Weapons* lineToStructWeapons(char*);
-
+Weapons* lineToStructWeapons(char*line);
+void freeWeapon(Weapons* arme);
 #endif

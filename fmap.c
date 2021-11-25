@@ -59,3 +59,19 @@ Map ** genAllLevels() {
     list[2] = third;
     return list;
 }
+
+int isOutofBound(Map* m, int* arr) {
+    if(arr[0] < 0) {
+        return 1;
+    }
+    if(arr[0] >= m->size) {
+         return 1;
+    }
+    if(arr[1] < 0) {
+        return 1;
+    }
+    if(arr[1] < m->size) {
+        return 1;
+    }
+    return 0;
+}

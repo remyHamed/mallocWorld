@@ -6,8 +6,9 @@
 #include "gate.h"
 #include "fgate.h"
 Map * initMap();
-Map * initMapSaved(int);
+Map * initMapSaved(int size);
 Map ** initListOfMaps();
 Map ** genAllLevels();
-Map ** genAllLevelsSaved(int *);
+Map ** genAllLevelsSaved(int * size);
+int isOutofBound(Map* m, int* arr);
 #endif

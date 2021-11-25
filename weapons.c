@@ -1,66 +1,60 @@
 #include "headers/weapons.h"
 
-Weapons** initWeapons()
-{
+Weapons** initWeapons() {
+    int index = 0;
     Weapons** tabWeapons;
+    char* line;
     tabWeapons = malloc(sizeof(Weapons*)*10);
-    char const* const fileName = "items/weapons.txt";
-    FILE* file = fopen(fileName, "r");
-    if (file == NULL)
-    {
+    FILE* file = fopen("items/weapons.txt", "r");
+    if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    char* line;
     line = malloc(sizeof(char)* 256);
-    int index = 0;
-    
     while(fgets(line, 256, file)) {
         // printf("%s line\n", line);
         tabWeapons[index] = lineToStructWeapons(line);
         index++;
     }
     fclose(file);
+    free(line);
     return tabWeapons;
 }
 
-Weapons* lineToStructWeapons(char* line)
-{
+Weapons* lineToStructWeapons(char* line) {
     const char * separator = "|";
     int countElement = 0;
     char* token = strtok (line, separator);
     //char * temp = malloc(sizeof(char)*256);
     //strcpy(temp, token);
-    
-    Weapons* weapon = malloc(sizeof(weapon));
+    Weapons* arme = malloc(sizeof(arme));
     while(token != NULL) {
-        
-        if(countElement == 0)
-        {
+        if(countElement == 0) {
             // printf("%s token1\n", token);
-            weapon->name = malloc(sizeof(char) * 256);
-            strcpy(weapon->name, token);
+            arme->name = malloc(sizeof(char) * 256);
+            strcpy(arme->name, token);
             countElement += 1;
-        }
-        else if (countElement == 1)
-        {
+        
+        } 
+        else if (countElement == 1) {
             // printf("%s token2\n", token);
             //weapon->weapon = malloc(sizeof(int));
-            weapon->damage = atoi(token);
+            arme->damage = atoi(token);
             countElement += 1;
-        }
-        else
-        {
+        } 
+        else {
             // printf("%s token3\n", token);
-            weapon->durability = atoi(token);
+            arme->durability = atoi(token);
             countElement = 0;
         }
         token = strtok (NULL, separator);
     }
-    return weapon;
+    printf("Nom : %s\n", arme->name);
+    printf("Damage : %d\n", arme->damage);
+    printf("Durability : %d\n\n", arme->durability);
+    return arme;
 }
 
-void printWeapons(Weapons** tabWeapons)
-{
+void printWeapons(Weapons** tabWeapons) {
     int size_tab = (sizeof(tabWeapons)/2) -1;
     // printf("%d\n",size_tab);
     for (int i = 0; i < 10; i++)
@@ -69,4 +63,10 @@ void printWeapons(Weapons** tabWeapons)
         printf("Damage : %d\n", tabWeapons[i]->damage);
         printf("Durability : %d\n\n", tabWeapons[i]->durability);
     }     
+}
+
+void freeWeapon(Weapons * arme) {
+    free(arme->name);
+    free(arme);
+    printf(" arme free ok\n");
 }

@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <malloc.h>
+#include <malloc.h>//ANCHOR, pourquoi avoir mis cette lib??
 
 typedef struct Monster {
     int id;
@@ -19,8 +19,8 @@ typedef struct Monster {
 }Monster;
 
 Monster ** initMonster ();
-Monster* lineToStructMonster(char*);
-void printMonster(Monster**);
-Monster * RandomMonster (Monster **);
-
+Monster* lineToStructMonster(char* line);
+void printMonster(Monster** tabMonster);
+Monster * RandomMonster (Monster** tabMonster);
+void freeMonster(Monster* bakemono);
 #endif //MALLOCWORLD_MONSTER_H

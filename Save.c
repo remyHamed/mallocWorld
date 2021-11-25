@@ -16,7 +16,8 @@ int CheckFile (char * filename) {
 } 
 
 void Save (Player * player, Map ** list) {
-
+    if(list == NULL || player == NULL)
+        return;
     FILE* file = fopen("save.txt", "w+");
 
     if (file == NULL){

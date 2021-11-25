@@ -55,7 +55,7 @@ void checkAroundPlayer(Map* m, Player* p, int * index) {
     recognitionCaserecognition(m, p, index, poseTocheck);
 }
 
-void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck){
+void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck) {
     printf("\ndans recognitionCaserecognition \nvaleur du tableau de la case à controler %d %d\n", caseTocheck[0],caseTocheck[1]);
     if(m->arr[caseTocheck[0]][caseTocheck[1]] == -3) {
         gateMenu(m, p, index);
