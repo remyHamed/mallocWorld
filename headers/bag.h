@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-char** createStartBag();
-void printBag(char**);
+char*** createStartBag();
+void printBag(char*** bag);
 
 #endif
