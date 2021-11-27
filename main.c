@@ -9,15 +9,16 @@
 #include "headers/interfasse.h"
 #include "headers/map.h"
 #include "headers/gate.h"
+#include "headers/weapons.h"
 #define NEW_GAME 1
 #define LOAD_SAVED_GAME  2
 #define END_GAME  3
 int main() {
-    Monster ** tabmonster = initMonster();
-    //Weapons ** tabweapon = initWeapons();
-    //Armors ** tabarmor = initArmors();
-    Map** list;
-    Player * player;
+    Monster** tabmonster = initMonster();
+    Weapons** tabweapon = initWeapons();
+    Armors** tabarmor = initArmors();
+    Map** list = NULL;
+    Player* player = NULL;
     // Battle(player,tabmonster,tabweapon,tabarmor);
     int * input = malloc(sizeof(int));
     int * gameContinue = malloc(sizeof(int));
@@ -30,15 +31,19 @@ int main() {
     *temp = 1 ;
     *input = 0 ;
     *gameContinue = 1;
-        
+      printf("1\n");   
     do{
         fflush(stdin);
         fflush(stdout);
         selector = meneGeneral();
         if(selector == NEW_GAME) {
-            list = genAllLevels(tabmonster);
+            printf("1\n");
+            list = genAllLevels();
+            printf("2\n");
             player = initPlayer();
+            printf("3\n");
             list[indexMap]->arr[0][0] = 1;// cette ligne place le joueur
+            printf("4\n");
             *gameContinue = 1;
         }
 
@@ -67,6 +72,7 @@ int main() {
             *gameContinue = 0;
             live = 0;
         }
+        printf("5\n");
         while (*gameContinue)  {
             if (*input != '\n') {
                 screenGame(list, player, indexMap);
@@ -78,15 +84,22 @@ int main() {
             move(list[indexMap], player, gameContinue, &indexMap, input, temp);
         }
         Save(player,list);
-        SaveSize(list[0]->size,list[1]->size,list[2]->size);
+        if(list != NULL) {
+            SaveSize(list[0]->size,list[1]->size,list[2]->size);
+        }
     } while(live);
-
-    //free (tabweapon);
-    //TODO free les structures de monstre
-    free (tabmonster);
-    //free (tabarmor);
-    free (player);
-    free (list);
-    free (size);
+    for(int i = 0; i < 22; i++) {
+        freeMonster(tabmonster[i]);
+    }
+     
+    for(int i = 0; i < 10; i++) {
+        freeWeapon(tabweapon[i]);
+    }
+    for(int i = 0; i < 3; i++) {
+        freeArmors(tabarmor[i]);
+    }
+    free(player);
+    free(list);//TODO fonction de liberation de la liste
+    free(size);
     return 0;
 }

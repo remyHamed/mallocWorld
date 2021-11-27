@@ -3,10 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "fFileReading.h"
 typedef struct Weapons Weapons;
-struct  Weapons
-{
+struct  Weapons {
     char* name;
     int damage;
     int durability;
@@ -17,7 +16,7 @@ struct  Weapons
 typedef struct ListeWeapons ListeWeapons;
 
 Weapons** initWeapons();
+Weapons* setOneWeapon(char** datasOfWeapons);
 void printWeapons(Weapons** listeWeapons);
-Weapons* lineToStructWeapons(char*);
-
+void freeWeapon(Weapons* arme);
 #endif

@@ -5,13 +5,10 @@
 #define MALLOCWORLD_MONSTER_H
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
-#include <malloc.h>
-typedef struct  Monster Monster;
-#include "map.h"
-#include "rng.h"
-struct Monster {
+#include <time.h>
+#include "fFileReading.h"
+typedef struct Monster {
     int id;
     int zone;
     char* name;
@@ -25,9 +22,8 @@ struct Monster {
 };
 
 Monster ** initMonster ();
-Monster* lineToStructMonster(char* line);
+Monster* setMonster(char** dataOfMonster);
 void printMonster(Monster** tabMonster);
-Monster * RandomMonster (Monster ** tabMonster);
-Monster **genMonsterarrLevel(int indexMap, int numIdMonsterMin, int numIdMonsterMax, Monster **model, Map *m);
-void putMonsterOnMap(Map *m);
+Monster * RandomMonster (Monster** tabMonster);
+void freeMonster(Monster* bakemono);
 #endif //MALLOCWORLD_MONSTER_H

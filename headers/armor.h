@@ -14,5 +14,5 @@ struct Armors
 Armors** initArmors();
 void printArmors(Armors**);
 Armors* lineToStructArmors(char*);
-
+void freeArmors(Armors* armure);
 #endif
