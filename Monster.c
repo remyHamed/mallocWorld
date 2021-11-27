@@ -94,22 +94,24 @@ Monster **genMonsterarrLevel(int indexMap, int numIdMonsterMin, int numIdMonster
     m->numOfMonster = m->size / 4;
     int *arrRandPosition;
     Monster **arrMonster = malloc(sizeof(Monster *) * m->numOfMonster);
-    printf("nom of monster  = %d\n",m->numOfMonster);
-    for (int i = 0; i < m->numOfMonster; i++)
+    printf("nb of monster  = %d\n",m->numOfMonster);
+    for (int i = 0; i < m->numOfMonster-1; i++)
     {
-        printf("error is not hear i = %d\n",i);
+        //printf("error is not hear i = %d\n",i);
         arrMonster[i] = malloc(sizeof(Monster));
         arrMonster[i]->id = genrandomNumber(numIdMonsterMin, numIdMonsterMax);
-        printf("arrMonster[i]->id = %d\n",arrMonster[i]->id);
+        //printf("arrMonster[i]->id = %d\n",arrMonster[i]->id);
         arrMonster[i]->zone = indexMap;
-        arrMonster[i]->name = malloc(sizeof(char) * 255);
+        arrMonster[i]->name = malloc(sizeof(char*) * 255);
         strcpy(arrMonster[i]->name, model[arrMonster[i]->id]->name);
         arrMonster[i]->hp = model[arrMonster[i]->id]->hp;
         arrMonster[i]->damage = model[arrMonster[i]->id]->damage;
         arrMonster[i]->exp = model[arrMonster[i]->id]->exp;
-        arrRandPosition = genrandomPosition(m->size);
+        arrRandPosition = genrandomPosition(m->size-1);
         arrMonster[i]->x = arrRandPosition[0];
+        printf("arrRandPosition 1 = %d\n",arrRandPosition[0]);
         arrMonster[i]->y = arrRandPosition[1];
+        printf("arrRandPosition 2 = %d\n",arrRandPosition[1]);
         arrMonster[i]->status = 15;
         arrMonster[i]->isAlive = 1;
         free(arrRandPosition);
