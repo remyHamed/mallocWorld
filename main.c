@@ -36,9 +36,13 @@ int main() {
         fflush(stdout);
         selector = meneGeneral();
         if(selector == NEW_GAME) {
+            printf("1\n");
             list = genAllLevels();
+            printf("2\n");
             player = initPlayer();
+            printf("3\n");
             list[indexMap]->arr[0][0] = 1;// cette ligne place le joueur
+            printf("4\n");
             *gameContinue = 1;
         }
 
@@ -67,6 +71,7 @@ int main() {
             *gameContinue = 0;
             live = 0;
         }
+        printf("5\n");
         while (*gameContinue)  {
             if (*input != '\n') {
                 screenGame(list, player, indexMap);
@@ -82,11 +87,10 @@ int main() {
             SaveSize(list[0]->size,list[1]->size,list[2]->size);
         }
     } while(live);
-    printf("ok");
     for(int i = 0; i < 22; i++) {
         freeMonster(tabmonster[i]);
     }
-     printf("hello\n");
+     
     for(int i = 0; i < 10; i++) {
         freeWeapon(tabweapon[i]);
     }
