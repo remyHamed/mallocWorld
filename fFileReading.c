@@ -1,10 +1,10 @@
 #include "headers/fFileReading.h"
 
-void readFile() {
+void readFile(const char* pathToFile) {
     int index = 0;
     char* line;
     line = malloc(sizeof(char)* 255);
-    FILE* file = fopen("weapons.txt", "r");
+    FILE* file = fopen(pathToFile, "r");
     if (file == NULL) {
         printf("Fichier non ouvert");
     }
@@ -65,4 +65,21 @@ int getnumberofparts(char * str) {
     }
     numOfPart++;
     return numOfPart;
+}
+
+
+int countLines(char* pathToFile) {
+    int index = 0;
+    char* line;
+    line = malloc(sizeof(char)* 255);
+    FILE* file = fopen(pathToFile, "r");
+    if (file == NULL) {
+        printf("Fichier non ouvert");
+    }
+    while(fgets(line, 255, file)) {
+        index++;
+    }
+    fclose(file);
+    free(line);
+    return index;
 }

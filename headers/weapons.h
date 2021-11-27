@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "fFileReading.h"
 typedef struct Weapons Weapons;
 struct  Weapons {
     char* name;
@@ -16,7 +16,7 @@ struct  Weapons {
 typedef struct ListeWeapons ListeWeapons;
 
 Weapons** initWeapons();
+Weapons* setOneWeapon(char** datasOfWeapons);
 void printWeapons(Weapons** listeWeapons);
-Weapons* lineToStructWeapons(char*line);
 void freeWeapon(Weapons* arme);
 #endif

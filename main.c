@@ -9,6 +9,7 @@
 #include "headers/interfasse.h"
 #include "headers/map.h"
 #include "headers/gate.h"
+#include "headers/weapons.h"
 #define NEW_GAME 1
 #define LOAD_SAVED_GAME  2
 #define END_GAME  3

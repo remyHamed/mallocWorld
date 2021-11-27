@@ -1,53 +1,40 @@
 #include "headers/weapons.h"
 
 Weapons** initWeapons() {
+    char* line;
+    char** dataFromLine;
     int index = 0;
     Weapons** tabWeapons;
-    char* line;
-    tabWeapons = malloc(sizeof(Weapons*)*10);
+    int numOfMonsterModel = countLines("items/weapons.txt");
+    tabWeapons = malloc(sizeof(Weapons*) * numOfMonsterModel);
+    line = malloc(sizeof(char)* 256);
     FILE* file = fopen("items/weapons.txt", "r");
+    
     if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    line = malloc(sizeof(char)* 256);
+    
     while(fgets(line, 256, file)) {
         // printf("%s line\n", line);
-        tabWeapons[index] = lineToStructWeapons(line);
-        index++;
+        dataFromLine = lineSpliter(line);
+        tabWeapons[index] = setOneWeapon(dataFromLine);
+        for(int i = 0; i < 3; i++) {
+            free(dataFromLine[i]);
+        }
+        index ++;
     }
+    free(dataFromLine);
     fclose(file);
     free(line);
     return tabWeapons;
 }
 
-Weapons* lineToStructWeapons(char* line) {
-    const char * separator = "|";
-    int countElement = 0;
-    char* token = strtok (line, separator);
-    //char * temp = malloc(sizeof(char)*256);
-    //strcpy(temp, token);
-    Weapons* arme = malloc(sizeof(arme));
-    while(token != NULL) {
-        if(countElement == 0) {
-            // printf("%s token1\n", token);
-            arme->name = malloc(sizeof(char) * 256);
-            strcpy(arme->name, token);
-            countElement += 1;
-        
-        } 
-        else if (countElement == 1) {
-            // printf("%s token2\n", token);
-            //weapon->weapon = malloc(sizeof(int));
-            arme->damage = atoi(token);
-            countElement += 1;
-        } 
-        else {
-            // printf("%s token3\n", token);
-            arme->durability = atoi(token);
-            countElement = 0;
-        }
-        token = strtok (NULL, separator);
-    }
+Weapons* setOneWeapon(char** datasOfWeapons) {
+    Weapons* arme = malloc(sizeof(Weapons));
+    arme->name = malloc(sizeof(char) * 256);
+    strcpy(arme->name, datasOfWeapons[0]);
+    arme->damage = atoi(datasOfWeapons[1]);
+    arme->durability = atoi(datasOfWeapons[2]);
     printf("Nom : %s\n", arme->name);
     printf("Damage : %d\n", arme->damage);
     printf("Durability : %d\n\n", arme->durability);

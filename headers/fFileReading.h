@@ -6,4 +6,5 @@
 void readFile();
 int getnumberofparts(char * str);
 char** lineSpliter(char * str);
+int countLines(char* pathToFile);
 #endif
