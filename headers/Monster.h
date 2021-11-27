@@ -8,6 +8,8 @@
 #include <string.h>
 #include <time.h>
 #include "fFileReading.h"
+#include "Map.h"
+
 typedef struct Monster {
     int id;
     int zone;
@@ -19,7 +21,7 @@ typedef struct Monster {
     int y;
     int status;// count each round before respown
     int isAlive;
-};
+}Monster;
 
 Monster ** initMonster ();
 Monster* setMonster(char** dataOfMonster);
