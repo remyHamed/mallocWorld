@@ -35,7 +35,7 @@ char** lineSpliter(char * str) {
         lenght = strlen(pStart);
         arr[index] = malloc(sizeof(char) * lenght + 1 );
         strcpy(arr[index], pStart);
-        printf("%s\n", arr[index]);
+        printf(" donné en enregister %s\n", arr[index]);
         //printf("pEnd = %c\n", *pEnd);
         pEnd++;
         pStart = pEnd++;
