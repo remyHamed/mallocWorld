@@ -8,6 +8,7 @@ typedef struct Weapons Weapons;
 struct  Weapons
 {
     int objectId;
+    int size;
     char* name;
     int damage;
     int durability;
@@ -17,5 +18,6 @@ int sizeTabWeapons(Weapons** tabWeapons);
 Weapons** initWeapons();
 void printWeapons(Weapons** tabWeapons);
 Weapons* lineToStructWeapons(char* line);
+
 
 #endif

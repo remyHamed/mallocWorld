@@ -8,6 +8,7 @@ typedef struct Tools Tools;
 struct  Tools
 {
     int objectId;
+    int size;
     char* name;
     int durability;
 };

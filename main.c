@@ -14,7 +14,7 @@
 
 int main(int argc, char ** argv) 
 {
-    // Heals** tabHeals = initHeals();
+    // Heals** tabHeals = initHeals(); //marche
     // printHeals(tabHeals);
 
     // Weapons** tabWeapons = initWeapons();
@@ -23,8 +23,8 @@ int main(int argc, char ** argv)
     // Ressources** tabRessources = initRessources();
     // printRessources(tabRessources);
 
-    // Armors** tabArmors = initArmors();
-    // printArmors(tabArmors);
+    Armors** tabArmors = initArmors();
+    printArmors(tabArmors);
 
     // Tools** tabTools = initTools(); 
     // printTools(tabTools);
@@ -32,8 +32,15 @@ int main(int argc, char ** argv)
     // Crafts** tabCrats = initCrafts(); 
     // printCrafts(tabCrats);
 
-    char*** bag =  createStartBag();
-    printBag(bag);
+    Bag* bag = initStartBag();
+    char *** contentBag = bag->content;
+    
+    char** item = structToTabStrArmor(findOneArmor(tabArmors, 22));
+    addItem(bag, item);
+    printBag(contentBag);
+    // free(bag->content[i][j]);
+    // free(bag->content[i]);
+    free(bag->content);
 
     return 0;
 }

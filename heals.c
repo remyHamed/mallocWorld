@@ -46,6 +46,11 @@ Heals* lineToStructHeals(char* line)
         }
         else if(countElement == 1)
         {
+            heal->size = atoi(token);
+            countElement += 1;
+        }
+        else if(countElement == 2)
+        {
             heal->name = malloc(sizeof(char) * 256);
             strcpy(heal->name, token);
             countElement += 1;
@@ -67,6 +72,7 @@ void printHeals(Heals** tabHeals)
     for (int i = 0; i <= size_tab; i++)
     {
         printf("Id : %d\n", tabHeals[i]->objectId);
+        printf("Size : %d\n", tabHeals[i]->size);
         printf("Nom : %s\n", tabHeals[i]->name);
         printf("heal : %d\n\n", tabHeals[i]->heal);
     }     

@@ -8,6 +8,7 @@ typedef struct Heals Heals;
 struct  Heals
 {
     int objectId;
+    int size;
     char* name;
     int heal;
 };

@@ -46,6 +46,11 @@ Tools* lineToStructTools(char* line)
         }
         else if(countElement == 1)
         {
+            tool->size = atoi(token);
+            countElement += 1;
+        }
+        else if(countElement == 2)
+        {
             tool->name = malloc(sizeof(char) * 256);
             strcpy(tool->name, token);
             countElement += 1;
@@ -66,6 +71,7 @@ void printTools(Tools** tabTools)
     for (int i = 0; i <= size_tab; i++)
     {
         printf("Id : %d\n", tabTools[i]->objectId);
+        printf("Size : %d\n", tabTools[i]->size);
         printf("Nom : %s\n", tabTools[i]->name);
         printf("Durability : %d\n\n", tabTools[i]->durability);
     }     

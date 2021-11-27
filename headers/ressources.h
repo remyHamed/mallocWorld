@@ -8,6 +8,7 @@ typedef struct Ressources Ressources;
 struct  Ressources
 {
     int objectId;
+    int size;
     char* name;
     int holdLimit;
 };

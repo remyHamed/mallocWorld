@@ -47,11 +47,16 @@ Weapons* lineToStructWeapons(char* line)
         }
         else if(countElement == 1)
         {
+            weapon->size = atoi(token);
+            countElement += 1;
+        }
+        else if(countElement == 2)
+        {
             weapon->name = malloc(sizeof(char) * 256);
             strcpy(weapon->name, token);
             countElement += 1;
         }
-        else if (countElement == 2)
+        else if (countElement == 3)
         {
             weapon->damage = atoi(token);
             countElement += 1;
@@ -73,6 +78,7 @@ void printWeapons(Weapons** tabWeapons)
     for (int i = 0; i <= size_tab; i++)
     {
         printf("Id : %d\n", tabWeapons[i]->objectId);
+        printf("Size : %d\n", tabWeapons[i]->size);
         printf("Nom : %s\n", tabWeapons[i]->name);
         printf("Damage : %d\n", tabWeapons[i]->damage);
         printf("Durability : %d\n\n", tabWeapons[i]->durability);
