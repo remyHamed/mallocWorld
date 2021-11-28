@@ -30,6 +30,6 @@ Monster* setMonster(char** dataOfMonster);
 void printMonster(Monster** tabMonster);
 Monster * RandomMonster (Monster** tabMonster);
 Monster **genMonsterarrLevel(int indexMap, int numIdMonsterMin, int numIdMonsterMax, Monster **model, Map *m);
-void putMonsterOnMap(Map *m, Monster ** model);
+void putMonsterOnMap(Map *m);
 void freeMonster(Monster* bakemono);
 #endif //MALLOCWORLD_MONSTER_H

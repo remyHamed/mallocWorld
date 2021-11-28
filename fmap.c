@@ -48,17 +48,17 @@ Map ** genAllLevels(Monster** monsterTab) {
     third->levelLimit = 7;
     arrRandPosition = genrandomPosition(first->size - 1);
     first->monstertab = genMonsterarrLevel( 0, 12, 18, monsterTab, first);
-    putMonsterOnMap(first,first->monstertab); 
+    putMonsterOnMap(first); 
     first->g = genGate(arrRandPosition[0], arrRandPosition[1], 0, 1,first->levelLimit, first);
     free(arrRandPosition);
     arrRandPosition = genrandomPosition(second->size - 1);
     second->monstertab = genMonsterarrLevel(1, 19, 25, monsterTab, second);
-    putMonsterOnMap(second, second->monstertab); 
+    putMonsterOnMap(second); 
     second->g = genGate(arrRandPosition[0], arrRandPosition[1],1, 2,second->levelLimit, second);
     free(arrRandPosition);
     arrRandPosition = genrandomPosition(third->size - 1);
     third->monstertab = genMonsterarrLevel( 2, 26, 32, monsterTab, third);
-    putMonsterOnMap(third, third->monstertab);
+    putMonsterOnMap(third);
     third->g = genGate(arrRandPosition[0], arrRandPosition[1],1, 2,third->levelLimit, third);
     list[0] = first;
     list[1] = second;
@@ -80,4 +80,20 @@ int isOutofBound(Map* m, int* arr) {
         return 1;
     }
     return 0;
+}
+
+void respawnMonster(Map* m) {
+    for (int i = 0; i < m->numOfMonster; i++) {
+        if(m->monstertab[i]->isAlive == 0){
+            m->monstertab[i]->status++;
+            if (m->monstertab[i]->status == 15) {
+                m->monstertab[i]->isAlive = 1;
+            }
+        }
+    }
+    for (int i = 0; i < m->numOfMonster; i++) {
+         if(m->monstertab[i]->isAlive == 1 && m->arr[m->monstertab[i]->x][m->monstertab[i]->y] == 0) {
+            m->arr[m->monstertab[i]->x][m->monstertab[i]->y] = m->monstertab[i]->id;
+         }
+    }
 }

@@ -9,8 +9,8 @@
 #include "weapons.h"
 
 Player * initPlayer ();
-void checkAroundPlayer(Map* m, Player* p, int * index);
-void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck);
+void checkAroundPlayer(Map* m, Player* p, int * index, int * gameContinue);
+void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck, int* gameContinue);
 int isWatchble(Map* m, int x, int y);
 void Leveling (Player * player);
 #endif

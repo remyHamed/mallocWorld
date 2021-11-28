@@ -29,7 +29,7 @@ void diplayPlayerPosition(Map* level, Player* character) {
     }
 }
 
-void checkAroundPlayer(Map* m, Player* p, int * index) {
+void checkAroundPlayer(Map* m, Player* p, int * index, int* gameContinue) {
     int poseTocheck[2] = {0};
     switch (p->orientation) {
         case 1:
@@ -55,11 +55,11 @@ void checkAroundPlayer(Map* m, Player* p, int * index) {
     }
     printf("valeur du tableau de la case à controler %d %d\n", poseTocheck[0],poseTocheck[1]);
     if(isWatchble(m,poseTocheck[0],poseTocheck[1])) {
-        recognitionCaserecognition(m, p, index, poseTocheck);
+        recognitionCaserecognition(m, p, index, poseTocheck, gameContinue);
     }
 }
 
-void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck) {
+void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck, int * gameContinue) {
     printf("\ndans recognitionCaserecognition \nvaleur du tableau de la case à controler %d %d\n", caseTocheck[0],caseTocheck[1]);
     if(m->arr[caseTocheck[0]][caseTocheck[1]] == -3) {
         gateMenu(m, p, index);
@@ -67,10 +67,11 @@ void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck)
     //TODO LOOP MONSTER
     for (size_t i = 0; i < m->numOfMonster; i++){
         if(m->monstertab[i]->x == caseTocheck[0] && m->monstertab[i]->y == caseTocheck[1]) {
-            Battle(p, m->monstertab[i], p->arme,p->def);
+            Battle(p, m->monstertab[i], p->arme,p->def, gameContinue, m);
         }
     }
     
+    respawnMonster(m);
     //TODO LOOP ressource
 }
 
