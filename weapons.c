@@ -5,8 +5,8 @@ Weapons** initWeapons() {
     char** dataFromLine;
     int index = 0;
     Weapons** tabWeapons;
-    int numOfWeaponsModel = countLines("items/weapons.txt");
-    tabWeapons = malloc(sizeof(Weapons*) * numOfWeaponsModel);
+    int numOfMonsterModel = countLines("items/weapons.txt");
+    tabWeapons = malloc(sizeof(Weapons*) * numOfMonsterModel);
     line = malloc(sizeof(char)* 256);
     FILE* file = fopen("items/weapons.txt", "r");
     

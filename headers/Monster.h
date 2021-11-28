@@ -5,9 +5,10 @@
 #define MALLOCWORLD_MONSTER_H
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
-#include "fFileReading.h"
+#include <string.h>
+#include <malloc.h>//ANCHOR, pourquoi avoir mis cette lib??
+
 typedef struct Monster {
     int id;
     int zone;
@@ -18,7 +19,7 @@ typedef struct Monster {
 }Monster;
 
 Monster ** initMonster ();
-Monster* setMonster(char** dataOfMonster);
+Monster* lineToStructMonster(char* line);
 void printMonster(Monster** tabMonster);
 Monster * RandomMonster (Monster** tabMonster);
 void freeMonster(Monster* bakemono);
