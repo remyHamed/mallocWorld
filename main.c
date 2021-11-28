@@ -75,7 +75,7 @@ int main(int argc, char ** argv) {
         while (*gameContinue)  {
             if (*input != '\n') {
                 screenGame(list, player, indexMap);
-                checkAroundPlayer(list[indexMap], player, &indexMap);//TODO mettre le contunue en param
+                checkAroundPlayer(list[indexMap], player, &indexMap, gameContinue);//TODO mettre le contunue en param
                 //printf("\n x = %d\n", player->x);
                 //printf(" y = %d\n", player->y);
                 //printf("size map = %d\n", list[indexMap]->size);

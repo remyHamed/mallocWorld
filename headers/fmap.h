@@ -12,4 +12,5 @@ Map ** initListOfMaps();
 Map ** genAllLevels(Monster** monsterTab);
 Map ** genAllLevelsSaved(int * size,  Monster** monsterTab);
 int isOutofBound(Map* m, int* arr);
+void respawnMonster(Map* m);
 #endif
