@@ -33,6 +33,7 @@ int * genrandomPosition(int mapSize) {
             y  = y - twoPowerRandomPlusonGenerator();
         }
     }
+    printf("genrandomPosition\n x = %d, y = %d\n", x, y);
     arr[0] = x;
     arr[1] = y;
     return arr;

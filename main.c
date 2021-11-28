@@ -38,7 +38,7 @@ int main(int argc, char ** argv) {
         selector = meneGeneral();
         if(selector == NEW_GAME) {
             //printf("1\n");
-            list = genAllLevels();
+            list = genAllLevels(tabmonster);
             //printf("2\n");
             player = initPlayer();
             //printf("3\n");
@@ -49,7 +49,7 @@ int main(int argc, char ** argv) {
 
         if(selector == LOAD_SAVED_GAME && CheckFile(filename) == 1) {
             size = ResumeSize();
-            list = genAllLevelsSaved(size);
+            list = genAllLevelsSaved(size,tabmonster);
             player = initPlayer();
             Resume(player,list);
             *gameContinue = 1;

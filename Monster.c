@@ -84,3 +84,67 @@ void freeMonster(Monster * bakemono) {
     free(bakemono);
     printf("ok\n");
 }
+
+
+Monster **genMonsterarrLevel(int indexMap, int numIdMonsterMin, int numIdMonsterMax, Monster **model, Map *m) {
+    m->numOfMonster = m->size / 4;
+    int* arrRandPosition;
+    Monster** arrMonster = malloc(sizeof(Monster*) * m->numOfMonster);
+    printf("nom of monster  = %d\n",m->numOfMonster);
+    for (int i = 0; i < m->numOfMonster; i++) {
+        printf(" i = %d\n",i);
+        arrMonster[i] = malloc(sizeof(Monster));
+        arrMonster[i]->id = genrandomNumber(numIdMonsterMin, numIdMonsterMax);
+        printf("51\n");
+        arrMonster[i]->zone = indexMap;
+        printf("52\n");
+        arrMonster[i]->name = malloc(sizeof(char) * 255);
+        printf("arrMonster[i]->id = %d\n", arrMonster[i]->id);
+        strcpy(arrMonster[i]->name, model[arrMonster[i]->id]->name);
+        arrMonster[i]->hp = model[arrMonster[i]->id]->hp;
+        printf("53\n");
+        arrMonster[i]->damage = model[arrMonster[i]->id]->damage;
+        arrMonster[i]->exp = model[arrMonster[i]->id]->exp;
+        arrRandPosition = genrandomPosition(m->size - 1);
+        arrMonster[i]->x = arrRandPosition[0];
+        arrMonster[i]->y = arrRandPosition[1];
+        arrMonster[i]->status = 15;
+        arrMonster[i]->isAlive = 1;
+        free(arrRandPosition);
+        printf("arrMonster[i]->id = %d\n",arrMonster[i]->id);
+        printf("id : %d\n", arrMonster[i]->id);
+        printf("zone : %d\n", arrMonster[i]->zone);
+        printf("name : %s\n", arrMonster[i]->name);
+        printf("hp : %d\n", arrMonster[i]->hp);
+        printf("damage : %d\n", arrMonster[i]->damage);
+        printf("exp : %d\n\n", arrMonster[i]->exp);
+        printf("x : %d\n", arrMonster[i]->x);
+        printf("y : %d\n\n", arrMonster[i]->y);
+    }
+    //TODO mettre la fonction qui init les postions du monstre sur le tableau de la carte
+    return arrMonster;
+}
+//TODO
+//fonction generation des montres sur la map
+
+void putMonsterOnMap(Map *m) {
+    int xpos = 0;
+    int ypos = 0;
+    int *arrRandPosition;
+    printf(" nombre de monstre = %d\n",m->numOfMonster);
+    for (int i = 0; i < m->numOfMonster; i++) {
+        xpos = m->monstertab[i]->x;
+        ypos = m->monstertab[i]->y;
+        printf("----////////////----\n");
+        if(m->arr[xpos][ypos] == 0) {
+            m->arr[xpos][ypos] = m->monstertab[i]->id;
+        } else {
+            while(m->arr[xpos][ypos] != 0) {
+                arrRandPosition = genrandomPosition(m->size-1);
+                xpos = arrRandPosition[0];
+                xpos = arrRandPosition[1];
+                free(arrRandPosition);
+            }    
+        }
+    }
+}
