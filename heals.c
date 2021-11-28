@@ -3,10 +3,8 @@
 Heals* findOneHeal(Heals** tabHeals, int index)
 {
     int size_tab = countLines("items/heals.txt");
-    for (int i = 0; i < size_tab; i++)
-    {
-        if (tabHeals[i]->objectId == index)
-        {
+    for (int i = 0; i < size_tab; i++){
+        if (tabHeals[i]->objectId == index){
             return tabHeals[i];
         }
     }
@@ -16,14 +14,11 @@ char** structToTabHeal(Heals* heal)
 {
     char** tabItem = malloc(sizeof(char*) *4);
     char* elem = malloc(sizeof(char) * 255);
-    for(int i = 0; i < 4; i++)
-    {
+    for(int i = 0; i < 4; i++){
         tabItem[i] = malloc(sizeof(char)* 255);
     }
-    for(int i = 0; i < 4; i++)
-    {
-        switch (i)
-        {
+    for(int i = 0; i < 4; i++){
+        switch (i){
             case 0:
                 sprintf(elem, "%d", heal->objectId);
                 strcpy(tabItem[i], elem);
@@ -44,8 +39,7 @@ char** structToTabHeal(Heals* heal)
     return tabItem;
 }
 
-Heals** initHeals()
-{
+Heals** initHeals(){
     char* line;
     char** dataFromLine;
     int index = 0;
@@ -80,7 +74,6 @@ Heals* setOneHeal(char** datasOfHeals)
     strcpy(heal->name, datasOfHeals[2]);
     heal->heal = atoi(datasOfHeals[3]);
    
-
     return heal;
 }
 

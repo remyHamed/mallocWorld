@@ -16,10 +16,10 @@ char** structToTabWeapon(Weapons* weapon)
 {
     char** tabItem = malloc(sizeof(char*) *4);
     char* elem = malloc(sizeof(char) * 255);
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 5; i++){
         tabItem[i] = malloc(sizeof(char)* 255);
     }
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 5; i++){
         switch (i)
         {
             case 0:

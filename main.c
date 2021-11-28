@@ -12,9 +12,7 @@
 #include "headers/bag.h"
 #include "headers/fFileReading.h"
 
-
-int main(int argc, char ** argv) 
-{
+int main(int argc, char ** argv) {
     Heals** tabHeals = initHeals();
     Weapons** tabWeapons = initWeapons();
     Ressources** tabRessources = initRessources();

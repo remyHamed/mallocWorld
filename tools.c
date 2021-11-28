@@ -1,19 +1,15 @@
 #include "headers/tools.h"
 
-Tools* findOneTool(Tools** tabTools, int index)
-{
+Tools* findOneTool(Tools** tabTools, int index){
     int size_tab = countLines("items/tools.txt");
-    for (int i = 0; i < size_tab; i++)
-    {
-        if (tabTools[i]->objectId == index)
-        {
+    for (int i = 0; i < size_tab; i++){
+        if (tabTools[i]->objectId == index){
             return tabTools[i];
         }
     }
 }
 
-char** structToTabTool(Tools* tool)
-{
+char** structToTabTool(Tools* tool){
     char** tabItem = malloc(sizeof(char*) *4);
     char* elem = malloc(sizeof(char) * 255);
     for(int i = 0; i < 4; i++){
@@ -41,8 +37,7 @@ char** structToTabTool(Tools* tool)
     return tabItem;
 }
 
-Tools** initTools()
-{
+Tools** initTools(){
     char* line;
     char** dataFromLine;
     int index = 0;
@@ -68,8 +63,7 @@ Tools** initTools()
     return tabTools;
 }
 
-Tools* setOneTool(char** datasOfTools)
-{
+Tools* setOneTool(char** datasOfTools){
     Tools* tool = malloc(sizeof(Tools));
     tool->name = malloc(sizeof(char) * 256);
     tool->objectId = atoi(datasOfTools[0]);
@@ -77,14 +71,11 @@ Tools* setOneTool(char** datasOfTools)
     strcpy(tool->name, datasOfTools[2]);
     tool->durability = atoi(datasOfTools[3]);
    
-
     return tool;
 }
 
 void printTools(Tools** tabTools) {
-    
-    for (int i = 0; i < 9; i++)
-    {
+    for (int i = 0; i < 9; i++){
         printf("ID : %d\n", tabTools[i]->objectId);
         printf("Size : %d\n", tabTools[i]->size);
         printf("Nom : %s\n", tabTools[i]->name);
@@ -92,8 +83,7 @@ void printTools(Tools** tabTools) {
     }     
 }
 
-void freeTool(Tools * tool)
-{
+void freeTool(Tools * tool){
     free(tool->name);
     free(tool);
     printf(" tool free ok\n");

@@ -1,29 +1,22 @@
 #include "headers/armor.h"
 
-Armors* findOneArmor(Armors** tabArmors, int index)
-{
+Armors* findOneArmor(Armors** tabArmors, int index){
     int size_tab = countLines("items/armors.txt");
-    for (int i = 0; i < size_tab; i++)
-    {
-        if (tabArmors[i]->objectId == index)
-        {
+    for (int i = 0; i < size_tab; i++){
+        if (tabArmors[i]->objectId == index){
             return tabArmors[i];
         }
     }
 }
 
-char** structToTabArmor(Armors* armor)
-{
+char** structToTabArmor(Armors* armor){
     char** tabItem = malloc(sizeof(char*) *4);
     char* elem = malloc(sizeof(char) * 255);
-    for(int i = 0; i < 4; i++)
-    {
+    for(int i = 0; i < 4; i++){
         tabItem[i] = malloc(sizeof(char)* 255);
     }
-    for(int i = 0; i < 4; i++)
-    {
-        switch (i)
-        {
+    for(int i = 0; i < 4; i++){
+        switch (i){
             case 0:
                 sprintf(elem, "%d", armor->objectId);
                 strcpy(tabItem[i], elem);
@@ -44,8 +37,7 @@ char** structToTabArmor(Armors* armor)
     return tabItem;
 }
 
-Armors** initArmors()
-{
+Armors** initArmors(){
     char* line;
     char** dataFromLine;
     int index = 0;
@@ -71,8 +63,7 @@ Armors** initArmors()
     return tabArmors;
 }
 
-Armors* setOneArmor(char** datasOfArmors)
-{
+Armors* setOneArmor(char** datasOfArmors){
     Armors* armure = malloc(sizeof(Armors));
     armure->name = malloc(sizeof(char) * 256);
     armure->objectId = atoi(datasOfArmors[0]);
@@ -84,9 +75,7 @@ Armors* setOneArmor(char** datasOfArmors)
 }
 
 void printArmors(Armors** tabArmors) {
-    
-    for (int i = 0; i < 3; i++)
-    {
+    for (int i = 0; i < 3; i++){
         printf("ID : %d\n", tabArmors[i]->objectId);
         printf("Size : %d\n", tabArmors[i]->size);
         printf("Nom : %s\n", tabArmors[i]->name);
@@ -94,8 +83,7 @@ void printArmors(Armors** tabArmors) {
     }     
 }
 
-void freeArmor(Armors * armure)
-{
+void freeArmor(Armors * armure){
     free(armure->name);
     free(armure);
     printf(" armure free ok\n");
