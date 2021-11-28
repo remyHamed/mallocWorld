@@ -19,10 +19,9 @@ int main(int argc, char ** argv) {
     Armors** tabArmors = initArmors();
     Tools** tabTools = initTools();
     Crafts** tabCrats = initCrafts();
-
     Bag* bag = initStartBag();
+
     char *** contentBag = bag->content;
-    
     char** item = structToTabHeal(findOneHeal(tabHeals, 26));
     addItem(bag, item);
     printf("1");

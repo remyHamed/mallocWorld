@@ -3,25 +3,21 @@
 Weapons* findOneWeapon(Weapons** tabWeapons, int index)
 {
     int size_tab = countLines("items/weapons.txt");
-    for (int i = 0; i < size_tab; i++)
-    {
-        if (tabWeapons[i]->objectId == index)
-        {
+    for (int i = 0; i < size_tab; i++){
+        if (tabWeapons[i]->objectId == index){
             return tabWeapons[i];
         }
     }
 }
 
-char** structToTabWeapon(Weapons* weapon)
-{
+char** structToTabWeapon(Weapons* weapon){
     char** tabItem = malloc(sizeof(char*) *6);
     char* elem = malloc(sizeof(char) * 255);
     for(int i = 0; i < 6; i++){
         tabItem[i] = malloc(sizeof(char)* 255);
     }
     for(int i = 0; i < 6; i++){
-        switch (i)
-        {
+        switch (i){
             case 0:
                 sprintf(elem, "%d", weapon->objectId);
                 strcpy(tabItem[i], elem);
@@ -49,8 +45,7 @@ char** structToTabWeapon(Weapons* weapon)
     return tabItem;
 }
 
-Weapons** initWeapons()
-{
+Weapons** initWeapons(){
     char* line;
     char** dataFromLine;
     int index = 0;
@@ -60,17 +55,14 @@ Weapons** initWeapons()
     line = malloc(sizeof(char)* 256);
     FILE* file = fopen("items/weapons.txt", "r");
     
-    if (file == NULL) 
-    {
+    if (file == NULL) {
         printf("Fichier non ouvert");
     }
     
-    while(fgets(line, 256, file)) 
-    {
+    while(fgets(line, 256, file)) {
         dataFromLine = lineSpliter(line);
         tabWeapons[index] = setOneWeapon(dataFromLine);
-        for(int i = 0; i < 5; i++) 
-        {
+        for(int i = 0; i < 5; i++) {
             free(dataFromLine[i]);
         }
         index ++;
@@ -81,8 +73,7 @@ Weapons** initWeapons()
     return tabWeapons;
 }
 
-Weapons* setOneWeapon(char** datasOfWeapons)
-{
+Weapons* setOneWeapon(char** datasOfWeapons){
     Weapons* arme = malloc(sizeof(Weapons));
     arme->name = malloc(sizeof(char) * 256);
     arme->objectId = atoi(datasOfWeapons[0]);
@@ -97,8 +88,7 @@ Weapons* setOneWeapon(char** datasOfWeapons)
 void printWeapons(Weapons** tabWeapons) {
     int size_tab = (sizeof(tabWeapons)/2) -1;
     // printf("%d\n",size_tab);
-    for (int i = 0; i < 10; i++)
-    {
+    for (int i = 0; i < 10; i++){
         printf("ID : %d\n", tabWeapons[i]->objectId);
         printf("Size : %d\n", tabWeapons[i]->size);
         printf("Nom : %s\n", tabWeapons[i]->name);
