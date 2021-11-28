@@ -17,6 +17,7 @@ struct Armors
 Armors** initArmors();
 Armors* setOneArmor(char** datasOfArmors);
 void printArmors(Armors** tabArmors);
+void printOneArmor(Armors* armor);
 void freeArmor(Armors * arme);
 Armors* findOneArmor(Armors** tabArmors, int index);
 char** structToTabArmor(Armors* armor);

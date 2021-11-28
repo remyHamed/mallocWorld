@@ -20,5 +20,6 @@ void printRessources(Ressources** tabRessources);
 void freeRessource(Ressources * ressource);
 Ressources* findOneRessource(Ressources** tabRessources, int index);
 char** structToTabRessource(Ressources* ressource);
+void printOneRessource(Ressources* ressource);
 
 #endif

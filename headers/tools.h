@@ -16,6 +16,7 @@ struct  Tools
 
 void freeTool(Tools * armure);
 void printTools(Tools** tabTools);
+void printOneTool(Tools* tool);
 Tools* setOneTool(char** datasOfTools);
 Tools** initTools();
 

@@ -21,5 +21,5 @@ void printWeapons(Weapons** tabWeapons);
 void freeWeapon(Weapons * arme);
 Weapons* findOneWeapon(Weapons** tabWeapons, int index);
 char** structToTabWeapon(Weapons* weapon);
-
+void printOneWeapon(Weapons* weapon);
 #endif
