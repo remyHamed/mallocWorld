@@ -7,6 +7,7 @@ Gate* genGate(int xpos, int ypos, int nLevel, int laLevel, int levelYouMustHave,
     g->nextLevel = nLevel;
     g->lastLevel = laLevel;
     g->levelLimit = levelYouMustHave;
-    m->arr[xpos][xpos] = -3;
+    printf("xpos = %d  ypos = %d\n",xpos,ypos);
+    m->arr[xpos][ypos] = -3;
     return g;
 }

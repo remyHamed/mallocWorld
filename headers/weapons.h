@@ -19,4 +19,5 @@ Weapons** initWeapons();
 Weapons* setOneWeapon(char** datasOfWeapons);
 void printWeapons(Weapons** listeWeapons);
 void freeWeapon(Weapons* arme);
+Weapons* setOneWeaponByParams(char* n, int dama, int dura);
 #endif

@@ -5,10 +5,12 @@
 #include "rng.h"
 #include "gate.h"
 #include "fgate.h"
+#include "Monster.h"
 Map * initMap();
 Map * initMapSaved(int size);
 Map ** initListOfMaps();
-Map ** genAllLevels();
-Map ** genAllLevelsSaved(int * size);
+Map ** genAllLevels(Monster** monsterTab);
+Map ** genAllLevelsSaved(int * size,  Monster** monsterTab);
 int isOutofBound(Map* m, int* arr);
+void respawnMonster(Map* m);
 #endif

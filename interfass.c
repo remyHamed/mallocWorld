@@ -102,7 +102,6 @@ void move(Map* l, Player* p, int* continuing, int * index, int* input, int* temp
                 if(p->y + 1 < l->size) {
                     l->arr[p->x][p->y] = 0;
                     p->y += 1;
-                    
                     l->arr[p->x][p->y] = 1;
                 }
                 break;
@@ -140,6 +139,21 @@ int meneGeneral(){
 }
 
 int isMovable(Map* l,Player * p, int* index, int x, int y) {
+   if(x < 0) {
+        return 0;
+    }
+    if(x >= l->size) {
+        return 0;
+    }
+    if(y < 0) {
+        return 0;
+    }
+    if(y >= l->size) {
+        return 0;
+    }
+    if(l->arr[x][y] != 0) {
+        return 0;
+    }
     if(l->arr[x][y] == -3) {
         return 0;
     }

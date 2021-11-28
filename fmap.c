@@ -1,16 +1,10 @@
 #include "headers/fmap.h"
 
 Map * initMap() {
-    printf("debut function init map\n");
     Map * m = malloc(sizeof(Map));
-    printf("1\n");
     m->size = 50;//genrandomSizeMap();
-    printf("2\n");
     m->arr = genArr2d(m->size); 
-    printf("3\n");
-    printf("\n initMap  m->size = %d\n", m->size);
     m->g = NULL;
-    printf("FIN init map\n");
     return m;
 }
 
@@ -18,7 +12,6 @@ Map * initMapSaved(int size) {
     Map * m = malloc(sizeof(Map));
     m->size = size;
     m->arr = genArr2d(m->size); 
-    printf("\n initMap  m->size = %d\n", m->size);
     m->g = NULL;
     return m;
 }
@@ -28,7 +21,7 @@ Map ** initListOfMaps() {
     return list;
 }
 
-Map ** genAllLevelsSaved(int* size) {
+Map ** genAllLevelsSaved(int* size, Monster** monsterTab) {
     Map** list = initListOfMaps();
     Map* first = initMapSaved(size[0]);
     Map* second = initMapSaved(size[1]);
@@ -44,38 +37,32 @@ Map ** genAllLevelsSaved(int* size) {
     return list;
 }
 
-Map ** genAllLevels() {
-    printf("debut Map ** genAllLevels\n");
+Map ** genAllLevels(Monster** monsterTab) {
     Map** list = initListOfMaps(); 
     Map* first = initMap();
     Map* second = initMap();
     Map* third = initMap();
-    printf("1\n");
     int * arrRandPosition;
     first->levelLimit = 3;
     second->levelLimit = 3;
     third->levelLimit = 7;
-    printf("2\n");
-    arrRandPosition = genrandomPosition(first->size);
-    printf("3\n");
+    arrRandPosition = genrandomPosition(first->size - 1);
+    first->monstertab = genMonsterarrLevel( 0, 12, 18, monsterTab, first);
+    putMonsterOnMap(first,first->monstertab); 
     first->g = genGate(arrRandPosition[0], arrRandPosition[1], 0, 1,first->levelLimit, first);
-    printf("4\n");
     free(arrRandPosition);
-    printf("5\n");
-    arrRandPosition = genrandomPosition(second->size);
-    printf("6\n");
+    arrRandPosition = genrandomPosition(second->size - 1);
+    second->monstertab = genMonsterarrLevel(1, 19, 25, monsterTab, second);
+    putMonsterOnMap(second, second->monstertab); 
     second->g = genGate(arrRandPosition[0], arrRandPosition[1],1, 2,second->levelLimit, second);
-    printf("7\n");
     free(arrRandPosition);
-    printf("8\n");
-    arrRandPosition = genrandomPosition(third->size);
-    printf("9\n");
+    arrRandPosition = genrandomPosition(third->size - 1);
+    third->monstertab = genMonsterarrLevel( 2, 26, 32, monsterTab, third);
+    putMonsterOnMap(third, third->monstertab);
     third->g = genGate(arrRandPosition[0], arrRandPosition[1],1, 2,third->levelLimit, third);
-    printf("10\n");
     list[0] = first;
     list[1] = second;
     list[2] = third;
-    printf("FIN init map\n");
     return list;
 }
 
@@ -93,4 +80,20 @@ int isOutofBound(Map* m, int* arr) {
         return 1;
     }
     return 0;
+}
+
+void respawnMonster(Map* m) {
+    for (int i = 0; i < m->numOfMonster; i++) {
+        if(m->monstertab[i]->isAlive == 0){
+            m->monstertab[i]->status++;
+            if (m->monstertab[i]->status == 15) {
+                m->monstertab[i]->isAlive = 1;
+            }
+        }
+    }
+    for (int i = 0; i < m->numOfMonster; i++) {
+         if(m->monstertab[i]->isAlive == 1 && m->arr[m->monstertab[i]->x][m->monstertab[i]->y] == 0) {
+            m->arr[m->monstertab[i]->x][m->monstertab[i]->y] = m->monstertab[i]->id;
+         }
+    }
 }

@@ -16,8 +16,8 @@ int genrandomSizeMap() {
 }
 
 int * genrandomPosition(int mapSize) {
-    int x = (mapSize / 2) * twoPowerRandomPlusonGenerator();
-    int y = (mapSize / 2) * twoPowerRandomPlusonGenerator();
+    int x = genrandomNumber(0,mapSize);
+    int y = genrandomNumber(0,mapSize);
     int * arr = malloc(sizeof(int) * 2);
     while (x > mapSize || x < 0) {
         if(x < 0) {
@@ -33,6 +33,7 @@ int * genrandomPosition(int mapSize) {
             y  = y - twoPowerRandomPlusonGenerator();
         }
     }
+    printf("genrandomPosition\n x = %d, y = %d\n", x, y);
     arr[0] = x;
     arr[1] = y;
     return arr;
