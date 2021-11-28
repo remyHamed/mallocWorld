@@ -1,5 +1,14 @@
 #include "headers/bag.h"
 
+int isExist(Bag* bag, int index){
+    for(int i = 0; i < 10; i++){
+        if(index == bag->content[i][0]){
+            return 1;
+        }
+    }
+    return 0;
+}
+
 char** lookingAllRessources(Bag* bag){
     int* ressourcesInBag = malloc(sizeof(int) * 10);
     int count = 0;
@@ -60,14 +69,22 @@ char** lookingAllHeals(Bag* bag){
 
 Bag* addItem(Bag* bag, char** item){
     int lastElem = bag->size;
+    int sizeItem = item[2];
     if (lastElem == 9){
         printf("Votre sac est plein il n'est pas possible d'y ajouter de nouveaux éléments !\n");
         return bag;
     }
     else{
-        bag->content[lastElem] = item;
-        bag->size = bag->size + 1;
-        return bag;
+        if (!isExist(bag, item[0])){
+            item[sizeItem + 1] = item[sizeItem + 1] + 1;
+            bag->content[lastElem] = item;
+            bag->size = bag->size + 1;
+            return bag;
+        }else{
+            bag->content[lastElem] = item;
+            bag->size = bag->size + 1;
+            return bag;
+        }
     }
 }
 
@@ -130,7 +147,7 @@ char*** createStartBag(){
 void printBag(char*** bag) {
     for(int i = 0; i < 10; i++) {
         int size = atoi(bag[i][1]);
-        for(int j = 0; j != size; j++) {
+        for(int j = 0; j != size + 1; j++) {
             printf("%s\n", bag[i][j]);
         }
     }
