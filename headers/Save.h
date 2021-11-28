@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Player.h"
+#include "player.h"
 #include "fmap.h"
 int CheckFile (char * filename);
 void Save (Player * player, Map ** list);

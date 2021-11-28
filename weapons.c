@@ -41,6 +41,15 @@ Weapons* setOneWeapon(char** datasOfWeapons) {
     return arme;
 }
 
+Weapons* setOneWeaponByParams(char* n, int dama, int dura) {
+    Weapons* arme = malloc(sizeof(Weapons));
+    arme->name = malloc(sizeof(char) * 256);
+    strcpy(arme->name, n);
+    arme->damage = dama;
+    arme->durability = dura;
+    return arme;
+}
+
 void printWeapons(Weapons** tabWeapons) {
     int size_tab = (sizeof(tabWeapons)/2) -1;
     // printf("%d\n",size_tab);

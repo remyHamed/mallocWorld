@@ -2,12 +2,13 @@
 // Created by vette on 29/10/2021.
 //
 
-#ifndef MALLOCWORLD_PLAYER_H
-#define MALLOCWORLD_PLAYER_H
+#ifndef player_h 
+#define player_h
 #include <stdio.h>
-#include <malloc.h>
-
-typedef struct Player {
+typedef struct Player Player;
+#include "weapons.h"
+#include "armor.h"
+struct Player {
     int currentHp;
     int maxHp;
     int exp;
@@ -21,7 +22,9 @@ typedef struct Player {
                     // 2 gauche
                     // 3 droite
                     // 4 bas
-}Player;
+    Weapons* arme;
+    Armors* def;
+};
 
 
 #endif //MALLOCWORLD_PLAYER_H

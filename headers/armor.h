@@ -3,16 +3,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "fFileReading.h"
 
 typedef struct Armors Armors;
 struct Armors
 {
+    int objectId;
+    int size;
     char* name;
     int resDamage;
 };
 
 Armors** initArmors();
-void printArmors(Armors**);
-Armors* lineToStructArmors(char*);
-void freeArmors(Armors* armure);
+Armors* setOneArmor(char** datasOfArmors);
+void printArmors(Armors** tabArmors);
+void freeArmor(Armors * arme);
+Armors* findOneArmor(Armors** tabArmors, int index);
+char** structToTabArmor(Armors* armor);
+Armors* setOneArmorByParams(char* n, int id, int s, int res);
 #endif

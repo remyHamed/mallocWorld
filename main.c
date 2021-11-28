@@ -72,13 +72,10 @@ int main(int argc, char ** argv) {
             *gameContinue = 0;
             live = 0;
         }
-        printf("5\n");
         while (*gameContinue)  {
-            printf("joueur x = %d\n", player->x);
-            printf("joueur y = %d\n", player->y);
             if (*input != '\n') {
                 screenGame(list, player, indexMap);
-                checkAroundPlayer(list[indexMap], player, &indexMap);
+                checkAroundPlayer(list[indexMap], player, &indexMap);//TODO mettre le contunue en param
                 //printf("\n x = %d\n", player->x);
                 //printf(" y = %d\n", player->y);
                 //printf("size map = %d\n", list[indexMap]->size);
@@ -98,7 +95,7 @@ int main(int argc, char ** argv) {
         freeWeapon(tabweapon[i]);
     }
     for(int i = 0; i < 3; i++) {
-        freeArmors(tabarmor[i]);
+        freeArmor(tabarmor[i]);
     }
     free(player);
     free(list);//TODO fonction de liberation de la liste

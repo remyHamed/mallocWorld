@@ -3,56 +3,53 @@
 //
 #include "headers/Battle.h"
 
-void choices (Player * player, Monster * monster,Weapons * weapon, int *choice) {
+void selectActions(Player * player, Monster * monster,Weapons * weapon, int *choice) {
     Heals ** tabheal = initHeals();
-    
-    if (*choice == 1) {
-        printf("monster pv: %d to ",monster->hp);
-        monster->hp -= weapon->damage;
-        printf("%d \n\n",monster->hp);
-        weapon->durability-= 1;
-    }
-    else if (*choice == 2) {
-        int id = 0;
-        if (player->currentHp != player->maxHp) {
-            printf("1) potion 1 : 30pv\n2) potion 2 : 80pv\n3) potion 3 : 200pv\n");
-            scanf("%d", &id);
-            id--;
-            if (id < 3 && id >= 0) {
-                printf("player pv: %d/%d to ",player->currentHp,player->maxHp);
-                if (player->currentHp+tabheal[id]->heal > player->maxHp) {
-                    int restepv = player->maxHp - player->currentHp;
-                    player->currentHp += restepv;
+    int next = 0;
+    do {    
+        if (*choice == 1) {
+            printf("monster pv: %d to ",monster->hp);
+            monster->hp -= weapon->damage;
+            printf("%d \n\n",monster->hp);
+            weapon->durability-= 1;
+            next = 0;
+        }
+        else if (*choice == 2) {
+            int id = 0;
+            if (player->currentHp != player->maxHp) {
+                printf("1) potion 1 : 30pv\n2) potion 2 : 80pv\n3) potion 3 : 200pv\n");
+                scanf("%d", &id);
+                id--;
+                if (id < 3 && id >= 0) {
+                    printf("player pv: %d/%d to ",player->currentHp,player->maxHp);
+                    if (player->currentHp+tabheal[id]->heal > player->maxHp) {
+                        int restepv = player->maxHp - player->currentHp;
+                        player->currentHp += restepv;
+                    }else {
+                        player->currentHp += tabheal[id]->heal;
+                    }
+                    printf("%d/%d \n\n",player->currentHp,player->maxHp);
+                    next = 0;
                 }else {
-                    player->currentHp += tabheal[id]->heal;
+                    printf("wrong choice\nretry:\n");
                 }
-                printf("%d/%d \n\n",player->currentHp,player->maxHp);
             }else {
-                printf("wrong choice\nretry:\n");
-                choices (player,monster,weapon,choice);
+                if (*choice != 3) {
+                    printf("You can't use it\nchoose another action :\n");
+                }
             }
-        }else {
+        }
+        else {
             if (*choice != 3) {
-                printf("You can't use it\nchoose another action :\n");
-                scanf("%d", choice);
-                choices (player,monster,weapon,choice);
+                printf("wrong choice\nretry:\n");
             }
         }
-    }
-    else {
-        if (*choice != 3) {
-            printf("wrong choice\nretry:\n");
-            scanf("%d", choice);
-            choices (player,monster,weapon,choice);
-        }
-    }
+
+    } while(next);
     free(tabheal);
 }
 
-void Battle(Player *player, Monster ** tabmonster, Weapons ** tabweapon, Armors ** tabarmor) {
-    Monster * monster = RandomMonster(tabmonster);
-    Weapons * weapon = tabweapon[0];
-    Armors * armor = tabarmor[0];
+void Battle(Player *player, Monster* monster, Weapons* weapon, Armors* armor) {
     printf("monster name : %s \n",monster->name);
     char currentPlayer='1';
     int reducDamage = (armor->resDamage * monster->damage) /100;
@@ -64,7 +61,6 @@ void Battle(Player *player, Monster ** tabmonster, Weapons ** tabweapon, Armors 
             printf("durability : %d\n",weapon->durability);
             printf("choose a action : \n 1) attack \n 2) potion \n 3) escape \n");
             scanf("%d", &choice);
-            choices(player, monster, weapon, &choice);
             if (choice == 3){
                 int chance = rand() % 100;
                 printf("%d \n",chance);
@@ -76,6 +72,7 @@ void Battle(Player *player, Monster ** tabmonster, Weapons ** tabweapon, Armors 
                     printf("you failed to escape \n");
                 }
             }
+            selectActions(player, monster, weapon, &choice);
             if (monster->hp <= 0) {
                 break;
             } else{
@@ -103,6 +100,7 @@ void Battle(Player *player, Monster ** tabmonster, Weapons ** tabweapon, Armors 
             Leveling(player);
             printf("lvl : %d\ncurrent hp : %d max hp : %d\n\n",player->level,player->currentHp,player->maxHp);
         }
+        monster->isAlive = 0;
     }
     if (player->currentHp <= 0) {
         printf("\n%s is the winner\n",monster->name);

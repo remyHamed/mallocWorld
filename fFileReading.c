@@ -9,7 +9,6 @@ void readFile(const char* pathToFile) {
         printf("Fichier non ouvert");
     }
     while(fgets(line, 255, file)) {
-        printf("%s",line);
         lineSpliter(line);
     }
     fclose(file);
@@ -17,7 +16,6 @@ void readFile(const char* pathToFile) {
 }
 
 char** lineSpliter(char * str) {
-    printf(" num élélemnt %d\n", getnumberofparts(str));
     int num = getnumberofparts(str);
     char** arr = malloc(sizeof(char*) * num);
     char* pStart;
@@ -29,18 +27,14 @@ char** lineSpliter(char * str) {
     for (int i = 0; i < num -1; i++) {
         while (*pEnd != '|') {
             pEnd++;
-           // printf("%c\n", *pEnd);
         }
         *pEnd='\0';
         lenght = strlen(pStart);
         arr[index] = malloc(sizeof(char) * lenght + 1 );
         strcpy(arr[index], pStart);
-        printf(" donné en enregister %s\n", arr[index]);
-        //printf("pEnd = %c\n", *pEnd);
         pEnd++;
         pStart = pEnd++;
         index++;
-        //printf("pstart = %c\n", *pStart);
     }
     while (*pEnd != '@') {
         pEnd++;
@@ -49,7 +43,6 @@ char** lineSpliter(char * str) {
     lenght = strlen(pStart);
     arr[index] = malloc(sizeof(char) * lenght + 1 );
     strcpy(arr[index], pStart);
-    printf("%s\n", arr[index]);
     pStart = pEnd++;
     return arr;
 }
