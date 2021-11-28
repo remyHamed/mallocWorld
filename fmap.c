@@ -81,19 +81,3 @@ int isOutofBound(Map* m, int* arr) {
     }
     return 0;
 }
-
-void respawnMonster(Map* m) {
-    for (int i = 0; i < m->numOfMonster; i++) {
-        if(m->monstertab[i]->isAlive == 0){
-            m->monstertab[i]->status++;
-            if (m->monstertab[i]->status == 15) {
-                m->monstertab[i]->isAlive = 1;
-            }
-        }
-    }
-    for (int i = 0; i < m->numOfMonster; i++) {
-         if(m->monstertab[i]->isAlive == 1 && m->arr[m->monstertab[i]->x][m->monstertab[i]->y] == 0) {
-            m->arr[m->monstertab[i]->x][m->monstertab[i]->y] = m->monstertab[i]->id;
-         }
-    }
-}

@@ -13,11 +13,9 @@
 #include "weapons.h"
 #include "heals.h"
 #include "armor.h"
-#include "map.h"
 
 
 void selectActions(Player * player, Monster * monster,Weapons * weapon, int *choice);
-void Battle(Player *player, Monster* monster, Weapons * weapon, Armors * armor, int* gameContinue, Map* m);
-
+void Battle(Player *player, Monster* monster, Weapons * weapon, Armors * armor);
 
 #endif //MALLOCWORLD_BATTLE_H
