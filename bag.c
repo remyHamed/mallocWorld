@@ -154,10 +154,8 @@ void printBag(Bag* bag) {
     int sizeBag = bag->size;
     for(int i = 0; i < sizeBag; i++) {
         int size = atoi(bag->content[i][1]);
-        printf("i: %d\n", i);
         for(int j = 0; j < size + 1; j++) {
-            printf("j: %d", j);
-            // printf("%s\n", bag[i][j]);
+            printf("%s\n", bag->content[i][j]);
         }
         printf("\n");
     }

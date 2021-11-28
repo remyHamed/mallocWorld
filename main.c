@@ -22,14 +22,14 @@ int main(int argc, char ** argv) {
     Bag* bag = initStartBag();
 
     Weapons* arme1 = findOneWeapon(tabWeapons, 30);
-    
-    char** item3 = structToTabWeapon(arme1);
-    addItem(bag, item3);
+    printOneWeapon(arme1);
+    // char** item3 = structToTabWeapon(arme1);
+    // addItem(bag, item3);
 
-    Heals* soin1 = findOneHeal(tabHeals, 26);
-
-    char** item = structToTabHeal(soin1);
-    addItem(bag, item);
+    // Heals* soin1 = findOneHeal(tabHeals, 26);
+    // printOneHeal(soin1);
+    // char** item = structToTabHeal(soin1);
+    // addItem(bag, item);
     // printf("1");
     // char** item2 = structToTabHeal(findOneHeal(tabHeals, 26));
     // addItem(bag, item2);
