@@ -1,10 +1,22 @@
 {
     "files.associations": {
+<<<<<<< HEAD
         "monster.h": "c",
         "cstdio": "c",
         "*.tcc": "c",
         "fstream": "c",
         "sstream": "c",
         "streambuf": "c"
+=======
+        "heals.h": "c",
+        "stdio.h": "c",
+        "typeinfo": "c",
+        "ressources.h": "c",
+        "armor.h": "c",
+        "algorithm": "c",
+        "bag.h": "c",
+        "craft.h": "c",
+        "ffilereading.h": "c"
+>>>>>>> quentin
     }
 }

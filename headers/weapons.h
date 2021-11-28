@@ -4,20 +4,23 @@
 #include <stdlib.h>
 #include <string.h>
 #include "fFileReading.h"
+
 typedef struct Weapons Weapons;
-struct  Weapons {
+struct  Weapons
+{
+    int objectId;
+    int size;
     char* name;
     int damage;
     int durability;
-
-    struct Weapons* next;
 };
-
-typedef struct ListeWeapons ListeWeapons;
 
 Weapons** initWeapons();
 Weapons* setOneWeapon(char** datasOfWeapons);
-void printWeapons(Weapons** listeWeapons);
-void freeWeapon(Weapons* arme);
+void printWeapons(Weapons** tabWeapons);
+void freeWeapon(Weapons * arme);
+Weapons* findOneWeapon(Weapons** tabWeapons, int index);
+char** structToTabWeapon(Weapons* weapon);
+void printOneWeapon(Weapons* weapon);
 Weapons* setOneWeaponByParams(char* n, int dama, int dura);
 #endif

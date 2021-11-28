@@ -60,7 +60,10 @@ int getnumberofparts(char * str) {
     return numOfPart;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> quentin
 int countLines(char* pathToFile) {
     int index = 0;
     char* line;

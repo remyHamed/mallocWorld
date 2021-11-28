@@ -1,0 +1,3 @@
+11|4|Plastron en pierre|10@
+22|4|Plastron en fer|20@
+33|4|Plastron en diamant|40@
