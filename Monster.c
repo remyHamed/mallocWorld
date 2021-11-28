@@ -13,7 +13,7 @@ Monster ** initMonster () {
     if (file == NULL) {
         printf("Fichier non ouvert");
     } else {
-        printf("\nfile isd open\n");
+        printf("\nfile is open\n");
     }
  
     while(fgets(line, 256, file)) {
@@ -40,12 +40,8 @@ Monster* setMonster(char** dataOfMonster) {
     bakemono->hp = atoi(dataOfMonster[3]);
     bakemono->damage = atoi(dataOfMonster[4]);
     bakemono->exp = atoi(dataOfMonster[5]);
-    printf("Nom : %s\n", bakemono->name);
-    printf("Damage : %d\n\n", bakemono->damage);
-    printf("Nom : %s\n", bakemono->name);
-    printf("Damage : %d\n\n", bakemono->damage);
-    printf("Nom : %s\n", bakemono->name);
-    printf("Damage : %d\n\n", bakemono->damage);
+    // printf("Nom : %s\n", bakemono->name);
+    // printf("Damage : %d\n\n", bakemono->damage);
     return bakemono;
     
   /*  printf("id : %d\n", bakemono->id);
@@ -86,23 +82,33 @@ Monster **genMonsterarrLevel(int indexMap, int numIdMonsterMin, int numIdMonster
     printf("nb of monster  = %d\n",m->numOfMonster);
     for (int i = 0; i < m->numOfMonster-1; i++)
     {
-        //printf("error is not hear i = %d\n",i);
         arrMonster[i] = malloc(sizeof(Monster));
         arrMonster[i]->id = genrandomNumber(numIdMonsterMin, numIdMonsterMax);
-        //printf("arrMonster[i]->id = %d\n",arrMonster[i]->id);
+        // printf("arrMonster[i]->id = %d\n",arrMonster[i]->id);
+        printf("error is not hear 0 i = %d\n",i);
         arrMonster[i]->zone = indexMap;
+        printf("error is not hear 1 i = %d\n",i);
         arrMonster[i]->name = malloc(sizeof(char*) * 255);
-        strcpy(arrMonster[i]->name, model[arrMonster[i]->id]->name);
-        arrMonster[i]->hp = model[arrMonster[i]->id]->hp;
-        arrMonster[i]->damage = model[arrMonster[i]->id]->damage;
-        arrMonster[i]->exp = model[arrMonster[i]->id]->exp;
+        printf("error is not hear 2 i = %d\n",i);
+        strcpy(arrMonster[i]->name, model[5]->name);
+        printf("error is not hear 3 i = %d\n",i);
+        arrMonster[i]->hp = model[5]->hp;
+        printf("error is not hear 4 i = %d\n",i);
+        arrMonster[i]->damage = model[5]->damage;
+        printf("error is not hear 5 i = %d\n",i);
+        arrMonster[i]->exp = model[5]->exp;
+        printf("error is not hear 6 i = %d\n",i);
         arrRandPosition = genrandomPosition(m->size-1);
+        printf("error is not hear 7 i = %d\n",i);
         arrMonster[i]->x = arrRandPosition[0];
-        printf("arrRandPosition 1 = %d\n",arrRandPosition[0]);
+        printf("error is not hear 8 i = %d\n",i);
+        // printf("arrRandPosition 1 = %d\n",arrRandPosition[0]);
         arrMonster[i]->y = arrRandPosition[1];
-        printf("arrRandPosition 2 = %d\n",arrRandPosition[1]);
+        printf("error is not hear 9 i = %d\n",i);
         arrMonster[i]->status = 15;
+        printf("error is not hear 10 i = %d\n",i);
         arrMonster[i]->isAlive = 1;
+        printf("error is not hear 11 i = %d\n",i);
         free(arrRandPosition);
     }
     //TODO mettre la fonction qui init les postions du monstre sur le tableau de la carte

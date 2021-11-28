@@ -37,13 +37,13 @@ int main() {
         fflush(stdout);
         selector = meneGeneral();
         if(selector == NEW_GAME) {
-            printf("1\n");
-            list = genAllLevels();
-            printf("2\n");
+            printf("1 main\n");
+            list = genAllLevels(tabmonster);
+            printf("2 main\n");
             player = initPlayer();
-            printf("3\n");
+            printf("3 main\n");
             list[indexMap]->arr[0][0] = 1;// cette ligne place le joueur
-            printf("4\n");
+            printf("4 main\n");
             *gameContinue = 1;
         }
 
@@ -72,7 +72,7 @@ int main() {
             *gameContinue = 0;
             live = 0;
         }
-        printf("5\n");
+        printf("5 main\n");
         while (*gameContinue)  {
             if (*input != '\n') {
                 screenGame(list, player, indexMap);

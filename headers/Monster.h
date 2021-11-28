@@ -7,10 +7,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+typedef struct Monster Monster;
 #include "fFileReading.h"
 #include "Map.h"
+#include "rng.h"
 
-typedef struct Monster {
+struct Monster {
     int id;
     int zone;
     char* name;
@@ -21,11 +23,13 @@ typedef struct Monster {
     int y;
     int status;// count each round before respown
     int isAlive;
-}Monster;
+};
 
 Monster ** initMonster ();
 Monster* setMonster(char** dataOfMonster);
 void printMonster(Monster** tabMonster);
 Monster * RandomMonster (Monster** tabMonster);
+Monster **genMonsterarrLevel(int indexMap, int numIdMonsterMin, int numIdMonsterMax, Monster **model, Map *m);
+void putMonsterOnMap(Map *m);
 void freeMonster(Monster* bakemono);
 #endif //MALLOCWORLD_MONSTER_H
