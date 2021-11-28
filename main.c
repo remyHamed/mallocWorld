@@ -48,11 +48,11 @@ int main() {
         }
 
         if(selector == LOAD_SAVED_GAME && CheckFile(filename) == 1) {
-            // size = ResumeSize();
-            // list = genAllLevelsSaved(size, tabmonster);
-            // player = initPlayer();
-            // Resume(player,list);
-            // *gameContinue = 1;
+            size = ResumeSize();
+            list = genAllLevelsSaved(size, tabmonster);
+            player = initPlayer();
+            Resume(player,list);
+            *gameContinue = 1;
             // printf(" tab : %d\n",list[0]->arr[0][4]);
             // printf("%d\n",player->level);
             // printf("%d\n",player->exp);

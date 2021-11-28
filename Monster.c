@@ -85,54 +85,44 @@ Monster **genMonsterarrLevel(int indexMap, int numIdMonsterMin, int numIdMonster
         arrMonster[i] = malloc(sizeof(Monster));
         arrMonster[i]->id = genrandomNumber(numIdMonsterMin, numIdMonsterMax);
         // printf("arrMonster[i]->id = %d\n",arrMonster[i]->id);
-        printf("error is not hear 0 i = %d\n",i);
         arrMonster[i]->zone = indexMap;
-        printf("error is not hear 1 i = %d\n",i);
         arrMonster[i]->name = malloc(sizeof(char*) * 255);
-        printf("error is not hear 2 i = %d\n",i);
-        strcpy(arrMonster[i]->name, model[5]->name);
-        printf("error is not hear 3 i = %d\n",i);
-        arrMonster[i]->hp = model[5]->hp;
-        printf("error is not hear 4 i = %d\n",i);
-        arrMonster[i]->damage = model[5]->damage;
-        printf("error is not hear 5 i = %d\n",i);
-        arrMonster[i]->exp = model[5]->exp;
-        printf("error is not hear 6 i = %d\n",i);
+        strcpy(arrMonster[i]->name, model[arrMonster[i]->id-12]->name);
+        arrMonster[i]->hp = model[arrMonster[i]->id-12]->hp;
+        arrMonster[i]->damage = model[arrMonster[i]->id-12]->damage;
+        arrMonster[i]->exp = model[arrMonster[i]->id-12]->exp;
         arrRandPosition = genrandomPosition(m->size-1);
-        printf("error is not hear 7 i = %d\n",i);
         arrMonster[i]->x = arrRandPosition[0];
-        printf("error is not hear 8 i = %d\n",i);
         // printf("arrRandPosition 1 = %d\n",arrRandPosition[0]);
         arrMonster[i]->y = arrRandPosition[1];
-        printf("error is not hear 9 i = %d\n",i);
         arrMonster[i]->status = 15;
-        printf("error is not hear 10 i = %d\n",i);
         arrMonster[i]->isAlive = 1;
-        printf("error is not hear 11 i = %d\n",i);
         free(arrRandPosition);
     }
     //TODO mettre la fonction qui init les postions du monstre sur le tableau de la carte
+    //putMonsterOnMap(m , arrMonster);
     return arrMonster;
 }
 //TODO
 //fonction generation des montres sur la map
 
-void putMonsterOnMap(Map *m) {
+void putMonsterOnMap(Map *m, Monster ** model) {
+    m->monstertab = model;
     int xpos = 0;
     int ypos = 0;
     int *arrRandPosition;
-    
+
     for (int i = 0; i < m->numOfMonster; i++) {
-        xpos = m->monstertab[i]->x;
-        xpos = m->monstertab[i]->y;
+        xpos =  m->monstertab[i]->x;
+        ypos = m->monstertab[i]->y;
         if(m->arr[xpos][ypos] == 0) {
             m->arr[xpos][ypos] = m->monstertab[i]->id;
         } else {
             while(m->arr[xpos][ypos] != 0) {
-                arrRandPosition = genrandomPosition(m->size);
-                xpos = arrRandPosition[0];
-                xpos = arrRandPosition[1];
-                free(arrRandPosition);
+                    arrRandPosition = genrandomPosition(m->size-1);
+                    xpos = arrRandPosition[0];
+                    ypos = arrRandPosition[1];
+                    free(arrRandPosition);
             }    
         }
     }
