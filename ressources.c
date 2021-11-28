@@ -87,6 +87,13 @@ void printRessources(Ressources** tabRessources) {
     }     
 }
 
+void printOneRessource(Ressources* ressource) {
+    printf("ID : %d\n", ressource->objectId);
+    printf("Size : %d\n", ressource->size);
+    printf("Nom : %s\n", ressource->name);
+    printf("Damage : %d\n", ressource->holdLimit);
+}
+
 void freeRessource(Ressources * ressource){
     free(ressource->name);
     free(ressource);

@@ -87,6 +87,13 @@ void printTools(Tools** tabTools) {
     }     
 }
 
+void printOneTool(Tools* tool) {
+    printf("ID : %d\n", tool->objectId);
+    printf("Size : %d\n", tool->size);
+    printf("Nom : %s\n", tool->name);
+    printf("Damage : %d\n", tool->durability);
+}
+
 void freeTool(Tools * tool){
     free(tool->name);
     free(tool);

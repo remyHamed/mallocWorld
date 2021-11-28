@@ -96,6 +96,14 @@ void printWeapons(Weapons** tabWeapons) {
     }     
 }
 
+void printOneWeapon(Weapons* weapon) {
+    printf("ID : %d\n", weapon->objectId);
+    printf("Size : %d\n", weapon->size);
+    printf("Nom : %s\n", weapon->name);
+    printf("Damage : %d\n", weapon->damage);
+    printf("Durability : %d\n\n", weapon->durability);
+}
+
 void freeWeapon(Weapons * arme)
 {
     free(arme->name);

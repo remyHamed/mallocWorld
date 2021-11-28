@@ -92,6 +92,13 @@ void printHeals(Heals** tabHeals) {
     }     
 }
 
+void printOneHeal(Heals* heal) {
+    printf("ID : %d\n", heal->objectId);
+    printf("Size : %d\n", heal->size);
+    printf("Nom : %s\n", heal->name);
+    printf("Damage : %d\n", heal->heal);
+}
+
 void freeHeal(Heals * heal)
 {
     free(heal->name);

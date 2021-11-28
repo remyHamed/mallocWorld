@@ -87,6 +87,14 @@ void printArmors(Armors** tabArmors) {
     }     
 }
 
+void printOneArmor(Armors* armor) {
+    printf("ID : %d\n", armor->objectId);
+    printf("Size : %d\n", armor->size);
+    printf("Nom : %s\n", armor->name);
+    printf("Damage : %d\n", armor->resDamage);
+}
+
+
 void freeArmor(Armors * armure){
     free(armure->name);
     free(armure);
