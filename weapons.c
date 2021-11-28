@@ -42,6 +42,7 @@ char** structToTabWeapon(Weapons* weapon){
                 break;
         }
     }
+    free(elem);
     return tabItem;
 }
 
@@ -54,11 +55,9 @@ Weapons** initWeapons(){
     tabWeapons = malloc(sizeof(Weapons*) * numOfWeaponsModel);
     line = malloc(sizeof(char)* 256);
     FILE* file = fopen("items/weapons.txt", "r");
-    
     if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    
     while(fgets(line, 256, file)) {
         dataFromLine = lineSpliter(line);
         tabWeapons[index] = setOneWeapon(dataFromLine);

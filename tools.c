@@ -37,6 +37,7 @@ char** structToTabTool(Tools* tool){
                 break;
         }
     }
+    free(elem);
     return tabItem;
 }
 

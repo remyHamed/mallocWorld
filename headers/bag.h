@@ -13,7 +13,7 @@ struct  Bag
 
 Bag* initStartBag();
 char*** createStartBag();
-void printBag(char*** bag);
+void printBag(Bag* bag);
 Bag* addItem(Bag* bag, char** item);
 int isExist(Bag* bag, int index);
 int* lookingAllRessources(Bag* bag);

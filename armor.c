@@ -37,6 +37,7 @@ char** structToTabArmor(Armors* armor){
                 break;
         }
     }
+    free(elem);
     return tabItem;
 }
 

@@ -39,6 +39,7 @@ char** structToTabHeal(Heals* heal)
                 break;
         }
     }
+    free(elem);
     return tabItem;
 }
 
