@@ -1,7 +1,7 @@
 #include "headers/bag.h"
 
 char** lookingAllRessources(Bag* bag){
-    char** ressourcesInBag = malloc(sizeof(char*) * 10);
+    int* ressourcesInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
         if(bag->content[i][0] == 1 || bag->content[i][0] == 8 || bag->content[i][0] == 9        // Oui c'est horrible
@@ -9,15 +9,15 @@ char** lookingAllRessources(Bag* bag){
             || bag->content[i][0] == 30 || bag->content[i][0] == 31 || bag->content[i][0] == 32 // Non j'ai pas eu le temps de trouver mieux
             || bag->content[i][0] == 21)
         {
-            ressourcesInBag[count] = malloc(sizeof(char)* 100);
-            ressourcesInBag[count] == bag->content[i][2];
+            ressourcesInBag[count] == bag->content[i][0];
+            count += 1;
         }
     }
     return ressourcesInBag;
 }
 
 char** lookingAllWeapons(Bag* bag){
-    char** weaponsInBag = malloc(sizeof(char*) * 10);
+    int* weaponsInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
         if(bag->content[i][0] == 1 || bag->content[i][0] == 8 || bag->content[i][0] == 9        // Oui c'est horrible
@@ -25,34 +25,34 @@ char** lookingAllWeapons(Bag* bag){
             || bag->content[i][0] == 30 || bag->content[i][0] == 31 || bag->content[i][0] == 32 // Non j'ai pas eu le temps de trouver mieux
             || bag->content[i][0] == 21)
         {
-            weaponsInBag[count] = malloc(sizeof(char)* 100);
-            weaponsInBag[count] == bag->content[i][2];
+            weaponsInBag[count] == bag->content[i][0];
+            count += 1;
         }
     }
     return weaponsInBag;
 }
 
 char** lookingAllArmors(Bag* bag){
-    char** armorsInBag = malloc(sizeof(char*) * 10);
+    int* armorsInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
         if(bag->content[i][0] == 11 || bag->content[i][0] == 22 || bag->content[i][0] == 33)
         {
-            armorsInBag[count] = malloc(sizeof(char)* 100);
-            armorsInBag[count] == bag->content[i][2];
+            armorsInBag[count] == bag->content[i][0];
+            count += 1;
         }
     }
     return armorsInBag;
 }
 
 char** lookingAllHeals(Bag* bag){
-    char** healsInBag = malloc(sizeof(char*) * 10);
+    int* healsInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
         if(bag->content[i][0] == 15 || bag->content[i][0] == 26 || bag->content[i][0] == 34)
         {
-            healsInBag[count] = malloc(sizeof(char)* 100);
-            healsInBag[count] == bag->content[i][2];
+            healsInBag[count] == bag->content[i][0];
+            count += 1;
         }
     }
     return healsInBag;

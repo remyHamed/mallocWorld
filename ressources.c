@@ -10,12 +10,12 @@ Ressources* findOneRessource(Ressources** tabRessources, int index){
 }
 
 char** structToTabRessource(Ressources* ressource){
-    char** tabItem = malloc(sizeof(char*) *4);
+    char** tabItem = malloc(sizeof(char*) *5);
     char* elem = malloc(sizeof(char) * 255);
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 5; i++){
         tabItem[i] = malloc(sizeof(char)* 255);
     }
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 5; i++){
         switch (i){
             case 0:
                 sprintf(elem, "%d", ressource->objectId);
@@ -31,6 +31,9 @@ char** structToTabRessource(Ressources* ressource){
             case 3:
                 sprintf(elem, "%d", ressource->holdLimit);
                 strcpy(tabItem[i], elem);
+                break;
+            case 4:
+                tabItem[i] = "1";
                 break;
         }
     }

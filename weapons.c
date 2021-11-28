@@ -14,12 +14,12 @@ Weapons* findOneWeapon(Weapons** tabWeapons, int index)
 
 char** structToTabWeapon(Weapons* weapon)
 {
-    char** tabItem = malloc(sizeof(char*) *4);
+    char** tabItem = malloc(sizeof(char*) *6);
     char* elem = malloc(sizeof(char) * 255);
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < 6; i++){
         tabItem[i] = malloc(sizeof(char)* 255);
     }
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < 6; i++){
         switch (i)
         {
             case 0:
@@ -40,6 +40,9 @@ char** structToTabWeapon(Weapons* weapon)
             case 4:
                 sprintf(elem, "%d", weapon->durability);
                 strcpy(tabItem[i], elem);
+                break;
+            case 5:
+                tabItem[i] = "1";
                 break;
         }
     }

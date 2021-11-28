@@ -12,12 +12,12 @@ Heals* findOneHeal(Heals** tabHeals, int index)
 
 char** structToTabHeal(Heals* heal)
 {
-    char** tabItem = malloc(sizeof(char*) *4);
+    char** tabItem = malloc(sizeof(char*) *5);
     char* elem = malloc(sizeof(char) * 255);
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 5; i++){
         tabItem[i] = malloc(sizeof(char)* 255);
     }
-    for(int i = 0; i < 4; i++){
+    for(int i = 0; i < 5; i++){
         switch (i){
             case 0:
                 sprintf(elem, "%d", heal->objectId);
@@ -33,6 +33,9 @@ char** structToTabHeal(Heals* heal)
             case 3:
                 sprintf(elem, "%d", heal->heal);
                 strcpy(tabItem[i], elem);
+                break;
+            case 4:
+                tabItem[i] = "1";
                 break;
         }
     }
