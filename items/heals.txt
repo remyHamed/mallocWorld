@@ -1,3 +1,3 @@
-15|4|Potion de vie I|30
-26|4|Potion de vie II|80
-34|4|Potion de vie III|200
+15|4|Potion de vie I|30@
+26|4|Potion de vie II|80@
+34|4|Potion de vie III|200@

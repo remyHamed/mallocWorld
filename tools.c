@@ -1,78 +1,101 @@
 #include "headers/tools.h"
+#include "headers/fFileReading.h"
 
-int sizeTabTools(Tools** tabTools)
+Tools* findOneTool(Tools** tabTools, int index)
 {
-    int size = 0;
-    for(int i = 0; tabTools[i] != NULL; i++)
+    int size_tab = countLines("items/tools.txt");
+    for (int i = 0; i <= size_tab; i++)
     {
-        size = i;
+        if (tabTools[i]->objectId == index)
+        {
+            return tabTools[i];
+        }
     }
-    return size;
+}
+
+char** structToTabTool(Tools* tool)
+{
+    char** tabItem = malloc(sizeof(char*) *4);
+    char* elem = malloc(sizeof(char) * 255);
+    for(int i = 0; i < 4; i++){
+        tabItem[i] = malloc(sizeof(char)* 255);
+    }
+    for(int i = 0; i < 4; i++){
+        switch (i){
+            case 0:
+                sprintf(elem, "%d", tool->objectId);
+                strcpy(tabItem[i], elem);
+                break;
+            case 1:
+                sprintf(elem, "%d", tool->size);
+                strcpy(tabItem[i], elem);
+                break;
+            case 2:
+                tabItem[i] = tool->name;
+                break;
+            case 3:
+                sprintf(elem, "%d", tool->durability);
+                strcpy(tabItem[i], elem);
+                break;
+        }
+    }
+    return tabItem;
 }
 
 Tools** initTools()
 {
+    char* line;
+    char** dataFromLine;
+    int index = 0;
     Tools** tabTools;
-    tabTools = malloc(sizeof(Tools*)*10);
-    char const* const fileName = "items/tools.txt";
-    FILE* file = fopen(fileName, "r");
-    if (file == NULL)
-    {
+    int numOfToolsModel = countLines("items/tools.txt");
+    tabTools = malloc(sizeof(Tools*) * numOfToolsModel);
+    line = malloc(sizeof(char)* 256);
+    FILE* file = fopen("items/tools.txt", "r");
+    if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    char* line;
-    line = malloc(sizeof(char)* 256);
-    int index = 0;
-    
     while(fgets(line, 256, file)) {
-        tabTools[index] = lineToStructTools(line);
-        index++;
+        dataFromLine = lineSpliter(line);
+        tabTools[index] = setOneTool(dataFromLine);
+        for(int i = 0; i < 4; i++) {
+            free(dataFromLine[i]);
+        }
+        index ++;
     }
+    free(dataFromLine);
     fclose(file);
+    free(line);
     return tabTools;
 }
 
-Tools* lineToStructTools(char* line)
+Tools* setOneTool(char** datasOfTools)
 {
-    const char * separator = "|";
-    int countElement = 0;
-    char* token = strtok (line, separator);
-    Tools* tool = malloc(sizeof(tool));
-    while(token != NULL) {
-        if(countElement == 0)
-        {
-            tool->objectId = atoi(token);
-            countElement += 1;
-        }
-        else if(countElement == 1)
-        {
-            tool->size = atoi(token);
-            countElement += 1;
-        }
-        else if(countElement == 2)
-        {
-            tool->name = malloc(sizeof(char) * 256);
-            strcpy(tool->name, token);
-            countElement += 1;
-        }
-        else
-        {
-            tool->durability = atoi(token);
-            countElement = 0;
-        }
-        token = strtok (NULL, separator);
-    }
+    Tools* tool = malloc(sizeof(Tools));
+    tool->name = malloc(sizeof(char) * 256);
+    tool->objectId = atoi(datasOfTools[0]);
+    tool->size = atoi(datasOfTools[1]);
+    strcpy(tool->name, datasOfTools[2]);
+    tool->durability = atoi(datasOfTools[3]);
+   
+
     return tool;
 }
 
-void printTools(Tools** tabTools)
-{
-    int size_tab = sizeTabTools(tabTools);
-    for (int i = 0; i <= size_tab; i++)
+void printTools(Tools** tabTools) {
+    
+    for (int i = 0; i < 9; i++)
     {
-        printf("Id : %d\n", tabTools[i]->objectId);
+        printf("ID : %d\n", tabTools[i]->objectId);
         printf("Size : %d\n", tabTools[i]->size);
         printf("Nom : %s\n", tabTools[i]->name);
-        printf("Durability : %d\n\n", tabTools[i]->durability);
+        printf("Damage : %d\n\n", tabTools[i]->durability);
     }     
+}
+
+void freeTool(Tools * tool)
+{
+    free(tool->name);
+    free(tool);
+    printf(" tool free ok\n");
 }

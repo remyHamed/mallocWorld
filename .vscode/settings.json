@@ -6,6 +6,7 @@
         "ressources.h": "c",
         "armor.h": "c",
         "algorithm": "c",
-        "bag.h": "c"
+        "bag.h": "c",
+        "craft.h": "c"
     }
 }

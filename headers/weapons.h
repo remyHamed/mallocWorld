@@ -14,10 +14,8 @@ struct  Weapons
     int durability;
 };
 
-int sizeTabWeapons(Weapons** tabWeapons);
 Weapons** initWeapons();
+Weapons* setOneWeapon(char** datasOfWeapons);
 void printWeapons(Weapons** tabWeapons);
-Weapons* lineToStructWeapons(char* line);
-
-
+void freeWeapon(Weapons * arme);
 #endif

@@ -13,9 +13,11 @@ struct  Ressources
     int holdLimit;
 };
 
-int sizeTabRessources(Ressources** tabRessources);
 Ressources** initRessources();
+Ressources* setOneRessource(char** datasOfRessources);
 void printRessources(Ressources** tabRessources);
-Ressources* lineToStructRessources(char* line);
+void freeRessource(Ressources * ressource);
+Ressources* findOneRessource(Ressources** tabRessources, int index);
+char** structToTabRessource(Ressources* ressource);
 
 #endif

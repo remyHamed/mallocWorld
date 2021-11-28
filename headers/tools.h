@@ -13,9 +13,9 @@ struct  Tools
     int durability;
 };
 
-int sizeTabTools(Tools** tabTools);
-Tools** initTools();
-Tools* lineToStructTools(char* line);
+void freeTool(Tools * armure);
 void printTools(Tools** tabTools);
+Tools* setOneTool(char** datasOfTools);
+Tools** initTools();
 
 #endif

@@ -17,8 +17,7 @@ struct  Crafts
 };
 
 Crafts** initCrafts();
-int sizeTabCrafts(Crafts** tabCrafts);
-Crafts* lineToStructCrafts(char* line);
+Crafts* setOneCraft(char** datasOfCrafts);
 void printCrafts(Crafts** tabCrafts);
-
+void freeCraft(Crafts * craft);
 #endif

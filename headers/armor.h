@@ -13,11 +13,11 @@ struct Armors
     int resDamage;
 };
 
-int sizeTabArmors(Armors** tabArmors);
 Armors** initArmors();
+Armors* setOneArmor(char** datasOfArmors);
 void printArmors(Armors** tabArmors);
-Armors* lineToStructArmors(char* line);
-char** structToTabStrArmor(Armors* armor);
+void freeArmor(Armors * arme);
 Armors* findOneArmor(Armors** tabArmors, int index);
+char** structToTabArmor(Armors* armor);
 
 #endif

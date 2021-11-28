@@ -1,78 +1,101 @@
 #include "headers/ressources.h"
+#include "headers/fFileReading.h"
 
-int sizeTabRessources(Ressources** tabRessources)
+Ressources* findOneRessource(Ressources** tabRessources, int index)
 {
-    int size = 0;
-    for(int i = 0; tabRessources[i] != NULL; i++)
+    int size_tab = countLines("items/ressources.txt");
+    for (int i = 0; i <= size_tab; i++)
     {
-        size = i;
+        if (tabRessources[i]->objectId == index)
+        {
+            return tabRessources[i];
+        }
     }
-    return size;
+}
+
+char** structToTabRessource(Ressources* ressource)
+{
+    char** tabItem = malloc(sizeof(char*) *4);
+    char* elem = malloc(sizeof(char) * 255);
+    for(int i = 0; i < 4; i++){
+        tabItem[i] = malloc(sizeof(char)* 255);
+    }
+    for(int i = 0; i < 4; i++){
+        switch (i){
+            case 0:
+                sprintf(elem, "%d", ressource->objectId);
+                strcpy(tabItem[i], elem);
+                break;
+            case 1:
+                sprintf(elem, "%d", ressource->size);
+                strcpy(tabItem[i], elem);
+                break;
+            case 2:
+                tabItem[i] = ressource->name;
+                break;
+            case 3:
+                sprintf(elem, "%d", ressource->holdLimit);
+                strcpy(tabItem[i], elem);
+                break;
+        }
+    }
+    return tabItem;
 }
 
 Ressources** initRessources()
 {
+    char* line;
+    char** dataFromLine;
+    int index = 0;
     Ressources** tabRessources;
-    tabRessources = malloc(sizeof(Ressources*)*12);
-    char const* const fileName = "items/ressources.txt";
-    FILE* file = fopen(fileName, "r");
-    if (file == NULL)
-    {
+    int numOfRessourcesModel = countLines("items/ressources.txt");
+    tabRessources = malloc(sizeof(Ressources*) * numOfRessourcesModel);
+    line = malloc(sizeof(char)* 256);
+    FILE* file = fopen("items/ressources.txt", "r");
+    if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    char* line;
-    line = malloc(sizeof(char)* 256);
-    int index = 0;
-    
     while(fgets(line, 256, file)) {
-        tabRessources[index] = lineToStructRessources(line);
-        index++;
+        dataFromLine = lineSpliter(line);
+        tabRessources[index] = setOneRessource(dataFromLine);
+        for(int i = 0; i < 4; i++) {
+            free(dataFromLine[i]);
+        }
+        index ++;
     }
+    free(dataFromLine);
     fclose(file);
+    free(line);
     return tabRessources;
 }
 
-Ressources* lineToStructRessources(char* line)
+Ressources* setOneRessource(char** datasOfRessources)
 {
-    const char * separator = "|";
-    int countElement = 0;
-    char* token = strtok (line, separator);
-    Ressources* ressource = malloc(sizeof(ressource));
-    while(token != NULL) {
-        if(countElement == 0)
-        {
-            ressource->objectId = atoi(token);
-            countElement += 1;
-        }
-        else if(countElement == 1)
-        {
-            ressource->size = atoi(token);
-            countElement += 1;
-        }
-        else if(countElement == 2)
-        {
-            ressource->name = malloc(sizeof(char) * 256);
-            strcpy(ressource->name, token);
-            countElement += 1;
-        }
-        else
-        {
-            ressource->holdLimit = atoi(token);
-            countElement = 0;
-        }
-        token = strtok (NULL, separator);
-    }
+    Ressources* ressource = malloc(sizeof(Ressources));
+    ressource->name = malloc(sizeof(char) * 256);
+    ressource->objectId = atoi(datasOfRessources[0]);
+    ressource->size = atoi(datasOfRessources[1]);
+    strcpy(ressource->name, datasOfRessources[2]);
+    ressource->holdLimit = atoi(datasOfRessources[3]);
+   
+
     return ressource;
 }
 
-void printRessources(Ressources** tabRessources)
-{
-    int size_tab = sizeTabRessources(tabRessources);
-    for (int i = 0; i <= size_tab; i++)
+void printRessources(Ressources** tabRessources) {
+    
+    for (int i = 0; i < 9; i++)
     {
-        printf("Id : %d\n", tabRessources[i]->objectId);
+        printf("ID : %d\n", tabRessources[i]->objectId);
         printf("Size : %d\n", tabRessources[i]->size);
         printf("Nom : %s\n", tabRessources[i]->name);
-        printf("Hold limit : %d\n\n", tabRessources[i]->holdLimit);
+        printf("Damage : %d\n\n", tabRessources[i]->holdLimit);
     }     
+}
+
+void freeRessource(Ressources * ressource)
+{
+    free(ressource->name);
+    free(ressource);
+    printf(" ressource free ok\n");
 }

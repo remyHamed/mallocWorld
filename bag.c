@@ -1,20 +1,9 @@
 #include "headers/bag.h"
 
-// int sizeBag(char*** bag)
-// {
-//     int size = 0;
-//     for(int i = 0; bag[i] != NULL; i++)
-//     {
-//         size = i;
-//     }
-//     return size;
-// }
-
 Bag* addItem(Bag* bag, char** item)
 {
     int lastElem = bag->size;
-    if (lastElem == 9)
-    {
+    if (lastElem == 9){
         printf("Votre sac est plein il n'est pas possible d'y ajouter de nouveaux éléments !\n");
         return bag;
     }
@@ -36,20 +25,15 @@ Bag* initStartBag()
 char*** createStartBag()
 {
     char *** tabBag = malloc(sizeof(char**) * 10);
-    for(int i = 0; i < 10; i++) 
-    {
+    for(int i = 0; i < 10; i++) {
         tabBag[i] = malloc(sizeof(char*) * 5);
     }
-
-    for(int i = 0; i < 10; i++) 
-    {
-        for(int j = 0; j < 5; j++) 
-        {
+    for(int i = 0; i < 10; i++) {
+        for(int j = 0; j < 5; j++) {
             tabBag[i][j] = calloc(255, sizeof(char));
         }
     }
-    for (int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++){
         switch (i){
             case 0:
                 tabBag[i][0] = "1";

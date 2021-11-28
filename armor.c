@@ -1,19 +1,9 @@
 #include "headers/armor.h"
-
-int sizeTabArmors(Armors** tabArmor)
-{
-    int size = 0;
-    for(int i = 0; tabArmor[i] != NULL; i++)
-    {
-        size = i;
-    }
-    printf("taille armures: %d", size);
-    return size;
-}
+#include "headers/fFileReading.h"
 
 Armors* findOneArmor(Armors** tabArmors, int index)
 {
-    int size_tab = sizeTabArmors(tabArmors);
+    int size_tab = countLines("items/armors.txt");
     for (int i = 0; i <= size_tab; i++)
     {
         if (tabArmors[i]->objectId == index)
@@ -23,7 +13,7 @@ Armors* findOneArmor(Armors** tabArmors, int index)
     }
 }
 
-char** structToTabStrArmor(Armors* armor)
+char** structToTabArmor(Armors* armor)
 {
     char** tabItem = malloc(sizeof(char*) *4);
     char* elem = malloc(sizeof(char) * 255);
@@ -57,67 +47,57 @@ char** structToTabStrArmor(Armors* armor)
 
 Armors** initArmors()
 {
-    Armors** tabArmor;
-    tabArmor = malloc(sizeof(Armors*)*10);
-    char const* const fileName = "items/armor.txt";
-    FILE* file = fopen(fileName, "r");
-    if (file == NULL)
-    {
+    char* line;
+    char** dataFromLine;
+    int index = 0;
+    Armors** tabArmors;
+    int numOfArmorsModel = countLines("items/armors.txt");
+    tabArmors = malloc(sizeof(Armors*) * numOfArmorsModel);
+    line = malloc(sizeof(char)* 256);
+    FILE* file = fopen("items/armors.txt", "r");
+    if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    char* line;
-    line = malloc(sizeof(char)* 256);
-    int index = 0;
-    
     while(fgets(line, 256, file)) {
-        tabArmor[index] = lineToStructArmors(line);
-        index++;
+        dataFromLine = lineSpliter(line);
+        tabArmors[index] = setOneArmor(dataFromLine);
+        for(int i = 0; i < 4; i++) {
+            free(dataFromLine[i]);
+        }
+        index ++;
     }
+    free(dataFromLine);
     fclose(file);
-    return tabArmor;
+    free(line);
+    return tabArmors;
 }
 
-Armors* lineToStructArmors(char* line)
+Armors* setOneArmor(char** datasOfArmors)
 {
-    const char * separator = "|";
-    int countElement = 0;
-    char* token = strtok (line, separator);
-    Armors* armor = malloc(sizeof(Armors));
-    while(token != NULL) {
-        if(countElement == 0)
-        {
-            armor->objectId = atoi(token);
-            countElement += 1;
-        }
-        else if(countElement == 1)
-        {
-            armor->size = atoi(token);
-            countElement += 1;
-        }
-        else if (countElement == 2)
-        {
-            armor->name = malloc(sizeof(char) * 256);
-            strcpy(armor->name, token);
-            countElement += 1;
-        }
-        else
-        {
-            armor->resDamage = atoi(token);
-            countElement = 0;
-        }
-        token = strtok (NULL, separator);
-    }
-    return armor;
+    Armors* armure = malloc(sizeof(Armors));
+    armure->name = malloc(sizeof(char) * 256);
+    armure->objectId = atoi(datasOfArmors[0]);
+    armure->size = atoi(datasOfArmors[1]);
+    strcpy(armure->name, datasOfArmors[2]);
+    armure->resDamage = atoi(datasOfArmors[3]);
+
+    return armure;
 }
 
-void printArmors(Armors** tabArmor)
-{
-    int size_tab = sizeTabArmors(tabArmor);
-    for (int i = 0; i <= size_tab; i++)
+void printArmors(Armors** tabArmors) {
+    
+    for (int i = 0; i < 3; i++)
     {
-        printf("Id : %d\n", tabArmor[i]->objectId);
-        printf("Size : %d\n", tabArmor[i]->size);
-        printf("Nom : %s\n", tabArmor[i]->name);
-        printf("ResDamage : %d\n\n", tabArmor[i]->resDamage);
+        printf("ID : %d\n", tabArmors[i]->objectId);
+        printf("Size : %d\n", tabArmors[i]->size);
+        printf("Nom : %s\n", tabArmors[i]->name);
+        printf("Damage : %d\n\n", tabArmors[i]->resDamage);
     }     
+}
+
+void freeArmor(Armors * armure)
+{
+    free(armure->name);
+    free(armure);
+    printf(" armure free ok\n");
 }

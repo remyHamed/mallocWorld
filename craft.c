@@ -1,94 +1,70 @@
 #include "headers/craft.h"
-
-int sizeTabCrafts(Crafts** tabCraft)
-{
-    int size = 0;
-    for(int i = 0; tabCraft[i] != NULL; i++)
-    {
-        size = i;
-    }
-    return size;
-}
+#include "headers/fFileReading.h"
 
 Crafts** initCrafts()
 {
-    Crafts** tabCraft;
-    tabCraft = malloc(sizeof(Crafts*)*35);
-    char const* const fileName = "items/craft.txt";
-    FILE* file = fopen(fileName, "r");
-    if (file == NULL)
-    {
+    char* line;
+    char** dataFromLine;
+    int index = 0;
+    Crafts** tabCrafts;
+    int numOfCraftsModel = countLines("items/crafts.txt");
+    tabCrafts = malloc(sizeof(Crafts*) * numOfCraftsModel);
+    line = malloc(sizeof(char)* 256);
+    FILE* file = fopen("items/crafts.txt", "r");
+    if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    char* line;
-    line = malloc(sizeof(char)* 256);
-    int index = 0;
-    
     while(fgets(line, 256, file)) {
-        tabCraft[index] = lineToStructCrafts(line);
-        index++;
+        dataFromLine = lineSpliter(line);
+        tabCrafts[index] = setOneCraft(dataFromLine);
+        for(int i = 0; i < 6; i++) {
+            free(dataFromLine[i]);
+        }
+        index ++;
     }
+    free(dataFromLine);
     fclose(file);
-    return tabCraft;
+    free(line);
+    return tabCrafts;
 }
 
-Crafts* lineToStructCrafts(char* line)
+Crafts* setOneCraft(char** datasOfCrafts)
 {
-    const char * separator = "|";
-    int countElement = 0;
-    char* token = strtok (line, separator);
     Crafts* craft = malloc(sizeof(Crafts));
-    while(token != NULL) {
-        switch (countElement)
-        {
-            case 0:
-                craft->name = malloc(sizeof(char) * 256);
-                strcpy(craft->name, token);
-                countElement += 1;
-                break;
-        
-            case 1:
-                craft->nbComposant1 = atoi(token);
-                countElement += 1;
-                break;
+    craft->name = malloc(sizeof(char) * 256);
+    craft->composant1 = malloc(sizeof(char) * 256);
+    craft->composant2 = malloc(sizeof(char) * 256);
+    strcpy(craft->name, datasOfCrafts[0]);
+    craft->nbComposant1 = atoi(datasOfCrafts[1]);
+    strcpy(craft->composant1, datasOfCrafts[2]);
+    craft->nbComposant2 = atoi(datasOfCrafts[3]);
+    strcpy(craft->composant2, datasOfCrafts[4]);
+    craft->zone = atoi(datasOfCrafts[5]);
+   
 
-            case 2:
-                craft->composant1 = malloc(sizeof(char) * 256);
-                strcpy(craft->composant1, token);
-                countElement += 1;
-                break;
-            
-            case 3:
-                craft->nbComposant2 = atoi(token);
-                countElement += 1;
-                break;
-            
-            case 4:
-                craft->composant2 = malloc(sizeof(char) * 256);
-                strcpy(craft->composant2, token);
-                countElement += 1;
-                break;
-
-            case 5:
-                craft->zone = atoi(token);
-                countElement = 0;
-                break;
-        }
-        token = strtok (NULL, separator);
-    }
     return craft;
 }
 
-void printCrafts(Crafts** tabCraft)
-{
-    int size_tab = sizeTabCrafts(tabCraft);
-    for (int i = 0; i <= size_tab; i++)
+void printCrafts(Crafts** tabCrafts) {
+    
+    for (int i = 0; i < 25 ; i++)
     {
-        printf("Nom : %s\n", tabCraft[i]->name);
-        printf("NB1 : %d\n", tabCraft[i]->nbComposant1);
-        printf("Composant 1 : %s\n", tabCraft[i]->composant1);
-        printf("NB2 : %d\n", tabCraft[i]->nbComposant2);
-        printf("Composant 2 : %s\n", tabCraft[i]->composant2);
-        printf("Zone : %d\n\n", tabCraft[i]->zone);
+       
+        printf("Nom : %s\n", tabCrafts[i]->name);
+        printf("Nb1 : %d\n", tabCrafts[i]->nbComposant1);
+        printf("Composant 1 : %s\n", tabCrafts[i]->composant1);
+        printf("Nb2 : %d\n", tabCrafts[i]->nbComposant2);
+        printf("Composant 2 : %s\n", tabCrafts[i]->composant2);
+        printf("Zone : %d\n\n", tabCrafts[i]->zone);
+      
     }     
+}
+
+void freeCraft(Crafts * craft)
+{
+    free(craft->name);
+    free(craft->composant1);
+    free(craft->composant2);
+    free(craft);
+    printf(" craft free ok\n");
 }

@@ -14,8 +14,10 @@ struct  Heals
 };
 
 Heals** initHeals();
-int sizeTabHeals(Heals** tabHeals);
-Heals* lineToStructHeals(char* line);
+Heals* setOneHeal(char** datasOfHeals);
 void printHeals(Heals** tabHeals);
+void freeHeal(Heals * heal);
+Heals* findOneHeal(Heals** tabHeals, int index);
+char** structToTabHeal(Heals* heal);
 
 #endif

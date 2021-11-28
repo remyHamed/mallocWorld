@@ -10,37 +10,27 @@
 #include "headers/heals.h"
 #include "headers/armor.h"
 #include "headers/bag.h"
+#include "headers/fFileReading.h"
 
 
 int main(int argc, char ** argv) 
 {
-    // Heals** tabHeals = initHeals(); //marche
-    // printHeals(tabHeals);
-
-    // Weapons** tabWeapons = initWeapons();
-    // printWeapons(tabWeapons);
-
-    // Ressources** tabRessources = initRessources();
-    // printRessources(tabRessources);
-
+    Heals** tabHeals = initHeals();
+    Weapons** tabWeapons = initWeapons();
+    Ressources** tabRessources = initRessources();
     Armors** tabArmors = initArmors();
-    printArmors(tabArmors);
-
-    // Tools** tabTools = initTools(); 
-    // printTools(tabTools);
-
-    // Crafts** tabCrats = initCrafts(); 
-    // printCrafts(tabCrats);
+    Tools** tabTools = initTools();
+    Crafts** tabCrats = initCrafts();
 
     Bag* bag = initStartBag();
     char *** contentBag = bag->content;
     
-    char** item = structToTabStrArmor(findOneArmor(tabArmors, 22));
-    addItem(bag, item);
-    printBag(contentBag);
-    // free(bag->content[i][j]);
-    // free(bag->content[i]);
-    free(bag->content);
+    // char** item = structToTabStrArmor(findOneArmor(tabArmors, 22));
+    // addItem(bag, item);
+    // printBag(contentBag);
+    // // free(bag->content[i][j]);
+    // // free(bag->content[i]);
+    // free(bag->content);
 
     return 0;
 }
