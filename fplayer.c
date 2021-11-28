@@ -52,7 +52,9 @@ void checkAroundPlayer(Map* m, Player* p, int * index) {
             break;
     }
     printf("valeur du tableau de la case à controler %d %d\n", poseTocheck[0],poseTocheck[1]);
-    recognitionCaserecognition(m, p, index, poseTocheck);
+    if(isWatchble(m,poseTocheck[0],poseTocheck[1])) {
+        recognitionCaserecognition(m, p, index, poseTocheck);
+    }
 }
 
 void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck) {
@@ -62,4 +64,25 @@ void recognitionCaserecognition(Map* m, Player* p, int* index, int* caseTocheck)
     }
     //TODO LOOP MONSTER
     //TODO LOOP ressource
+}
+
+int isWatchble(Map* m, int x, int y) {
+    printf("in watchbl  x = %d y = %d\n", x, y);
+    if(x < 0) {
+        printf("1 faux\n");
+        return 0;
+    }
+    if(x >= m->size) {
+         printf("2 faux\n");
+        return 0;
+    }
+    if(y < 0) {
+         printf("3 faux\n");
+        return 0;
+    }
+    if(y >= m->size) {
+         printf("4 faux\n");
+        return 0;
+    }
+    return 1;
 }

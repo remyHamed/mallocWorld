@@ -13,7 +13,7 @@
 #define NEW_GAME 1
 #define LOAD_SAVED_GAME  2
 #define END_GAME  3
-int main() {
+int main(int argc, char ** argv) {
     Monster** tabmonster = initMonster();
     Weapons** tabweapon = initWeapons();
     Armors** tabarmor = initArmors();
@@ -37,13 +37,13 @@ int main() {
         fflush(stdout);
         selector = meneGeneral();
         if(selector == NEW_GAME) {
-            printf("1\n");
+            //printf("1\n");
             list = genAllLevels();
-            printf("2\n");
+            //printf("2\n");
             player = initPlayer();
-            printf("3\n");
+            //printf("3\n");
             list[indexMap]->arr[0][0] = 1;// cette ligne place le joueur
-            printf("4\n");
+            //printf("4\n");
             *gameContinue = 1;
         }
 
@@ -74,6 +74,8 @@ int main() {
         }
         printf("5\n");
         while (*gameContinue)  {
+            printf("joueur x = %d\n", player->x);
+            printf("joueur y = %d\n", player->y);
             if (*input != '\n') {
                 screenGame(list, player, indexMap);
                 checkAroundPlayer(list[indexMap], player, &indexMap);
