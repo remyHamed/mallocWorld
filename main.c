@@ -25,7 +25,13 @@ int main(int argc, char ** argv) {
     
     char** item = structToTabHeal(findOneHeal(tabHeals, 26));
     addItem(bag, item);
+    printf("1");
     char** item2 = structToTabWeapon(findOneWeapon(tabWeapons, 26));
+    addItem(bag, item2);
+    printf("2");
+    char** item3 = structToTabWeapon(findOneWeapon(tabWeapons, 26));
+    addItem(bag, item3);
+    printf("3");
     printBag(contentBag);
     return 0;
 }

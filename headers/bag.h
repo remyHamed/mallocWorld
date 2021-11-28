@@ -16,9 +16,9 @@ char*** createStartBag();
 void printBag(char*** bag);
 Bag* addItem(Bag* bag, char** item);
 int isExist(Bag* bag, int index);
-char** lookingAllRessources(Bag* bag);
-char** lookingAllWeapons(Bag* bag);
-char** lookingAllArmors(Bag* bag);
-char** lookingAllHeals(Bag* bag);
+int* lookingAllRessources(Bag* bag);
+int* lookingAllWeapons(Bag* bag);
+int* lookingAllArmors(Bag* bag);
+int* lookingAllHeals(Bag* bag);
 
 #endif

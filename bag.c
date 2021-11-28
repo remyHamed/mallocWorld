@@ -2,65 +2,65 @@
 
 int isExist(Bag* bag, int index){
     for(int i = 0; i < 10; i++){
-        if(index == bag->content[i][0]){
+        int actualID = atoi(bag->content[i][0]);
+        if(index == actualID){
             return 1;
         }
     }
     return 0;
 }
 
-char** lookingAllRessources(Bag* bag){
+int* lookingAllRessources(Bag* bag){
     int* ressourcesInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
-        if(bag->content[i][0] == 1 || bag->content[i][0] == 8 || bag->content[i][0] == 9        // Oui c'est horrible
-            || bag->content[i][0] == 10 || bag->content[i][0] == 19|| bag->content[i][0] == 20  // Oui j'ai honte
-            || bag->content[i][0] == 30 || bag->content[i][0] == 31 || bag->content[i][0] == 32 // Non j'ai pas eu le temps de trouver mieux
-            || bag->content[i][0] == 21)
+        if(bag->content[i][0] == "5" || bag->content[i][0] == "6" || bag->content[i][0] == "7"        // Oui c'est horrible
+            || bag->content[i][0] == "16" || bag->content[i][0] == "17" || bag->content[i][0] == "18"  // Oui j'ai honte
+            || bag->content[i][0] == "27" || bag->content[i][0] == "28" || bag->content[i][0] == "29") // Non j'ai pas eu le temps de trouver mieux
         {
-            ressourcesInBag[count] == bag->content[i][0];
+            ressourcesInBag[count] == atoi(bag->content[i][0]);
             count += 1;
         }
     }
     return ressourcesInBag;
 }
 
-char** lookingAllWeapons(Bag* bag){
+int* lookingAllWeapons(Bag* bag){
     int* weaponsInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
-        if(bag->content[i][0] == 1 || bag->content[i][0] == 8 || bag->content[i][0] == 9        // Oui c'est horrible
-            || bag->content[i][0] == 10 || bag->content[i][0] == 19|| bag->content[i][0] == 20  // Oui j'ai honte
-            || bag->content[i][0] == 30 || bag->content[i][0] == 31 || bag->content[i][0] == 32 // Non j'ai pas eu le temps de trouver mieux
-            || bag->content[i][0] == 21)
+        if(bag->content[i][0] == "1" || bag->content[i][0] == "8" || bag->content[i][0] == "9"       // Oui c'est horrible
+            || bag->content[i][0] == "10" || bag->content[i][0] == "19" || bag->content[i][0] == "20"  // Oui j'ai honte
+            || bag->content[i][0] == "30" || bag->content[i][0] == "31" || bag->content[i][0] == "32" // Non j'ai pas eu le temps de trouver mieux
+            || bag->content[i][0] == "21")
         {
-            weaponsInBag[count] == bag->content[i][0];
+            weaponsInBag[count] == atoi(bag->content[i][0]);
             count += 1;
         }
     }
     return weaponsInBag;
 }
 
-char** lookingAllArmors(Bag* bag){
+int* lookingAllArmors(Bag* bag){
     int* armorsInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
-        if(bag->content[i][0] == 11 || bag->content[i][0] == 22 || bag->content[i][0] == 33)
+        if(bag->content[i][0] == "11" || bag->content[i][0] == "22" || bag->content[i][0] == "33")
         {
-            armorsInBag[count] == bag->content[i][0];
+            armorsInBag[count] == atoi(bag->content[i][0]);
             count += 1;
         }
     }
     return armorsInBag;
 }
 
-char** lookingAllHeals(Bag* bag){
+int* lookingAllHeals(Bag* bag){
     int* healsInBag = malloc(sizeof(int) * 10);
     int count = 0;
     for(int i = 0; i < 10; i++){
-        if(bag->content[i][0] == 15 || bag->content[i][0] == 26 || bag->content[i][0] == 34)
+        if(bag->content[i][0] == "15" || bag->content[i][0] == "26" || bag->content[i][0] == "34")
         {
-            healsInBag[count] == bag->content[i][0];
+            healsInBag[count] == atoi(bag->content[i][0]);
             count += 1;
         }
     }
@@ -69,13 +69,14 @@ char** lookingAllHeals(Bag* bag){
 
 Bag* addItem(Bag* bag, char** item){
     int lastElem = bag->size;
-    int sizeItem = item[2];
+    int sizeItem = atoi(item[2]);
+    int index = atoi(item[0]);
     if (lastElem == 9){
         printf("Votre sac est plein il n'est pas possible d'y ajouter de nouveaux éléments !\n");
         return bag;
     }
     else{
-        if (!isExist(bag, item[0])){
+        if (!isExist(bag, index)){
             item[sizeItem + 1] = item[sizeItem + 1] + 1;
             bag->content[lastElem] = item;
             bag->size = bag->size + 1;
