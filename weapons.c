@@ -35,9 +35,6 @@ Weapons* setOneWeapon(char** datasOfWeapons) {
     strcpy(arme->name, datasOfWeapons[0]);
     arme->damage = atoi(datasOfWeapons[1]);
     arme->durability = atoi(datasOfWeapons[2]);
-    printf("Nom : %s\n", arme->name);
-    printf("Damage : %d\n", arme->damage);
-    printf("Durability : %d\n\n", arme->durability);
     return arme;
 }
 

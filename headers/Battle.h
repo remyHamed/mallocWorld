@@ -5,6 +5,7 @@
 #ifndef battle_h
 #define battle_h
 #include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 #include <time.h>
 #include "Monster.h"

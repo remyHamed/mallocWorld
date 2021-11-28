@@ -3,18 +3,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "fFileReading.h"
 
+typedef struct Heals Heals;
 struct  Heals
 {
+    int objectId;
+    int size;
     char* name;
     int heal;
-
-    struct Heals* next;
 };
-typedef struct Heals Heals;
 
 Heals** initHeals();
-Heals* lineToStructHeals(char*);
-void printHeals(Heals**);
+Heals* setOneHeal(char** datasOfHeals);
+void printHeals(Heals** tabHeals);
+void freeHeal(Heals * heal);
+Heals* findOneHeal(Heals** tabHeals, int index);
+char** structToTabHeal(Heals* heal);
 
 #endif

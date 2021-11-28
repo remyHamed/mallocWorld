@@ -108,6 +108,9 @@ void move(Map* l, Player* p, int* continuing, int * index, int* input, int* temp
             case 'n':
                 *continuing = 0;
                 break;
+            case 'm':
+                printf("niveau %d\n", p->level);
+                printf("hp %d\n", p->currentHp);
             default:
                 printf("mauvaise saisie recommencez\n");
                 break;
@@ -166,7 +169,7 @@ int gateMenu(Map* m, Player* p, int* index) {
     char userInput[250];
     int a = 0;
     if(*index == 0) {
-        if(m->levelLimit < p->level) {
+        if(m->levelLimit <= p->level) {
             while (loop) {
                 printf("\t Voulez vous allez au niveau superieur?\n\t 1 oui \n\t 2 non \n");
                 ///fflush(stdin);

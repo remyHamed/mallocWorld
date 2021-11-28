@@ -1,60 +1,100 @@
 #include "headers/heals.h"
 
-Heals** initHeals()
+Heals* findOneHeal(Heals** tabHeals, int index)
 {
+    int size_tab = countLines("items/heals.txt");
+    for (int i = 0; i < size_tab; i++){
+        if (tabHeals[i]->objectId == index){
+            return tabHeals[i];
+        }
+    }
+}
+
+char** structToTabHeal(Heals* heal)
+{
+    char** tabItem = malloc(sizeof(char*) *5);
+    char* elem = malloc(sizeof(char) * 255);
+    for(int i = 0; i < 5; i++){
+        tabItem[i] = malloc(sizeof(char)* 255);
+    }
+    for(int i = 0; i < 5; i++){
+        switch (i){
+            case 0:
+                sprintf(elem, "%d", heal->objectId);
+                strcpy(tabItem[i], elem);
+                break;
+            case 1:
+                sprintf(elem, "%d", heal->size);
+                strcpy(tabItem[i], elem);
+                break;
+            case 2:
+                tabItem[i] = heal->name;
+                break;
+            case 3:
+                sprintf(elem, "%d", heal->heal);
+                strcpy(tabItem[i], elem);
+                break;
+            case 4:
+                tabItem[i] = "1";
+                break;
+        }
+    }
+    free(elem);
+    return tabItem;
+}
+
+Heals** initHeals(){
+    char* line;
+    char** dataFromLine;
+    int index = 0;
     Heals** tabHeals;
-    tabHeals = malloc(sizeof(Heals*)*10);
-    char const* const fileName = "items/heals.txt";
-    FILE* file = fopen(fileName, "r");
-    if (file == NULL)
-    {
+    int numOfHealsModel = countLines("items/heals.txt");
+    tabHeals = malloc(sizeof(Heals*) * numOfHealsModel);
+    line = malloc(sizeof(char)* 256);
+    FILE* file = fopen("items/heals.txt", "r");
+    if (file == NULL) {
         printf("Fichier non ouvert");
     }
-    char* line;
-    line = malloc(sizeof(char)* 256);
-    int index = 0;
-    
     while(fgets(line, 256, file)) {
-        tabHeals[index] = lineToStructHeals(line);
-        index++;
+        dataFromLine = lineSpliter(line);
+        tabHeals[index] = setOneHeal(dataFromLine);
+        for(int i = 0; i < 4; i++) {
+            free(dataFromLine[i]);
+        }
+        index ++;
     }
+    free(dataFromLine);
     fclose(file);
+    free(line);
     return tabHeals;
 }
 
-Heals* lineToStructHeals(char* line)
+Heals* setOneHeal(char** datasOfHeals)
 {
-    const char * separator = "|";
-    int countElement = 0;
-    char* token = strtok (line, separator);
-    //char * temp = malloc(sizeof(char)*256);
-    //strcpy(temp, token);
-    Heals* heal = malloc(sizeof(heal));
-    while(token != NULL) {
-        if(countElement == 0)
-        {
-            heal->name = malloc(sizeof(char) * 256);
-            strcpy(heal->name, token);
-            countElement += 1;
-        }
-        else
-        {
-            //heal->heal = malloc(sizeof(int));
-            heal->heal = atoi(token);
-            countElement = 0;
-        }
-        token = strtok (NULL, separator);
-    }
+    Heals* heal = malloc(sizeof(Heals));
+    heal->name = malloc(sizeof(char) * 256);
+    heal->objectId = atoi(datasOfHeals[0]);
+    heal->size = atoi(datasOfHeals[1]);
+    strcpy(heal->name, datasOfHeals[2]);
+    heal->heal = atoi(datasOfHeals[3]);
+   
     return heal;
 }
 
-void printHeals(Heals** tabHeals)
-{
-    int size_tab = (sizeof(tabHeals)/2) -1;
-    printf("%d\n",size_tab);
-    for (int i = 0; i < size_tab; i++)
+void printHeals(Heals** tabHeals) {
+    
+    for (int i = 0; i < 3; i++)
     {
+        printf("ID : %d\n", tabHeals[i]->objectId);
+        printf("Size : %d\n", tabHeals[i]->size);
         printf("Nom : %s\n", tabHeals[i]->name);
-        printf("heal : %d\n\n", tabHeals[i]->heal);
+        printf("Damage : %d\n\n", tabHeals[i]->heal);
     }     
+}
+
+void freeHeal(Heals * heal)
+{
+    free(heal->name);
+    free(heal);
+    printf(" heal free ok\n");
 }

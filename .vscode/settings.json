@@ -1,5 +1,10 @@
 {
     "files.associations": {
-        "monster.h": "c"
+        "monster.h": "c",
+        "cstdio": "c",
+        "*.tcc": "c",
+        "fstream": "c",
+        "sstream": "c",
+        "streambuf": "c"
     }
 }
