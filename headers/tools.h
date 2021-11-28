@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "fFileReading.h"
 
 typedef struct Tools Tools;
 struct  Tools

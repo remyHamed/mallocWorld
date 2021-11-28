@@ -1,5 +1,50 @@
 #include "headers/weapons.h"
-#include "headers/fFileReading.h"
+
+Weapons* findOneWeapon(Weapons** tabWeapons, int index)
+{
+    int size_tab = countLines("items/weapons.txt");
+    for (int i = 0; i < size_tab; i++)
+    {
+        if (tabWeapons[i]->objectId == index)
+        {
+            return tabWeapons[i];
+        }
+    }
+}
+
+char** structToTabWeapon(Weapons* weapon)
+{
+    char** tabItem = malloc(sizeof(char*) *4);
+    char* elem = malloc(sizeof(char) * 255);
+    for(int i = 0; i < 4; i++){
+        tabItem[i] = malloc(sizeof(char)* 255);
+    }
+    for(int i = 0; i < 4; i++){
+        switch (i)
+        {
+            case 0:
+                sprintf(elem, "%d", weapon->objectId);
+                strcpy(tabItem[i], elem);
+                break;
+            case 1:
+                sprintf(elem, "%d", weapon->size);
+                strcpy(tabItem[i], elem);
+                break;
+            case 2:
+                tabItem[i] = weapon->name;
+                break;
+            case 3:
+                sprintf(elem, "%d", weapon->damage);
+                strcpy(tabItem[i], elem);
+                break;
+            case 4:
+                sprintf(elem, "%d", weapon->durability);
+                strcpy(tabItem[i], elem);
+                break;
+        }
+    }
+    return tabItem;
+}
 
 Weapons** initWeapons()
 {

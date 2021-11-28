@@ -1,10 +1,9 @@
 #include "headers/armor.h"
-#include "headers/fFileReading.h"
 
 Armors* findOneArmor(Armors** tabArmors, int index)
 {
     int size_tab = countLines("items/armors.txt");
-    for (int i = 0; i <= size_tab; i++)
+    for (int i = 0; i < size_tab; i++)
     {
         if (tabArmors[i]->objectId == index)
         {

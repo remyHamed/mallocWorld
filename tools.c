@@ -1,10 +1,9 @@
 #include "headers/tools.h"
-#include "headers/fFileReading.h"
 
 Tools* findOneTool(Tools** tabTools, int index)
 {
     int size_tab = countLines("items/tools.txt");
-    for (int i = 0; i <= size_tab; i++)
+    for (int i = 0; i < size_tab; i++)
     {
         if (tabTools[i]->objectId == index)
         {

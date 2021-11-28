@@ -1,10 +1,9 @@
 #include "headers/heals.h"
-#include "headers/fFileReading.h"
 
 Heals* findOneHeal(Heals** tabHeals, int index)
 {
     int size_tab = countLines("items/heals.txt");
-    for (int i = 0; i <= size_tab; i++)
+    for (int i = 0; i < size_tab; i++)
     {
         if (tabHeals[i]->objectId == index)
         {

@@ -7,6 +7,7 @@
         "armor.h": "c",
         "algorithm": "c",
         "bag.h": "c",
-        "craft.h": "c"
+        "craft.h": "c",
+        "ffilereading.h": "c"
     }
 }

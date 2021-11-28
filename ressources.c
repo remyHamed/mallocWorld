@@ -1,10 +1,9 @@
 #include "headers/ressources.h"
-#include "headers/fFileReading.h"
 
 Ressources* findOneRessource(Ressources** tabRessources, int index)
 {
     int size_tab = countLines("items/ressources.txt");
-    for (int i = 0; i <= size_tab; i++)
+    for (int i = 0; i < size_tab; i++)
     {
         if (tabRessources[i]->objectId == index)
         {
