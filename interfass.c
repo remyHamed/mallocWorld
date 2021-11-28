@@ -151,6 +151,9 @@ int isMovable(Map* l,Player * p, int* index, int x, int y) {
     if(y >= l->size) {
         return 0;
     }
+    if(l->arr[x][y] != 0) {
+        return 0;
+    }
     if(l->arr[x][y] == -3) {
         return 0;
     }
